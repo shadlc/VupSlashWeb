@@ -1,7 +1,7 @@
 # VupSlashWeb
-```
-The official website of VupSlash depend on vue3 https://vupslash.icu
-```
+- https://vupslash.icu
+- 基于vue3的VUP杀官方网站
+- The official website of VupSlash depend on vue3
 
 ## Project setup
 ```
@@ -22,6 +22,3 @@ yarn build
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
