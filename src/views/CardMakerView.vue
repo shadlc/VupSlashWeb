@@ -224,10 +224,10 @@ function zoomPortrait(card: Card, event: WheelEvent) {
     let direction: number = event.deltaY;
     let oldPortraitW = card.portraitW;
     let oldPortraitH = card.portraitH;
-    if (direction > 0) {
+    if (direction < 0) {
       card.portraitW *= 1.020408;
       card.portraitH *= 1.020408;
-    } else if (direction < 0) {
+    } else if (direction > 0) {
       card.portraitW *= 0.98;
       card.portraitH *= 0.98;
     }
