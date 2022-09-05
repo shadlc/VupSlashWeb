@@ -124,17 +124,14 @@ function scrollToTop() {
       />
     </div>
     <div class="container bg-dark px-3 py-3 overflow-hidden">
-      <div
-        id="card_list"
-        class="row row-cols-12 px-lg-5 justify-content-center"
-      >
-        <div class="no-card hide">
+      <div id="card_list" class="row row-cols-12 px-lg-5">
+        <div class="no-card text-center hide">
           <p class="text-secondary center fs-5 fw-bold">
             哎呀，要观测的角色失踪了...
           </p>
         </div>
         <div
-          class="vup-card col-md-2 col-4 p-0 m-2"
+          class="vup-card col-md-2 col-4 p-2"
           v-for="(each, index) in characters"
           :key="index"
           :id="each.code"
