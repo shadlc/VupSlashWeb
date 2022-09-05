@@ -255,7 +255,7 @@ function changeShadow(card: Card) {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function changePortrait(card: Card, event: any) {
   const url: string = URL.createObjectURL(event.target.files[0]);
-  card.portrait.import(url);
+  card.importPortrait(url, card);
   card.code = "custom";
   event.target.value = "";
 }
@@ -264,7 +264,7 @@ function changePortrait(card: Card, event: any) {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function changeLogo(card: Card, event: any) {
   const url: string = URL.createObjectURL(event.target.files[0]);
-  card.logo.import(url, card);
+  card.importLogo(url, card);
   card.party = "custom";
   event.target.value = "";
 }

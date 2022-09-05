@@ -13,11 +13,15 @@ class Portrait {
     this.img.setAttribute("crossOrigin",'anonymous')
   }
 
-  import(url: string) {
+  import(url: string, card: Card | null = null) {
     this.isLoad = false
     this.img.src = url
     this.img.onload = () => {
       this.isLoad = true
+      if (card) {
+        card.portraitW = this.img.width;
+        card.portraitH = this.img.height;
+      }
     }
   }
 }
@@ -50,15 +54,17 @@ class Logo {
       this.img.setAttribute("crossOrigin",'anonymous')
   }
 
-  import(url: string, card: Card) {
+  import(url: string, card: Card | null = null) {
     this.isLoad = false
     this.img.src = url
     this.img.onload = () => {
       this.isLoad = true
-      card.logoX = 30;
-      card.logoY = 30;
-      card.logoW = card.logo.img.width;
-      card.logoH = card.logo.img.height;
+      if (card) {
+        card.logoX = 30;
+        card.logoY = 30;
+        card.logoW = card.logo.img.width;
+        card.logoH = card.logo.img.height;
+      }
     }
   }
 }
@@ -96,16 +102,16 @@ export class Card {
   borderColor = '#333333'
 
   // 导入立绘
-  importPortrait(url: string) {
-    this.portrait.import(url)
+  importPortrait(url: string, card: Card | null = null) {
+    this.portrait.import(url, card)
   }
   // 导入阴影
   importShadow(url: string) {
     this.shadow.import(url)
   }
   // 导入势力图标
-  importLogo(url: string) {
-    this.logo.import(url, this)
+  importLogo(url: string, card: Card | null = null) {
+    this.logo.import(url, card)
   }
   // 生成卡牌
   draw(cvs: HTMLCanvasElement) {
@@ -169,7 +175,7 @@ export function setCard(card: Card, cardList: any, parties: any, isNew = false) 
 export function setParty(card: Card, parties: any) {
   parties.forEach((p: any) => {
     if (p.code == card.party) {
-      card.importLogo("http://static.vupslash.icu/img/logo/" + card.party + ".png");
+      card.importLogo("http://static.vupslash.icu/img/logo/" + card.party + ".png", card);
       card.themeColor = p.themeColor ?? card.themeColor;
       card.nameColor = p.nameColor ?? card.nameColor;
       card.labelColor = p.labelColor ?? card.labelColor;
