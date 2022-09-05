@@ -9,11 +9,9 @@ import { onBeforeMount, ref } from "vue";
 
 let versions = ref();
 onBeforeMount(() => {
-  axios
-    .get("https://api.vupslash.icu/json/version_list.php")
-    .then((respond) => {
-      versions.value = respond.data;
-    });
+  axios.get("https://api.vupslash.icu/json/version_list/").then((respond) => {
+    versions.value = respond.data;
+  });
 });
 
 // 划出扉页之后自动显示导航栏

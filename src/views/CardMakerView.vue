@@ -32,17 +32,17 @@ let cardListDefault = ref();
 // 挂载前读取数据
 onBeforeMount(async () => {
   await axios
-    .get("https://api.vupslash.icu/json/character_list.php")
+    .get("https://api.vupslash.icu/json/character_list/")
     .then((respond) => {
       characters.value = respond.data;
     });
   await axios
-    .get("https://api.vupslash.icu/json/party_list.php")
+    .get("https://api.vupslash.icu/json/party_list/")
     .then((respond) => {
       parties.value = respond.data;
     });
   await axios
-    .get("https://api.vupslash.icu/json/card_list.php")
+    .get("https://api.vupslash.icu/json/card_list/")
     .then((respond) => {
       cardList.value = respond.data;
       cardListDefault.value = JSON.parse(JSON.stringify(cardList.value));
@@ -1016,13 +1016,6 @@ function toggleMaker(maker: string) {
 }
 .card-editor {
   width: 500px;
-}
-.center {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
 }
 select {
   background-color: #393e44;

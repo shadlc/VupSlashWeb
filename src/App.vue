@@ -5,7 +5,7 @@ import { onBeforeMount, ref } from "vue";
 
 let thanks = ref();
 onBeforeMount(() => {
-  axios.get("https://api.vupslash.icu/json/thanks_list.php").then((respond) => {
+  axios.get("https://api.vupslash.icu/json/thanks_list/").then((respond) => {
     thanks.value = respond.data;
   });
 });
@@ -118,6 +118,13 @@ setTimeout(() => {
 }
 .hide {
   display: none !important;
+}
+.center {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 }
 pre {
   font-family: unset;

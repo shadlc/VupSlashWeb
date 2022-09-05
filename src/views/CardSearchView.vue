@@ -5,7 +5,7 @@ import { onMounted, onBeforeMount, ref } from "vue";
 let characters = ref();
 onBeforeMount(async () => {
   await axios
-    .get("https://api.vupslash.icu/json/character_list.php")
+    .get("https://api.vupslash.icu/json/character_list/")
     .then((respond) => {
       characters.value = respond.data;
     });
@@ -86,19 +86,14 @@ function scrollToTop() {
 </script>
 
 <template>
-  <div class="p-5 text-center" id="title">
+  <div class="p-5 center" id="title">
     <h1>
       <a class="link-light text-decoration-none fw-bold display-5" href="">
         卡牌查看器
       </a>
     </h1>
   </div>
-  <a
-    class="p-0 vertical-center"
-    id="btn_to_top"
-    @click="scrollToTop"
-    title="回到顶部"
-  >
+  <a class="p-0 center" id="btn_to_top" @click="scrollToTop" title="回到顶部">
     <i class="bi bi-caret-up-fill"></i>
   </a>
   <div class="container">
@@ -134,7 +129,7 @@ function scrollToTop() {
         class="row row-cols-12 px-lg-5 justify-content-center"
       >
         <div class="no-card hide">
-          <p class="text-secondary text-center fs-5 fw-bold">
+          <p class="text-secondary center fs-5 fw-bold">
             哎呀，要观测的角色失踪了...
           </p>
         </div>
@@ -144,7 +139,7 @@ function scrollToTop() {
           :key="index"
           :id="each.code"
         >
-          <div class="card vertical-center">
+          <div class="card center">
             <img
               class="img-fluid"
               data-bs-toggle="modal"
@@ -168,7 +163,7 @@ function scrollToTop() {
                       class="px-2 d-none d-sm-inline"
                       src="img/vup_title_border.svg"
                     />
-                    <p class="m-0 p-0 fs-4 fw-bold text-center">角色介绍</p>
+                    <p class="m-0 p-0 fs-4 fw-bold center">角色介绍</p>
                     <img
                       class="px-2 d-none d-sm-inline"
                       src="img/vup_title_border.svg"
@@ -176,8 +171,8 @@ function scrollToTop() {
                   </div>
                 </div>
                 <div class="modal-body">
-                  <div class="row">
-                    <div class="col-4 p-1 p-lg-4 mx-auto">
+                  <div class="row mx-4">
+                    <div class="col-4 p-1 p-lg-4 pb-4 mx-auto">
                       <img
                         class="img-fluid border border-2 rounded-1rem"
                         :inner_src="
@@ -187,8 +182,8 @@ function scrollToTop() {
                         "
                       />
                     </div>
-                    <div class="px-2 col-12 col-lg-8 vertical-center">
-                      <div class="px-2 fw-bold">
+                    <div class="px-2 col-12 col-lg-8 center">
+                      <div class="px-2 fw-bold w-100">
                         <table class="table table-dark table-hover m-0">
                           <tbody>
                             <tr>
@@ -260,10 +255,10 @@ function scrollToTop() {
                     title="技能一"
                     v-if="each.skill1"
                   >
-                    <div class="col fs-5 text-center">
+                    <div class="col fs-5 center">
                       {{ each.skillName1 }}
                     </div>
-                    <div class="col-12 col-sm-10 vertical-center">
+                    <div class="col-12 col-sm-10 center">
                       {{ each.skill1 }}
                     </div>
                   </div>
@@ -272,10 +267,10 @@ function scrollToTop() {
                     title="技能二"
                     v-if="each.skill2"
                   >
-                    <div class="col fs-5 text-center">
+                    <div class="col fs-5 center">
                       {{ each.skillName2 }}
                     </div>
-                    <div class="col-12 col-sm-10 vertical-center">
+                    <div class="col-12 col-sm-10 center">
                       {{ each.skill2 }}
                     </div>
                   </div>
@@ -284,10 +279,10 @@ function scrollToTop() {
                     title="技能三"
                     v-if="each.skill3"
                   >
-                    <div class="col fs-5 text-center">
+                    <div class="col fs-5 center">
                       {{ each.skillName3 }}
                     </div>
-                    <div class="col-12 col-sm-10 vertical-center">
+                    <div class="col-12 col-sm-10 center">
                       {{ each.skill3 }}
                     </div>
                   </div>
@@ -296,10 +291,10 @@ function scrollToTop() {
                     title="衍生技一"
                     v-if="each.derivedSkill1"
                   >
-                    <div class="col fs-5 text-center">
+                    <div class="col fs-5 center">
                       {{ each.derivedSkillName1 }}
                     </div>
-                    <div class="col-12 col-sm-10 vertical-center">
+                    <div class="col-12 col-sm-10 center">
                       {{ each.derivedSkill1 }}
                     </div>
                   </div>
@@ -308,10 +303,10 @@ function scrollToTop() {
                     title="衍生技二"
                     v-if="each.derivedSkill2"
                   >
-                    <div class="col fs-5 text-center">
+                    <div class="col fs-5 center">
                       {{ each.derivedSkillName2 }}
                     </div>
-                    <div class="col-12 col-sm-10 vertical-center">
+                    <div class="col-12 col-sm-10 center">
                       {{ each.derivedSkill2 }}
                     </div>
                   </div>
@@ -320,8 +315,8 @@ function scrollToTop() {
                     title="概念介绍"
                     v-if="each.notion"
                   >
-                    <div class="col-12 fs-5 text-center">概念介绍</div>
-                    <div class="col-12 text-center">
+                    <div class="col-12 fs-5 center">概念介绍</div>
+                    <div class="col-12 center">
                       {{ each.notion }}
                     </div>
                   </div>
@@ -330,10 +325,10 @@ function scrollToTop() {
                     title="角色特性"
                     v-if="each.feature"
                   >
-                    <div class="col-12 fs-5 text-center">
+                    <div class="col-12 fs-5 center">
                       {{ each.featureName }}
                     </div>
-                    <div class="col-12 text-center">
+                    <div class="col-12 center">
                       {{ each.feature }}
                     </div>
                   </div>

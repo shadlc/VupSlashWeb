@@ -139,7 +139,6 @@ function done() {
   process.value = "drew";
   setTimeout(() => {
     zipImages();
-    batchDownload();
   }, 100);
 }
 
@@ -184,12 +183,17 @@ async function zipImages() {
       level: 9,
     },
   });
+  cardsZip.then(() => {
+    process.value = "zipped";
+    setTimeout(() => {
+      process.value = "succeed";
+    }, 100);
+  });
 }
 
 // 下载图片包
 async function batchDownload() {
-  cardsZip.then(function (content) {
-    process.value = "zipped";
+  cardsZip.then((content) => {
     let d = new Date();
     const time = d.toLocaleDateString();
     const link = document.createElement("a");
@@ -198,11 +202,6 @@ async function batchDownload() {
     link.setAttribute("download", fileName);
     link.setAttribute("href", url);
     link.click();
-    if (process.value == "zipped") {
-      setTimeout(() => {
-        process.value = "succeed";
-      }, 1000);
-    }
   });
 }
 
@@ -237,9 +236,9 @@ function processInfo(text: Ref<string>, code: string, card: Card) {
   } else if (code == "zipping") {
     text.value = "正在打包...";
   } else if (code == "zipped") {
-    text.value = "打包结束，开始自动下载";
+    text.value = "打包完成";
   } else if (code == "succeed") {
-    text.value = "处理完成！";
+    text.value = "处理完成，点击按钮下载卡牌包";
   } else {
     text.value = "预览名称：" + getCardName(card, cardName.value);
   }

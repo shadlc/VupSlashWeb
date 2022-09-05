@@ -4,11 +4,9 @@ import { onMounted, onBeforeMount, ref } from "vue";
 
 let faqs = ref();
 onBeforeMount(async () => {
-  await axios
-    .get("https://api.vupslash.icu/json/faq_list.php")
-    .then((respond) => {
-      faqs.value = respond.data;
-    });
+  await axios.get("https://api.vupslash.icu/json/faq_list/").then((respond) => {
+    faqs.value = respond.data;
+  });
   // 导航栏滚动监听
   let body = document.querySelector("body") as HTMLElement;
   body.setAttribute("data-bs-spy", "scroll");
@@ -113,11 +111,11 @@ function scrollToTop() {
       </a>
     </h1>
   </div>
-  <a class="p-0 bg-vup" id="btn_to_top" @click="scrollToTop" title="回到顶部">
+  <a class="p-0 center" id="btn_to_top" @click="scrollToTop" title="回到顶部">
     <i class="bi bi-caret-up-fill"></i>
   </a>
   <a
-    class="p-0 vertical-center"
+    class="p-0 center"
     id="btn_navbar"
     href="#offcanvas_navbar"
     data-bs-toggle="offcanvas"
