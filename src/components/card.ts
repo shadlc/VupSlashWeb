@@ -36,10 +36,13 @@ class Shadow {
       this.img.setAttribute("crossOrigin",'anonymous')
   }
 
-  import(url: string) {
+  import(url: string, card: Card | null = null) {
       this.img.src = url
       this.img.onload = () => {
         this.isLoad = true
+        if (card) {
+          card.shadowDistance = 50;
+        }
       }
   }
 }

@@ -290,7 +290,7 @@ function reset(card: Card, event: MouseEvent) {
     cd.setCard(card, cardListDefault.value, parties.value);
   } else if (card.code != "custom" && card.code != "undefined") {
     let d = cardListDefault.value[card.code];
-    cd.setCard(card, cardList.value, parties.value);
+    cd.setCard(card, cardListDefault.value, parties.value);
     cd.setParty(card, parties.value);
     card.shadowType = d.shadowType;
     card.isOverflow = d.isOverflow;
@@ -302,7 +302,6 @@ function reset(card: Card, event: MouseEvent) {
     card.portraitH = d.portraitH;
     card.logoX = 30;
     card.logoY = 30;
-    card.importShadow("http://static.vupslash.icu/img/shadow/default.png");
   } else {
     card.code = "qihaiyouxian_zhuangzhilingyun";
     cd.setCard(card, cardList.value, parties.value);
