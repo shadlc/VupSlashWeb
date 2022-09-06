@@ -148,7 +148,7 @@ export function setCard(card: Card, cardList: any, parties: any, isNew = false) 
   if (cardList[card.code]) {
     const d = cardList[card.code];
     card.importPortrait(
-      "http://static.vupslash.icu/img/portrait/" + card.code + ".png"
+      "https://static.vupslash.icu/img/portrait/" + card.code + ".png"
     );
     card.name = d.name;
     card.nameEng = d.nameEng;
@@ -178,7 +178,7 @@ export function setCard(card: Card, cardList: any, parties: any, isNew = false) 
 export function setParty(card: Card, parties: any) {
   parties.forEach((p: any) => {
     if (p.code == card.party) {
-      card.importLogo("http://static.vupslash.icu/img/logo/" + card.party + ".png", card);
+      card.importLogo("https://static.vupslash.icu/img/logo/" + card.party + ".png", card);
       card.themeColor = p.themeColor ?? card.themeColor;
       card.nameColor = p.nameColor ?? card.nameColor;
       card.labelColor = p.labelColor ?? card.labelColor;
@@ -189,9 +189,9 @@ export function setParty(card: Card, parties: any) {
 
 export function setShadow(card: Card) {
   if (card.shadowType == "default") {
-    card.importShadow("http://static.vupslash.icu/img/shadow/" + card.shadowType + ".png");
+    card.importShadow("https://static.vupslash.icu/img/shadow/" + card.shadowType + ".png");
   } else {
-    card.importShadow("http://static.vupslash.icu/img/shadow/" + card.shadowType + ".png");
+    card.importShadow("https://static.vupslash.icu/img/shadow/" + card.shadowType + ".png");
   }
 }
 

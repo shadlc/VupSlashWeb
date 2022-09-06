@@ -341,9 +341,9 @@ function uploadConfig(c: Card, event: any) {
     c.labelColor = data.labelColor ?? "#dddddd";
     c.borderColor = data.borderColor ?? "#333333";
     c.importPortrait(
-      "http://static.vupslash.icu/img/portrait/" + c.code + ".png"
+      "https://static.vupslash.icu/img/portrait/" + c.code + ".png"
     );
-    c.importLogo("http://static.vupslash.icu/img/logo/" + c.party + ".png");
+    c.importLogo("https://static.vupslash.icu/img/logo/" + c.party + ".png");
   };
 }
 
@@ -1018,7 +1018,7 @@ function toggleMaker(maker: string) {
 }
 select {
   background-color: #393e44;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23fafafa' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='https://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23fafafa' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>");
   color: #f8f9fa;
 }
 
