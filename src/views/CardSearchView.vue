@@ -143,9 +143,9 @@ function scrollToTop() {
                 data-bs-toggle="modal"
                 :data-bs-target="'#modal' + index"
                 :later_src="
-                  'http://static.vupslash.icu/img/cards/' + each.code + '.png'
+                  'https://static.vupslash.icu/img/cards/' + each.code + '.png'
                 "
-                src="http://static.vupslash.icu/img/cards/_unknown.png"
+                src="https://static.vupslash.icu/img/cards/_unknown.png"
                 :alt="each.label + '&nbsp;' + each.name"
                 :title="each.label + '&nbsp;' + each.name"
               />
@@ -174,7 +174,7 @@ function scrollToTop() {
                         <img
                           class="img-fluid border border-2 rounded-1rem"
                           :inner_src="
-                            'http://static.vupslash.icu/img/avatars/' +
+                            'https://static.vupslash.icu/img/avatars/' +
                             each.code +
                             '.png'
                           "
