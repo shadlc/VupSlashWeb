@@ -2,11 +2,11 @@
 
 <template>
   <div class="container p-5 border-top border-2 text-center" id="download">
-    <div class="row my-5">
+    <div class="row my-5 fadeIn">
       <p class="display-5 fw-bold">游戏下载</p>
     </div>
     <div class="row my-5">
-      <div class="reveal my-5">
+      <div class="fadeIn my-5">
         <p class="fs-2 fw-bold">
           <img class="mb-2" v-lazy="require('@/img/windows.svg')" />
           Windows平台 Vup杀启动器
@@ -14,7 +14,7 @@
         <p class="lead fw-bold">无需繁琐的安装步骤</p>
         <p class="lead fw-bold">下载后即可自动安装</p>
       </div>
-      <div id="carousel-launcher" class="col-12 col-lg-6">
+      <div id="carousel-launcher" class="col-12 col-lg-6 fadeIn">
         <div
           id="Carousel"
           class="carousel carousel-dark carousel-fade slide pointer-event"
@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="col-lg-4 offset-lg-2">
-        <div class="m-3 d-md-flex justify-content-md-center">
+        <div class="m-3 d-md-flex justify-content-md-center fadeIn">
           <a
             class="btn px-3 rounded-pill btn-lg"
             href="https://gitee.com/shadlc/vup-slash-launcher/attach_files/986121/download/VSL_v1.2.2.exe"
@@ -73,16 +73,16 @@
             下载最新版(444KB)
           </a>
         </div>
-        <div class="row">
+        <div class="row fadeIn">
           <div>下载启动器后请按照提示安装游戏</div>
           <div>请为游戏预留约500MB的磁盘空间</div>
         </div>
         <ul class="p-lg-4 list-group list-group-flush">
-          <li class="list-group-item">流畅丝滑的过渡动画</li>
-          <li class="list-group-item">迅速稳定的更新下载</li>
-          <li class="list-group-item">多线程任务处理程序</li>
-          <li class="list-group-item">合理优化的语言提示</li>
-          <li class="list-group-item">
+          <li class="list-group-item fadeIn">流畅丝滑的过渡动画</li>
+          <li class="list-group-item fadeIn">迅速稳定的更新下载</li>
+          <li class="list-group-item fadeIn">多线程任务处理程序</li>
+          <li class="list-group-item fadeIn">合理优化的语言提示</li>
+          <li class="list-group-item fadeIn">
             源代码
             <a
               class="mt-2 mb-5 text-body"
@@ -94,7 +94,7 @@
         </ul>
       </div>
     </div>
-    <div class="row my-5">
+    <div class="row my-5 fadeIn">
       <p class="my-5 fs-2 fw-bold"><i class="bi bi-windows"></i>其他平台游玩</p>
       <p class="lead my-5 fw-bold">o((&#62;ω&#60; ))o 敬请期待啦...</p>
     </div>

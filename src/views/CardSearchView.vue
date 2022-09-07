@@ -86,264 +86,268 @@ function scrollToTop() {
 </script>
 
 <template>
-  <div class="p-5 center" id="title">
-    <h1>
-      <a class="link-light text-decoration-none fw-bold display-5" href="">
-        卡牌查看器
-      </a>
-    </h1>
-  </div>
-  <a class="p-0 center" id="btn_to_top" @click="scrollToTop" title="回到顶部">
-    <i class="bi bi-caret-up-fill"></i>
-  </a>
-  <div class="container">
-    <ul class="list-group list-group-horizontal mx-4 mx-lg-5">
-      <li class="list-group-item list-group-selected">
-        <a class="fs-5 fw-bold" id="character_btn" title="角色"
-          >角色(Loading...)</a
-        >
-      </li>
-      <!-- <li class="list-group-item">
+  <div>
+    <div class="p-5 center" id="title">
+      <h1>
+        <a class="link-light text-decoration-none fw-bold display-5" href="">
+          卡牌查看器
+        </a>
+      </h1>
+    </div>
+    <a class="p-0 center" id="btn_to_top" @click="scrollToTop" title="回到顶部">
+      <i class="bi bi-caret-up-fill"></i>
+    </a>
+    <div class="container">
+      <ul class="list-group list-group-horizontal mx-4 mx-lg-5">
+        <li class="list-group-item list-group-selected">
+          <a class="fs-5 fw-bold" id="character_btn" title="角色"
+            >角色(Loading...)</a
+          >
+        </li>
+        <!-- <li class="list-group-item">
         <a class="fs-5 fw-bold disabled" title="此分区未开启">卡牌</a>
       </li>
       <li class="list-group-item">
         <a class="fs-5 fw-bold disabled" title="此分区未开启">模式</a>
       </li> -->
-    </ul>
-  </div>
-  <div class="container-fluid">
-    <div
-      class="container bg-dark p-0 py-3 rounded-top-1rem border-bottom border-secondary fw-bold text-white text-center"
-    >
-      <i class="bi bi-search me-2 input-search"></i>
-      <input
-        type="text"
-        id="search_box"
-        class="p-3 ps-5 bg-dark text-white border border-2 rounded-1rem"
-        title="检索全部角色信息"
-      />
+      </ul>
     </div>
-    <div class="container bg-dark px-3 py-3 overflow-hidden">
-      <div id="card_list" class="row row-cols-12 px-lg-5">
-        <div class="no-card text-center hide">
-          <p class="text-secondary center fs-5 fw-bold">
-            哎呀，要观测的角色失踪了...
-          </p>
-        </div>
-        <div
-          class="vup-card col-md-2 col-4 p-2"
-          v-for="(each, index) in characters"
-          :key="index"
-          :id="each.code"
-        >
-          <div class="card center">
-            <img
-              class="img-fluid"
-              data-bs-toggle="modal"
-              :data-bs-target="'#modal' + index"
-              :later_src="
-                'http://static.vupslash.icu/img/cards/' + each.code + '.png'
-              "
-              src="http://static.vupslash.icu/img/cards/_unknown.png"
-              :alt="each.label + '&nbsp;' + each.name"
-              :title="each.label + '&nbsp;' + each.name"
-            />
+    <div class="container-fluid">
+      <div
+        class="container bg-dark p-0 py-3 rounded-top-1rem border-bottom border-secondary fw-bold text-white text-center"
+      >
+        <i class="bi bi-search me-2 input-search"></i>
+        <input
+          type="text"
+          id="search_box"
+          class="p-3 ps-5 bg-dark text-white border border-2 rounded-1rem"
+          title="检索全部角色信息"
+        />
+      </div>
+      <div class="container bg-dark px-3 py-3 overflow-hidden">
+        <div id="card_list" class="row row-cols-12 px-lg-5">
+          <div class="no-card text-center hide">
+            <p class="text-secondary center fs-5 fw-bold">
+              哎呀，要观测的角色失踪了...
+            </p>
           </div>
-          <div class="modal fade" :id="'modal' + index">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-              <div
-                class="modal-content bg-dark text-white shadow-lg rounded-1rem"
-              >
-                <div class="modal-header border-3 py-1">
-                  <div class="modal-title mx-auto">
-                    <img
-                      class="px-2 d-none d-sm-inline"
-                      src="img/vup_title_border.svg"
-                    />
-                    <p class="m-0 p-0 fs-4 fw-bold center">角色介绍</p>
-                    <img
-                      class="px-2 d-none d-sm-inline"
-                      src="img/vup_title_border.svg"
-                    />
-                  </div>
-                </div>
-                <div class="modal-body">
-                  <div class="row mx-4">
-                    <div class="col-4 p-1 p-lg-4 pb-4 mx-auto">
+          <div
+            class="vup-card col-md-2 col-4 p-2"
+            v-for="(each, index) in characters"
+            :key="index"
+            :id="each.code"
+          >
+            <div class="card center">
+              <img
+                class="img-fluid"
+                data-bs-toggle="modal"
+                :data-bs-target="'#modal' + index"
+                :later_src="
+                  'http://static.vupslash.icu/img/cards/' + each.code + '.png'
+                "
+                src="http://static.vupslash.icu/img/cards/_unknown.png"
+                :alt="each.label + '&nbsp;' + each.name"
+                :title="each.label + '&nbsp;' + each.name"
+              />
+            </div>
+            <div class="modal fade" :id="'modal' + index">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div
+                  class="modal-content bg-dark text-white shadow-lg rounded-1rem"
+                >
+                  <div class="modal-header border-3 py-1">
+                    <div class="modal-title mx-auto">
                       <img
-                        class="img-fluid border border-2 rounded-1rem"
-                        :inner_src="
-                          'http://static.vupslash.icu/img/avatars/' +
-                          each.code +
-                          '.png'
-                        "
+                        class="px-2 d-none d-sm-inline"
+                        src="img/vup_title_border.svg"
+                      />
+                      <p class="m-0 p-0 fs-4 fw-bold center">角色介绍</p>
+                      <img
+                        class="px-2 d-none d-sm-inline"
+                        src="img/vup_title_border.svg"
                       />
                     </div>
-                    <div class="px-2 col-12 col-lg-8 center">
-                      <div class="px-2 fw-bold w-100">
-                        <table class="table table-dark table-hover m-0">
-                          <tbody>
-                            <tr>
-                              <td>角色</td>
-                              <td>
-                                <span class="vup-label">{{ each.label }}</span>
-                                &nbsp;<span class="vup-name">
-                                  {{ each.name }}
-                                </span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>性别</td>
-                              <td>
-                                {{ each.sex }}
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>种族</td>
-                              <td>
-                                {{ each.race }}
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>势力</td>
-                              <td>
-                                {{ each.party }}
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>最大体力</td>
-                              <td :title="each.maxPower">
-                                <span v-if="each.maxPower <= 10">
-                                  <span
-                                    class="power"
-                                    v-for="index in each.maxPower"
-                                    :key="index"
-                                  ></span>
-                                </span>
-                                <span v-if="each.maxPower > 10">
-                                  <span class="power"></span>
-                                  {{ " × " + each.maxPower }}
-                                </span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>体力</td>
-                              <td :title="each.power">
-                                <span v-if="each.power <= 10">
-                                  <span
-                                    class="power"
-                                    v-for="index in each.power"
-                                    :key="index"
-                                  ></span>
-                                </span>
-                                <span v-if="each.power > 10">
-                                  <span class="power"></span>
-                                  {{ " × " + each.power }}
-                                </span>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row mx-4">
+                      <div class="col-4 p-1 p-lg-4 pb-4 mx-auto">
+                        <img
+                          class="img-fluid border border-2 rounded-1rem"
+                          :inner_src="
+                            'http://static.vupslash.icu/img/avatars/' +
+                            each.code +
+                            '.png'
+                          "
+                        />
+                      </div>
+                      <div class="px-2 col-12 col-lg-8 center">
+                        <div class="px-2 fw-bold w-100">
+                          <table class="table table-dark table-hover m-0">
+                            <tbody>
+                              <tr>
+                                <td>角色</td>
+                                <td>
+                                  <span class="vup-label">{{
+                                    each.label
+                                  }}</span>
+                                  &nbsp;<span class="vup-name">
+                                    {{ each.name }}
+                                  </span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>性别</td>
+                                <td>
+                                  {{ each.sex }}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>种族</td>
+                                <td>
+                                  {{ each.race }}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>势力</td>
+                                <td>
+                                  {{ each.party }}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>最大体力</td>
+                                <td :title="each.maxPower">
+                                  <span v-if="each.maxPower <= 10">
+                                    <span
+                                      class="power"
+                                      v-for="index in each.maxPower"
+                                      :key="index"
+                                    ></span>
+                                  </span>
+                                  <span v-if="each.maxPower > 10">
+                                    <span class="power"></span>
+                                    {{ " × " + each.maxPower }}
+                                  </span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>体力</td>
+                                <td :title="each.power">
+                                  <span v-if="each.power <= 10">
+                                    <span
+                                      class="power"
+                                      v-for="index in each.power"
+                                      :key="index"
+                                    ></span>
+                                  </span>
+                                  <span v-if="each.power > 10">
+                                    <span class="power"></span>
+                                    {{ " × " + each.power }}
+                                  </span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem"
+                      title="技能一"
+                      v-if="each.skill1"
+                    >
+                      <div class="col fs-5 center">
+                        {{ each.skillName1 }}
+                      </div>
+                      <div class="col-12 col-sm-10 center">
+                        {{ each.skill1 }}
+                      </div>
+                    </div>
+                    <div
+                      class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem"
+                      title="技能二"
+                      v-if="each.skill2"
+                    >
+                      <div class="col fs-5 center">
+                        {{ each.skillName2 }}
+                      </div>
+                      <div class="col-12 col-sm-10 center">
+                        {{ each.skill2 }}
+                      </div>
+                    </div>
+                    <div
+                      class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem"
+                      title="技能三"
+                      v-if="each.skill3"
+                    >
+                      <div class="col fs-5 center">
+                        {{ each.skillName3 }}
+                      </div>
+                      <div class="col-12 col-sm-10 center">
+                        {{ each.skill3 }}
+                      </div>
+                    </div>
+                    <div
+                      class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem derived-skill"
+                      title="衍生技一"
+                      v-if="each.derivedSkill1"
+                    >
+                      <div class="col fs-5 center">
+                        {{ each.derivedSkillName1 }}
+                      </div>
+                      <div class="col-12 col-sm-10 center">
+                        {{ each.derivedSkill1 }}
+                      </div>
+                    </div>
+                    <div
+                      class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem derived-skill"
+                      title="衍生技二"
+                      v-if="each.derivedSkill2"
+                    >
+                      <div class="col fs-5 center">
+                        {{ each.derivedSkillName2 }}
+                      </div>
+                      <div class="col-12 col-sm-10 center">
+                        {{ each.derivedSkill2 }}
+                      </div>
+                    </div>
+                    <div
+                      class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem"
+                      title="概念介绍"
+                      v-if="each.notion"
+                    >
+                      <div class="col-12 fs-5 center">概念介绍</div>
+                      <div class="col-12 center">
+                        {{ each.notion }}
+                      </div>
+                    </div>
+                    <div
+                      class="row m-2 p-2 p-lg-3 border border-2 border-warning text-warning rounded-1rem"
+                      title="角色特性"
+                      v-if="each.feature"
+                    >
+                      <div class="col-12 fs-5 center">
+                        {{ each.featureName }}
+                      </div>
+                      <div class="col-12 center">
+                        {{ each.feature }}
                       </div>
                     </div>
                   </div>
-                  <div
-                    class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem"
-                    title="技能一"
-                    v-if="each.skill1"
-                  >
-                    <div class="col fs-5 center">
-                      {{ each.skillName1 }}
+                  <div class="modal-footer border-0">
+                    <div class="mx-auto">
+                      <a
+                        class="fs-5 fw-bold mx-4 btn border-2 rounded-1rem"
+                        :href="'../wiki/?title=' + each.name"
+                        >详情</a
+                      >
+                      <button
+                        type="button"
+                        class="fs-5 fw-bold mx-4 btn border-2 rounded-1rem"
+                        data-bs-dismiss="modal"
+                      >
+                        关闭
+                      </button>
                     </div>
-                    <div class="col-12 col-sm-10 center">
-                      {{ each.skill1 }}
-                    </div>
-                  </div>
-                  <div
-                    class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem"
-                    title="技能二"
-                    v-if="each.skill2"
-                  >
-                    <div class="col fs-5 center">
-                      {{ each.skillName2 }}
-                    </div>
-                    <div class="col-12 col-sm-10 center">
-                      {{ each.skill2 }}
-                    </div>
-                  </div>
-                  <div
-                    class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem"
-                    title="技能三"
-                    v-if="each.skill3"
-                  >
-                    <div class="col fs-5 center">
-                      {{ each.skillName3 }}
-                    </div>
-                    <div class="col-12 col-sm-10 center">
-                      {{ each.skill3 }}
-                    </div>
-                  </div>
-                  <div
-                    class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem derived-skill"
-                    title="衍生技一"
-                    v-if="each.derivedSkill1"
-                  >
-                    <div class="col fs-5 center">
-                      {{ each.derivedSkillName1 }}
-                    </div>
-                    <div class="col-12 col-sm-10 center">
-                      {{ each.derivedSkill1 }}
-                    </div>
-                  </div>
-                  <div
-                    class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem derived-skill"
-                    title="衍生技二"
-                    v-if="each.derivedSkill2"
-                  >
-                    <div class="col fs-5 center">
-                      {{ each.derivedSkillName2 }}
-                    </div>
-                    <div class="col-12 col-sm-10 center">
-                      {{ each.derivedSkill2 }}
-                    </div>
-                  </div>
-                  <div
-                    class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem"
-                    title="概念介绍"
-                    v-if="each.notion"
-                  >
-                    <div class="col-12 fs-5 center">概念介绍</div>
-                    <div class="col-12 center">
-                      {{ each.notion }}
-                    </div>
-                  </div>
-                  <div
-                    class="row m-2 p-2 p-lg-3 border border-2 border-warning text-warning rounded-1rem"
-                    title="角色特性"
-                    v-if="each.feature"
-                  >
-                    <div class="col-12 fs-5 center">
-                      {{ each.featureName }}
-                    </div>
-                    <div class="col-12 center">
-                      {{ each.feature }}
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer border-0">
-                  <div class="mx-auto">
-                    <a
-                      class="fs-5 fw-bold mx-4 btn border-2 rounded-1rem"
-                      :href="'../wiki/?title=' + each.name"
-                      >详情</a
-                    >
-                    <button
-                      type="button"
-                      class="fs-5 fw-bold mx-4 btn border-2 rounded-1rem"
-                      data-bs-dismiss="modal"
-                    >
-                      关闭
-                    </button>
                   </div>
                 </div>
               </div>

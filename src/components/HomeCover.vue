@@ -1,11 +1,11 @@
 <script setup lang="ts">
 defineProps<{
-  versions: { [key: string]: { [key: string]: string } };
+  versions: { [key: string]: string }[];
 }>();
 </script>
 
 <template>
-  <div class="h-100">
+  <div style="height: 100vh">
     <div class="cover cover-container text-center h-100 overflow-hidden">
       <div class="title">
         <h1>
@@ -13,7 +13,7 @@ defineProps<{
             <span class="vup">VUP</span><span class="sha">杀</span>
           </a>
           <a
-            v-if="versions"
+            v-if="versions[0].version != ''"
             :href="versions[0].notice_url"
             class="badge title-badge bg-white text-dark align-top fs-6 text-decoration-none d-none d-sm-inline"
             title="点击查看最新版本资讯"

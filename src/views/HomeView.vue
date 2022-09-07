@@ -7,7 +7,8 @@ import HomeAbout from "@/components/HomeAbout.vue";
 import axios from "axios";
 import { onBeforeMount, ref } from "vue";
 
-let versions = ref();
+// eslint-disable-next-line prettier/prettier
+let versions = ref([{ "version": "" }]);
 onBeforeMount(() => {
   axios.get("https://api.vupslash.icu/json/version_list/").then((respond) => {
     versions.value = respond.data;
@@ -43,49 +44,51 @@ function hideFloatNav() {
 </script>
 
 <template>
-  <div class="hide-nav" id="float_nav" style="z-index: 10">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container">
-        <a class="navbar-brand fs-1" href="" style="line-height: 0">
-          <span class="vup">VUP</span><span class="sha">杀</span>
-        </a>
-        <button
-          class="navbar-toggler collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#float_navBar"
-          aria-expanded="false"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          id="float_navBar"
-          class="collapse navbar-collapse justify-content-end"
-        >
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#introduce">介绍</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#download">下载</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#update">更新</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">关于</a>
-            </li>
-          </ul>
+  <div>
+    <div class="hide-nav" id="float_nav" style="z-index: 10">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+          <a class="navbar-brand fs-1" href="" style="line-height: 0">
+            <span class="vup">VUP</span><span class="sha">杀</span>
+          </a>
+          <button
+            class="navbar-toggler collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#float_navBar"
+            aria-expanded="false"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            id="float_navBar"
+            class="collapse navbar-collapse justify-content-end"
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#introduce">介绍</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#download">下载</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#update">更新</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">关于</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-  </div>
-  <HomeCover v-if="versions" :versions="versions" />
-  <div class="home-page">
-    <HomeIntroduce />
-    <HomeDownload />
-    <HomeUpdate v-if="versions" :versions="versions" />
-    <HomeAbout />
+      </nav>
+    </div>
+    <HomeCover :versions="versions" />
+    <div class="home-page">
+      <HomeIntroduce />
+      <HomeDownload />
+      <HomeUpdate :versions="versions" />
+      <HomeAbout />
+    </div>
   </div>
 </template>
 
@@ -95,15 +98,17 @@ function hideFloatNav() {
   position: fixed;
   width: 100%;
   top: 0;
-  transition: all 0.2s;
+  opacity: 1;
   background: #211f2f;
   background: #211f2fcc;
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
+  transition: all 0.2s;
 }
 .hide-nav {
-  transition: all 0.2s;
+  opacity: 0 !important;
   transform: translate3d(0, -100%, 0);
+  transition: all 0.2s;
 }
 .home-page {
   background-color: #fafafa;

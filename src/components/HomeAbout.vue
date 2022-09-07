@@ -1,7 +1,10 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="container p-4 text-center bg-dark text-white shadow" id="about">
+  <div
+    class="container p-4 text-center bg-dark text-white shadow fadeIn"
+    id="about"
+  >
     <div class="row m-3 mx-lg-6">
       <div class="col-lg-6 my-auto">
         <p class="display-5 fw-bold">小伙伴们和最新资讯</p>

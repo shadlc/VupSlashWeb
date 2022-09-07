@@ -13,6 +13,7 @@
     "jszip": "^3.10.1",
     "npm-check-updates": "^16.1.0",
     "outdate": "^1.0.1",
+    "scrollmagic": "^2.0.8",
     "vue": "^3.2.13",
     "vue-class-component": "^8.0.0-0",
     "vue-lazyload": "^3.0.0-rc.2",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@types/file-saver": "^2.0.5",
+    "@types/scrollmagic": "^2.0.2",
     "@types/vue-color": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",

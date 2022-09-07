@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// 图片差视
 window.addEventListener("scroll", avatarFloating, true);
 function avatarFloating() {
   if (document.querySelector("#c1") as HTMLElement) {
@@ -28,7 +29,7 @@ function avatarFloating() {
 
 <template>
   <div class="container py-5" id="introduce">
-    <div class="row my-5 col-lg-8 offset-lg-2 mb-0">
+    <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fadeIn">
       <h2 class="pb-3 display-5 fw-bold border-bottom text-center">
         「VUP杀」以三国杀为基础的卡牌游戏
       </h2>
@@ -46,14 +47,14 @@ function avatarFloating() {
         </a>
       </blockquote>
     </div>
-    <div class="my-5 text-center">
+    <div class="my-5 text-center fadeIn">
       <img
         class="img-fluid col-lg-8 shadow"
         v-lazy="require('@/img/battle.jpg')"
       />
     </div>
 
-    <div class="row my-5 mt-150 col-lg-8 offset-lg-2">
+    <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fadeIn">
       <h2 class="pb-3 display-5 fw-bold border-bottom text-center">
         同台竞技的各位可爱VUP
       </h2>
@@ -74,26 +75,26 @@ function avatarFloating() {
     <div class="text-center my-5 pb-5">
       <img
         id="c1"
-        class="img-fluid col-5 col-lg-2 mx-2 shadow"
+        class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
         v-lazy="require('@/img/c1.jpg')"
       />
       <img
         id="c2"
-        class="img-fluid col-5 col-lg-2 mx-2 shadow"
+        class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
         v-lazy="require('@/img/c2.jpg')"
       />
       <img
         id="c3"
-        class="img-fluid col-5 col-lg-2 mx-2 shadow"
+        class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
         v-lazy="require('@/img/c3.jpg')"
       />
       <img
         id="c4"
-        class="img-fluid col-5 col-lg-2 mx-2 shadow"
+        class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
         v-lazy="require('@/img/c4.jpg')"
       />
     </div>
-    <div class="row my-5 mt-150 col-lg-8 offset-lg-2 mb-0">
+    <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fadeIn">
       <h2 class="pb-3 display-5 fw-bold border-bottom text-center">
         更多特殊卡牌
       </h2>
@@ -111,14 +112,14 @@ function avatarFloating() {
         </a>
       </blockquote>
     </div>
-    <div class="text-center my-5">
+    <div class="text-center my-5 fadeIn">
       <img
         class="img-fluid col-12 col-lg-6"
         v-lazy="require('@/img/cards.png')"
       />
     </div>
 
-    <div class="row my-5 mt-150 col-lg-8 offset-lg-2 mb-0">
+    <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fadeIn">
       <h2 class="pb-3 display-5 fw-bold border-bottom text-center">游戏指南</h2>
       <blockquote class="fs-5 px-5">
         <p class="lead">
@@ -126,7 +127,7 @@ function avatarFloating() {
         </p>
       </blockquote>
     </div>
-    <div class="row m-md-5 p-md-5 fw-bold">
+    <div class="row m-md-5 px-md-5 fw-bold fadeIn">
       <div class="col-10 offset-1 col-lg-4 offset-lg-0">
         <div class="link-card overflow-hidden text-center shadow m-2">
           <p class="p-4 my-2 fs-5">旅者们，究竟如何扬帆起航</p>

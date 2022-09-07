@@ -472,26 +472,27 @@ function toggleMaker(maker: string) {
 </script>
 
 <template>
-  <div class="p-5 text-center" id="title">
-    <h1>
-      <a class="link-light text-decoration-none fw-bold display-5" href="">
-        卡牌制作器
-      </a>
-      <span
-        class="btn btn-primary btn-help"
-        data-bs-toggle="modal"
-        data-bs-target="#modal-help"
-      >
-        ?
-      </span>
-    </h1>
-    <div class="modal fade" id="modal-help">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-dark text-white shadow-lg rounded-1rem">
-          <div class="modal-header border-vup p-2">
-            <h4 class="modal-title mx-auto">注意事项</h4>
-          </div>
-          <pre class="modal-body text-start">
+  <div>
+    <div class="p-5 text-center" id="title">
+      <h1>
+        <a class="link-light text-decoration-none fw-bold display-5" href="">
+          卡牌制作器
+        </a>
+        <span
+          class="btn btn-primary btn-help"
+          data-bs-toggle="modal"
+          data-bs-target="#modal-help"
+        >
+          ?
+        </span>
+      </h1>
+      <div class="modal fade" id="modal-help">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content bg-dark text-white shadow-lg rounded-1rem">
+            <div class="modal-header border-vup p-2">
+              <h4 class="modal-title mx-auto">注意事项</h4>
+            </div>
+            <pre class="modal-body text-start">
 1. 自定义立绘建议使用700*700大小带的透明背景图片(.png)，自定义势力图标建议使用100*100大小。
 
 2. 使用鼠标拖拽卡牌预览处移动立绘，滚轮缩放立绘；触屏设备单指移动立绘，双指缩放立绘。
@@ -503,469 +504,526 @@ function toggleMaker(maker: string) {
 5. 此工具为VUP杀官方平台工具，除其自带数据外，对任何缘由在使用此工具时产生的对用户自己或别人造成的任何形式的损失和损害不担当责任。
 
 6. 特别感谢 ⌈七海幽娴⌋ 在早期为本项目提供的美术支持，因此设为默认角色。</pre
-          >
-          <div class="modal-footer p-2 border-0 mx-auto">
-            <button type="button" class="btn" data-bs-dismiss="modal">
-              已阅
-            </button>
+            >
+            <div class="modal-footer p-2 border-0 mx-auto">
+              <button type="button" class="btn" data-bs-dismiss="modal">
+                已阅
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <ul class="list-group list-group-horizontal mx-4 mx-lg-5">
-      <li class="list-group-item active">
-        <a class="fs-5 fw-bold" title="精修卡牌" @click="toggleMaker('single')">
-          精修卡牌
-        </a>
-      </li>
-      <li class="list-group-item">
-        <a class="fs-5 fw-bold" title="批量制卡" @click="toggleMaker('batch')">
-          批量制卡
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div class="container-fluid text-light">
-    <div
-      id="card_maker"
-      class="container row bg-dark p-3 mx-auto rounded-top-1rem"
-    >
-      <div id="card_view" class="text-center center">
-        <canvas
-          id="card_canvas"
-          @mousedown="mouse.isDown = true"
-          @touchstart.passive="mouse.isDown = true"
-          @touchmove.prevent
-          @wheel.prevent="zoomPortrait(card, $event)"
-        ></canvas>
-      </div>
+    <div class="container">
+      <ul class="list-group list-group-horizontal mx-4 mx-lg-5">
+        <li class="list-group-item active">
+          <a
+            class="fs-5 fw-bold"
+            title="精修卡牌"
+            @click="toggleMaker('single')"
+          >
+            精修卡牌
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a
+            class="fs-5 fw-bold"
+            title="批量制卡"
+            @click="toggleMaker('batch')"
+          >
+            批量制卡
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="container-fluid text-light">
       <div
-        id="single_editor"
-        class="row center card-editor"
-        v-if="characters && parties && cardList"
+        id="card_maker"
+        class="container row bg-dark p-3 mx-auto rounded-top-1rem"
       >
-        <div class="center">
-          <div class="col-12 fw-bold my-2 center border-vup">
-            <span>角色立绘</span>
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">角色</span>
-            <select
-              class="form-select select-character"
-              data-live-search="true"
-              v-model="card.code"
-              @change="changeCharacter(card)"
-            >
-              <option value="undefined" disabled>未知称号 未知名称</option>
-              <option value="custom" disabled>自定义</option>
-              <option
-                v-for="(c, index) in characters"
-                :key="index"
-                :value="c.code"
-                :disabled="Boolean(!cardListDefault[c.code])"
-              >
-                {{ c.label }} {{ c.name }}
-              </option>
-            </select>
-          </div>
-          <button class="btn" @click="click('#import-portrait')">
-            上传立绘
-          </button>
-          <input
-            id="import-portrait"
-            type="file"
-            style="display: none"
-            accept="image/jpeg, image/png, image/webp, image/jpg"
-            @change="changePortrait(card, $event)"
-          />
-          <div class="input-group">
-            <span class="input-group-text">立绘可溢出边缘</span>
-            <div class="div-checkbox">
-              <input
-                id="is-overflow"
-                type="checkbox"
-                v-model="card.isOverflow"
-              />
-              <label for="is-overflow"></label>
-            </div>
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">立绘发光</span>
-            <div class="div-checkbox div-shine">
-              <input id="is-shine" type="checkbox" v-model="card.isShine" />
-              <label for="is-shine"></label>
-            </div>
-            <div class="center mx-2">
-              <input
-                id="shine-color"
-                class="input-color"
-                type="color"
-                v-model="card.shineColor"
-                :disabled="!card.isShine"
-              />
-              <input
-                class="input-color-text"
-                type="text"
-                v-model="card.shineColor"
-                readonly
-                @click="click('#shine-color')"
-              />
-            </div>
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">立绘坐标</span>
-            <input class="input-coord" type="number" v-model="card.portraitX" />
-            <input class="input-coord" type="number" v-model="card.portraitY" />
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">立绘尺寸</span>
-            <input class="input-size" type="number" v-model="card.portraitW" />
-            <input class="input-size" type="number" v-model="card.portraitH" />
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">阴影图案</span>
-            <select
-              class="form-select select-shadow"
-              data-live-search="true"
-              v-model="card.shadowType"
-              @change="changeShadow(card)"
-            >
-              <option value="default">默认</option>
-              <option value="undefined" disabled>未知</option>
-            </select>
-          </div>
-          <div class="input-group col-12 my-2 center">
-            <span class="input-group-text">阴影距离</span>
-            <input
-              class="input-range"
-              type="range"
-              min="0"
-              max="100"
-              step="1"
-              v-model="card.shadowDistance"
-            />
-          </div>
+        <div id="card_view" class="text-center center">
+          <canvas
+            id="card_canvas"
+            @mousedown="mouse.isDown = true"
+            @touchstart.passive="mouse.isDown = true"
+            @touchmove.prevent
+            @wheel.prevent="zoomPortrait(card, $event)"
+          ></canvas>
         </div>
-        <div class="center">
-          <div class="col-12 fw-bold my-2 center border-vup">
-            <span>角色信息</span>
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">角色名称</span>
-            <input type="text" v-model="card.name" />
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">英文名称</span>
-            <input type="text" v-model="card.nameEng" />
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">角色称号</span>
-            <input type="text" v-model="card.label" />
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">角色势力</span>
-            <select
-              class="form-select select-party"
-              v-model="card.party"
-              @change="changeParty(card, parties)"
-            >
-              <option value="undefined" disabled>未知势力</option>
-              <option value="custom">自定义</option>
-              <option
-                v-for="(party, index) in parties"
-                :key="index"
-                :value="party.code"
-              >
-                {{ party.name }}
-              </option>
-            </select>
-          </div>
-          <div class="center" v-if="card.party == 'custom'">
-            <div class="center">
-              <div class="col-12 fw-bold my-2 center border-vup">
-                <span>势力图标</span>
-              </div>
-              <div class="input-group">
-                <span class="input-group-text">坐标</span>
-                <input class="input-coord" type="number" v-model="card.logoX" />
-                <input class="input-coord" type="number" v-model="card.logoY" />
-              </div>
-              <div class="input-group">
-                <span class="input-group-text">尺寸</span>
-                <input class="input-size" type="number" v-model="card.logoW" />
-                <input class="input-size" type="number" v-model="card.logoH" />
-              </div>
-              <button class="btn" @click="click('#import-logo')">上传</button>
-              <input
-                id="import-logo"
-                type="file"
-                style="display: none"
-                accept="image/jpeg, image/png, image/webp, image/jpg"
-                @change="changeLogo(card, $event)"
-              />
-            </div>
+        <div
+          id="single_editor"
+          class="row center card-editor"
+          v-if="characters && parties && cardList"
+        >
+          <div class="center">
             <div class="col-12 fw-bold my-2 center border-vup">
-              <span>配色</span>
+              <span>角色立绘</span>
             </div>
             <div class="input-group">
-              <span class="input-group-text">主题颜色</span>
-              <div class="center mx-2">
-                <input
-                  id="theme-color"
-                  class="input-color"
-                  type="color"
-                  v-model="card.themeColor"
-                />
-                <input
-                  class="input-color-text"
-                  type="text"
-                  v-model="card.themeColor"
-                  readonly
-                  @click="click('#theme-color')"
-                />
-              </div>
-            </div>
-            <div class="input-group">
-              <span class="input-group-text">名称颜色</span>
-              <div class="center mx-2">
-                <input
-                  id="name-color"
-                  class="input-color"
-                  type="color"
-                  v-model="card.nameColor"
-                />
-                <input
-                  class="input-color-text"
-                  type="text"
-                  v-model="card.nameColor"
-                  readonly
-                  @click="click('#name-color')"
-                />
-              </div>
-            </div>
-            <div class="input-group">
-              <span class="input-group-text">称号颜色</span>
-              <div class="center mx-2">
-                <input
-                  id="label-color"
-                  class="input-color"
-                  type="color"
-                  v-model="card.labelColor"
-                />
-                <input
-                  class="input-color-text"
-                  type="text"
-                  v-model="card.labelColor"
-                  readonly
-                  @click="click('#label-color')"
-                />
-              </div>
-            </div>
-            <div class="input-group">
-              <span class="input-group-text">轮廓颜色</span>
-              <div class="center mx-2">
-                <input
-                  id="border-color"
-                  class="input-color"
-                  type="color"
-                  v-model="card.borderColor"
-                />
-                <input
-                  class="input-color-text"
-                  type="text"
-                  v-model="card.borderColor"
-                  readonly
-                  @click="click('#border-color')"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="center">
-          <a class="btn" @click="click('#import-config')">导入配置</a>
-          <input
-            id="import-config"
-            type="file"
-            style="display: none"
-            accept="application/json"
-            @change="uploadConfig(card, $event)"
-          />
-          <a class="btn" @click="downloadConfig(card)">导出配置</a>
-          <a
-            class="btn"
-            @click="reset(card, $event)"
-            title="如需重置全部卡牌请按住Shift再点击"
-          >
-            重置
-          </a>
-          <a class="btn btn-save" @click="downloadCard(card)">保存卡片</a>
-        </div>
-      </div>
-      <div
-        id="batch_editor"
-        class="row center card-editor hide"
-        v-if="characters && parties && cardList"
-      >
-        <div class="center">
-          <div class="col-12 fw-bold my-2 center border-vup">
-            <span>角色立绘</span>
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">角色</span>
-            <select
-              class="form-select select-character"
-              data-live-search="true"
-              v-model="card.code"
-              @change="changeCharacter(card)"
-            >
-              <option value="undefined" disabled>未知称号 未知名称</option>
-              <option
-                v-for="(c, index) in characters"
-                :key="index"
-                :value="c.code"
-                :disabled="Boolean(!cardListDefault[c.code])"
+              <span class="input-group-text">角色</span>
+              <select
+                class="form-select select-character"
+                data-live-search="true"
+                v-model="card.code"
+                @change="changeCharacter(card)"
               >
-                {{ c.label }} {{ c.name }}
-              </option>
-            </select>
-          </div>
-          <a
-            class="btn"
-            title="如需重置全部卡牌请按住Shift再点击"
-            @click="reset(card, $event)"
-            >重置本卡</a
-          >
-          <div class="input-group">
-            <span class="input-group-text">立绘可溢出边缘</span>
-            <div class="div-checkbox">
-              <input
-                id="is-overflow2"
-                type="checkbox"
-                v-model="card.isOverflow"
-              />
-              <label for="is-overflow2"></label>
+                <option value="undefined" disabled>未知称号 未知名称</option>
+                <option value="custom" disabled>自定义</option>
+                <option
+                  v-for="(c, index) in characters"
+                  :key="index"
+                  :value="c.code"
+                  :disabled="Boolean(!cardListDefault[c.code])"
+                >
+                  {{ c.label }} {{ c.name }}
+                </option>
+              </select>
             </div>
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">立绘发光</span>
-            <div class="div-checkbox div-shine">
-              <input id="is-shine2" type="checkbox" v-model="card.isShine" />
-              <label for="is-shine2"></label>
-            </div>
-            <div class="center mx-2">
-              <input
-                id="shine-color"
-                class="input-color"
-                type="color"
-                v-model="card.shineColor"
-                :disabled="!card.isShine"
-              />
-              <input
-                class="input-color-text"
-                type="text"
-                v-model="card.shineColor"
-                readonly
-                @click="click('#shine-color')"
-              />
-            </div>
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">立绘坐标</span>
-            <input class="input-coord" type="number" v-model="card.portraitX" />
-            <input class="input-coord" type="number" v-model="card.portraitY" />
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">立绘尺寸</span>
-            <input class="input-size" type="number" v-model="card.portraitW" />
-            <input class="input-size" type="number" v-model="card.portraitH" />
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">阴影图案</span>
-            <select class="form-select select-shadow" data-live-search="true">
-              <option value="default">默认</option>
-              <option value="undefined" disabled>未知</option>
-            </select>
-          </div>
-          <div class="input-group col-12 my-2 center">
-            <span class="input-group-text">阴影距离</span>
+            <button class="btn" @click="click('#import-portrait')">
+              上传立绘
+            </button>
             <input
-              class="input-range"
-              type="range"
-              min="0"
-              max="100"
-              step="1"
-              v-model="card.shadowDistance"
+              id="import-portrait"
+              type="file"
+              style="display: none"
+              accept="image/jpeg, image/png, image/webp, image/jpg"
+              @change="changePortrait(card, $event)"
             />
-          </div>
-        </div>
-        <div class="center">
-          <div class="col-12 fw-bold my-2 center border-vup">
-            <span>角色信息</span>
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">角色名称</span>
-            <input type="text" v-model="card.name" />
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">英文名称</span>
-            <input type="text" v-model="card.nameEng" />
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">角色称号</span>
-            <input type="text" v-model="card.label" />
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">角色势力</span>
-            <select
-              class="form-select select-party"
-              v-model="card.party"
-              @change="changeParty(card, parties)"
-            >
-              <option value="undefined" disabled>未知势力</option>
-              <option
-                v-for="(party, index) in parties"
-                :key="index"
-                :value="party.code"
-              >
-                {{ party.name }}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="center">
-          <a class="btn" @click="click('#import-config-batch')">
-            导入全部配置
-          </a>
-          <input
-            id="import-config-batch"
-            type="file"
-            style="display: none"
-            accept="application/json"
-            @change="uploadConfigBatch(card, $event)"
-          />
-          <a class="btn" @click="downloadConfigBatch()"> 导出全部配置 </a>
-          <a
-            class="btn btn-save-batch"
-            data-bs-toggle="modal"
-            data-bs-target="#modal-download-cards"
-          >
-            批量保存卡片
-          </a>
-          <div class="modal fade" id="modal-download-cards">
-            <div class="modal-dialog modal-dialog-centered modal-xl">
-              <div
-                class="modal-content bg-dark text-white shadow-lg rounded-1rem"
-              >
-                <div class="modal-header border-vup p-2">
-                  <h4 class="modal-title mx-auto fw-bold">批量下载</h4>
-                </div>
-                <BatchDownloader
-                  :cardList="cardList"
-                  :parties="parties"
-                  :character="card.code"
+            <div class="input-group">
+              <span class="input-group-text">立绘可溢出边缘</span>
+              <div class="div-checkbox">
+                <input
+                  id="is-overflow"
+                  type="checkbox"
+                  v-model="card.isOverflow"
                 />
+                <label for="is-overflow"></label>
+              </div>
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">立绘发光</span>
+              <div class="div-checkbox div-shine">
+                <input id="is-shine" type="checkbox" v-model="card.isShine" />
+                <label for="is-shine"></label>
+              </div>
+              <div class="center mx-2">
+                <input
+                  id="shine-color"
+                  class="input-color"
+                  type="color"
+                  v-model="card.shineColor"
+                  :disabled="!card.isShine"
+                />
+                <input
+                  class="input-color-text"
+                  type="text"
+                  v-model="card.shineColor"
+                  readonly
+                  @click="click('#shine-color')"
+                />
+              </div>
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">立绘坐标</span>
+              <input
+                class="input-coord"
+                type="number"
+                v-model="card.portraitX"
+              />
+              <input
+                class="input-coord"
+                type="number"
+                v-model="card.portraitY"
+              />
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">立绘尺寸</span>
+              <input
+                class="input-size"
+                type="number"
+                v-model="card.portraitW"
+              />
+              <input
+                class="input-size"
+                type="number"
+                v-model="card.portraitH"
+              />
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">阴影图案</span>
+              <select
+                class="form-select select-shadow"
+                data-live-search="true"
+                v-model="card.shadowType"
+                @change="changeShadow(card)"
+              >
+                <option value="default">默认</option>
+                <option value="undefined" disabled>未知</option>
+              </select>
+            </div>
+            <div class="input-group col-12 my-2 center">
+              <span class="input-group-text">阴影距离</span>
+              <input
+                class="input-range"
+                type="range"
+                min="0"
+                max="100"
+                step="1"
+                v-model="card.shadowDistance"
+              />
+            </div>
+          </div>
+          <div class="center">
+            <div class="col-12 fw-bold my-2 center border-vup">
+              <span>角色信息</span>
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">角色名称</span>
+              <input type="text" v-model="card.name" />
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">英文名称</span>
+              <input type="text" v-model="card.nameEng" />
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">角色称号</span>
+              <input type="text" v-model="card.label" />
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">角色势力</span>
+              <select
+                class="form-select select-party"
+                v-model="card.party"
+                @change="changeParty(card, parties)"
+              >
+                <option value="undefined" disabled>未知势力</option>
+                <option value="custom">自定义</option>
+                <option
+                  v-for="(party, index) in parties"
+                  :key="index"
+                  :value="party.code"
+                >
+                  {{ party.name }}
+                </option>
+              </select>
+            </div>
+            <div class="center" v-if="card.party == 'custom'">
+              <div class="center">
+                <div class="col-12 fw-bold my-2 center border-vup">
+                  <span>势力图标</span>
+                </div>
+                <div class="input-group">
+                  <span class="input-group-text">坐标</span>
+                  <input
+                    class="input-coord"
+                    type="number"
+                    v-model="card.logoX"
+                  />
+                  <input
+                    class="input-coord"
+                    type="number"
+                    v-model="card.logoY"
+                  />
+                </div>
+                <div class="input-group">
+                  <span class="input-group-text">尺寸</span>
+                  <input
+                    class="input-size"
+                    type="number"
+                    v-model="card.logoW"
+                  />
+                  <input
+                    class="input-size"
+                    type="number"
+                    v-model="card.logoH"
+                  />
+                </div>
+                <button class="btn" @click="click('#import-logo')">上传</button>
+                <input
+                  id="import-logo"
+                  type="file"
+                  style="display: none"
+                  accept="image/jpeg, image/png, image/webp, image/jpg"
+                  @change="changeLogo(card, $event)"
+                />
+              </div>
+              <div class="col-12 fw-bold my-2 center border-vup">
+                <span>配色</span>
+              </div>
+              <div class="input-group">
+                <span class="input-group-text">主题颜色</span>
+                <div class="center mx-2">
+                  <input
+                    id="theme-color"
+                    class="input-color"
+                    type="color"
+                    v-model="card.themeColor"
+                  />
+                  <input
+                    class="input-color-text"
+                    type="text"
+                    v-model="card.themeColor"
+                    readonly
+                    @click="click('#theme-color')"
+                  />
+                </div>
+              </div>
+              <div class="input-group">
+                <span class="input-group-text">名称颜色</span>
+                <div class="center mx-2">
+                  <input
+                    id="name-color"
+                    class="input-color"
+                    type="color"
+                    v-model="card.nameColor"
+                  />
+                  <input
+                    class="input-color-text"
+                    type="text"
+                    v-model="card.nameColor"
+                    readonly
+                    @click="click('#name-color')"
+                  />
+                </div>
+              </div>
+              <div class="input-group">
+                <span class="input-group-text">称号颜色</span>
+                <div class="center mx-2">
+                  <input
+                    id="label-color"
+                    class="input-color"
+                    type="color"
+                    v-model="card.labelColor"
+                  />
+                  <input
+                    class="input-color-text"
+                    type="text"
+                    v-model="card.labelColor"
+                    readonly
+                    @click="click('#label-color')"
+                  />
+                </div>
+              </div>
+              <div class="input-group">
+                <span class="input-group-text">轮廓颜色</span>
+                <div class="center mx-2">
+                  <input
+                    id="border-color"
+                    class="input-color"
+                    type="color"
+                    v-model="card.borderColor"
+                  />
+                  <input
+                    class="input-color-text"
+                    type="text"
+                    v-model="card.borderColor"
+                    readonly
+                    @click="click('#border-color')"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="center">
+            <a class="btn" @click="click('#import-config')">导入配置</a>
+            <input
+              id="import-config"
+              type="file"
+              style="display: none"
+              accept="application/json"
+              @change="uploadConfig(card, $event)"
+            />
+            <a class="btn" @click="downloadConfig(card)">导出配置</a>
+            <a
+              class="btn"
+              @click="reset(card, $event)"
+              title="如需重置全部卡牌请按住Shift再点击"
+            >
+              重置
+            </a>
+            <a class="btn btn-save" @click="downloadCard(card)">保存卡片</a>
+          </div>
+        </div>
+        <div
+          id="batch_editor"
+          class="row center card-editor hide"
+          v-if="characters && parties && cardList"
+        >
+          <div class="center">
+            <div class="col-12 fw-bold my-2 center border-vup">
+              <span>角色立绘</span>
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">角色</span>
+              <select
+                class="form-select select-character"
+                data-live-search="true"
+                v-model="card.code"
+                @change="changeCharacter(card)"
+              >
+                <option value="undefined" disabled>未知称号 未知名称</option>
+                <option
+                  v-for="(c, index) in characters"
+                  :key="index"
+                  :value="c.code"
+                  :disabled="Boolean(!cardListDefault[c.code])"
+                >
+                  {{ c.label }} {{ c.name }}
+                </option>
+              </select>
+            </div>
+            <a
+              class="btn"
+              title="如需重置全部卡牌请按住Shift再点击"
+              @click="reset(card, $event)"
+              >重置本卡</a
+            >
+            <div class="input-group">
+              <span class="input-group-text">立绘可溢出边缘</span>
+              <div class="div-checkbox">
+                <input
+                  id="is-overflow2"
+                  type="checkbox"
+                  v-model="card.isOverflow"
+                />
+                <label for="is-overflow2"></label>
+              </div>
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">立绘发光</span>
+              <div class="div-checkbox div-shine">
+                <input id="is-shine2" type="checkbox" v-model="card.isShine" />
+                <label for="is-shine2"></label>
+              </div>
+              <div class="center mx-2">
+                <input
+                  id="shine-color"
+                  class="input-color"
+                  type="color"
+                  v-model="card.shineColor"
+                  :disabled="!card.isShine"
+                />
+                <input
+                  class="input-color-text"
+                  type="text"
+                  v-model="card.shineColor"
+                  readonly
+                  @click="click('#shine-color')"
+                />
+              </div>
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">立绘坐标</span>
+              <input
+                class="input-coord"
+                type="number"
+                v-model="card.portraitX"
+              />
+              <input
+                class="input-coord"
+                type="number"
+                v-model="card.portraitY"
+              />
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">立绘尺寸</span>
+              <input
+                class="input-size"
+                type="number"
+                v-model="card.portraitW"
+              />
+              <input
+                class="input-size"
+                type="number"
+                v-model="card.portraitH"
+              />
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">阴影图案</span>
+              <select class="form-select select-shadow" data-live-search="true">
+                <option value="default">默认</option>
+                <option value="undefined" disabled>未知</option>
+              </select>
+            </div>
+            <div class="input-group col-12 my-2 center">
+              <span class="input-group-text">阴影距离</span>
+              <input
+                class="input-range"
+                type="range"
+                min="0"
+                max="100"
+                step="1"
+                v-model="card.shadowDistance"
+              />
+            </div>
+          </div>
+          <div class="center">
+            <div class="col-12 fw-bold my-2 center border-vup">
+              <span>角色信息</span>
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">角色名称</span>
+              <input type="text" v-model="card.name" />
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">英文名称</span>
+              <input type="text" v-model="card.nameEng" />
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">角色称号</span>
+              <input type="text" v-model="card.label" />
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">角色势力</span>
+              <select
+                class="form-select select-party"
+                v-model="card.party"
+                @change="changeParty(card, parties)"
+              >
+                <option value="undefined" disabled>未知势力</option>
+                <option
+                  v-for="(party, index) in parties"
+                  :key="index"
+                  :value="party.code"
+                >
+                  {{ party.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="center">
+            <a class="btn" @click="click('#import-config-batch')">
+              导入全部配置
+            </a>
+            <input
+              id="import-config-batch"
+              type="file"
+              style="display: none"
+              accept="application/json"
+              @change="uploadConfigBatch(card, $event)"
+            />
+            <a class="btn" @click="downloadConfigBatch()"> 导出全部配置 </a>
+            <a
+              class="btn btn-save-batch"
+              data-bs-toggle="modal"
+              data-bs-target="#modal-download-cards"
+            >
+              批量保存卡片
+            </a>
+            <div class="modal fade" id="modal-download-cards">
+              <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div
+                  class="modal-content bg-dark text-white shadow-lg rounded-1rem"
+                >
+                  <div class="modal-header border-vup p-2">
+                    <h4 class="modal-title mx-auto fw-bold">批量下载</h4>
+                  </div>
+                  <BatchDownloader
+                    :cardList="cardList"
+                    :parties="parties"
+                    :character="card.code"
+                  />
+                </div>
               </div>
             </div>
           </div>

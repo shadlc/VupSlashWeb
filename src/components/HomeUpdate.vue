@@ -1,13 +1,13 @@
 <script setup lang="ts">
 defineProps<{
-  versions: { [key: string]: { [key: string]: string } };
+  versions: { [key: string]: string }[];
 }>();
 </script>
 
 <template>
   <div class="container py-5 border-top border-2 text-center" id="update">
-    <p class="display-5 fw-bold my-5">历史更新</p>
-    <div class="accordion-card my-5 mx-2 p-3 p-lg-5 bg-body shadow">
+    <p class="display-5 fw-bold my-5 fadeIn">历史更新</p>
+    <div class="accordion-card my-5 mx-2 p-3 p-lg-5 bg-body shadow fadeIn">
       <div class="accordion accordion-flush">
         <h3 class="pb-4 fw-bold accordion-header">版本更新</h3>
         <div
@@ -73,7 +73,7 @@ defineProps<{
         </div>
       </div>
     </div>
-    <div class="accordion-card my-5 mx-2 p-3 p-lg-5 bg-body shadow">
+    <div class="accordion-card my-5 mx-2 p-3 p-lg-5 bg-body shadow fadeIn">
       <div class="accordion accordion-flush">
         <h3 class="pb-4 fw-bold accordion-header">玩法更新</h3>
         <div class="accordion-item">

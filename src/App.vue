@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import WebFooter from "./components/WebFooter.vue";
 import axios from "axios";
-import { onBeforeMount, ref } from "vue";
+import { onBeforeMount, onUpdated, ref } from "vue";
+import ScrollMagic from "scrollmagic";
 
 let thanks = ref();
 onBeforeMount(() => {
@@ -10,10 +11,29 @@ onBeforeMount(() => {
   });
 });
 
+onUpdated(() => {
+  doScrollMagic();
+});
+
 // 隐藏顶部导航栏
 function hideFloatNav() {
   let btn = document.querySelector(".navbar-toggler") as HTMLElement;
   if (getComputedStyle(btn, null).display != "none") btn.click();
+}
+
+//页面动画
+function doScrollMagic() {
+  let controller = new ScrollMagic.Controller();
+  let fadeInElements = document.querySelectorAll(".fadeIn");
+  fadeInElements.forEach((each) => {
+    new ScrollMagic.Scene({
+      triggerElement: each,
+      triggerHook: 0.8,
+      reverse: false,
+    })
+      .setClassToggle(each, "fadedIn")
+      .addTo(controller);
+  });
 }
 
 // 动态背景
@@ -93,7 +113,13 @@ setTimeout(() => {
       </div>
     </div>
   </nav>
-  <router-view />
+  <router-view v-slot="{ Component }">
+    <transition name="zoom-fade" mode="out-in" appear>
+      <keep-alive exclude="HomeView">
+        <component :is="Component" />
+      </keep-alive>
+    </transition>
+  </router-view>
   <WebFooter v-if="thanks" :thanks="thanks" />
 </template>
 
@@ -118,6 +144,15 @@ setTimeout(() => {
 }
 .hide {
   display: none !important;
+}
+.fadeIn {
+  opacity: 0;
+  transform: translateY(20%);
+  transition: all 0.5s ease-in-out;
+}
+.fadedIn {
+  opacity: 1;
+  transform: translateY(0);
 }
 .center {
   display: flex;
@@ -153,6 +188,26 @@ body {
   font-family: Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.zoom-fade-leave-active {
+  transition: all 0.3s ease-out;
+}
+.zoom-fade-enter-active {
+  transition: all 0.3s ease-in;
+}
+
+.zoom-fade-enter-from {
+  opacity: 0;
+}
+.zoom-fade-enter-to {
+  opacity: 1;
+}
+.zoom-fade-leave {
+  opacity: 1;
+}
+.zoom-fade-leave-to {
+  opacity: 0;
 }
 
 nav a {

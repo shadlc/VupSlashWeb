@@ -104,81 +104,37 @@ function scrollToTop() {
 </script>
 
 <template>
-  <div class="p-5 text-center" id="title">
-    <h1>
-      <a class="link-light text-decoration-none fw-bold display-5" href="">
-        常见问题 | FAQ
-      </a>
-    </h1>
-  </div>
-  <a class="p-0 center" id="btn_to_top" @click="scrollToTop" title="回到顶部">
-    <i class="bi bi-caret-up-fill"></i>
-  </a>
-  <a
-    class="p-0 center"
-    id="btn_navbar"
-    href="#offcanvas_navbar"
-    data-bs-toggle="offcanvas"
-    role="button"
-    aria-controls="offcanvas_navbar"
-    title="导航栏"
-  >
-    <i class="bi bi-list"></i>
-  </a>
-  <div
-    class="offcanvas offcanvas-start text-light fs-3"
-    data-bs-scroll="true"
-    tabindex="-1"
-    id="offcanvas_navbar"
-    aria-labelledby="offcanvas_navbarLabel"
-  >
-    <div class="offcanvas-body bg-dark scroll-hide">
-      <nav>
-        <ul class="navbar-nav" v-if="faqs">
-          <div v-for="(subtypes, type, index) in faqs.types" :key="index">
-            <h3 class="pt-3 type">
-              <a
-                :href="'#nav-' + type"
-                data-bs-toggle="collapse"
-                class=""
-                aria-expanded="true"
-                >{{ type }}</a
-              >
-            </h3>
-            <div :id="'nav-' + type" class="collapse">
-              <li
-                class="nav-item"
-                v-for="(data, subtype, index) in subtypes.subtypes"
-                :key="index"
-              >
-                <a class="nav-link ps-3 fs-5" :href="'#' + subtype">{{
-                  subtype
-                }}</a>
-              </li>
-            </div>
-          </div>
-        </ul>
-      </nav>
+  <div>
+    <div class="p-5 text-center" id="title">
+      <h1>
+        <a class="link-light text-decoration-none fw-bold display-5" href="">
+          常见问题 | FAQ
+        </a>
+      </h1>
     </div>
-  </div>
-
-  <div class="container-fluid">
-    <div
-      class="container bg-dark p-0 py-3 rounded-top-1rem border-bottom border-secondary fw-bold text-white text-center"
+    <a class="p-0 center" id="btn_to_top" @click="scrollToTop" title="回到顶部">
+      <i class="bi bi-caret-up-fill"></i>
+    </a>
+    <a
+      class="p-0 center"
+      id="btn_navbar"
+      href="#offcanvas_navbar"
+      data-bs-toggle="offcanvas"
+      role="button"
+      aria-controls="offcanvas_navbar"
+      title="导航栏"
     >
-      <i class="bi bi-search me-2 input-search"></i>
-      <input
-        type="text"
-        id="search_box"
-        class="p-3 ps-5 bg-dark text-white border border-2 rounded-1rem"
-        title="检索常见问题"
-      />
-    </div>
+      <i class="bi bi-list"></i>
+    </a>
     <div
-      class="container bg-dark p-0 fs-5 text-light position-relative navbar-container overflow-hidden"
+      class="offcanvas offcanvas-start text-light fs-3"
+      data-bs-scroll="true"
+      tabindex="-1"
+      id="offcanvas_navbar"
+      aria-labelledby="offcanvas_navbarLabel"
     >
-      <div class="navbar-left border-end border-secondary scroll">
-        <nav class="faq-navbar">
+      <div class="offcanvas-body bg-dark scroll-hide">
+        <nav>
           <ul class="navbar-nav" v-if="faqs">
             <div v-for="(subtypes, type, index) in faqs.types" :key="index">
               <h3 class="pt-3 type">
@@ -205,32 +161,78 @@ function scrollToTop() {
           </ul>
         </nav>
       </div>
-      <div class="p-4 bg-dark faq" v-if="faqs">
-        <p class="search-result text-wrap text-secondary"></p>
-        <div
-          class="mb-5"
-          v-for="(subtypes, type, index) in faqs.types"
-          :key="index"
-        >
+    </div>
+
+    <div class="container-fluid">
+      <div
+        class="container bg-dark p-0 py-3 rounded-top-1rem border-bottom border-secondary fw-bold text-white text-center"
+      >
+        <i class="bi bi-search me-2 input-search"></i>
+        <input
+          type="text"
+          id="search_box"
+          class="p-3 ps-5 bg-dark text-white border border-2 rounded-1rem"
+          title="检索常见问题"
+        />
+      </div>
+      <div
+        class="container bg-dark p-0 fs-5 text-light position-relative navbar-container overflow-hidden"
+      >
+        <div class="navbar-left border-end border-secondary scroll">
+          <nav class="faq-navbar">
+            <ul class="navbar-nav" v-if="faqs">
+              <div v-for="(subtypes, type, index) in faqs.types" :key="index">
+                <h3 class="pt-3 type">
+                  <a
+                    :href="'#nav-' + type"
+                    data-bs-toggle="collapse"
+                    class=""
+                    aria-expanded="true"
+                    >{{ type }}</a
+                  >
+                </h3>
+                <div :id="'nav-' + type" class="collapse">
+                  <li
+                    class="nav-item"
+                    v-for="(data, subtype, index) in subtypes.subtypes"
+                    :key="index"
+                  >
+                    <a class="nav-link ps-3 fs-5" :href="'#' + subtype">{{
+                      subtype
+                    }}</a>
+                  </li>
+                </div>
+              </div>
+            </ul>
+          </nav>
+        </div>
+        <div class="p-4 bg-dark faq" v-if="faqs">
+          <p class="search-result text-wrap text-secondary"></p>
           <div
-            class="faq-subtype mb-5"
-            v-for="(quests, subtype, index) in subtypes.subtypes"
+            class="mb-5"
+            v-for="(subtypes, type, index) in faqs.types"
             :key="index"
           >
-            <h3 class="type" :id="String(subtype)">{{ subtype }}</h3>
-            <blockquote
-              class="faq-card blockquote"
-              v-for="(answers, quest, index) in quests.quests"
+            <div
+              class="faq-subtype mb-5"
+              v-for="(quests, subtype, index) in subtypes.subtypes"
               :key="index"
             >
-              <p>Q: {{ quest }}</p>
-              <div v-for="(answer, index) in answers.answers" :key="index">
-                <pre>A: {{ answer.answer }}</pre>
-                <footer class="blockquote-footer">
-                  回答自 <b>{{ answer.author }}</b>
-                </footer>
-              </div>
-            </blockquote>
+              <h3 class="type" :id="String(subtype)">{{ subtype }}</h3>
+              <blockquote
+                class="faq-card blockquote"
+                v-for="(answers, quest, index) in quests.quests"
+                :key="index"
+              >
+                <p>Q: {{ quest }}</p>
+                <div v-for="(answer, index) in answers.answers" :key="index">
+                  <pre>A: {{ answer.answer }}</pre>
+                  <footer class="blockquote-footer">
+                    回答自 <b>{{ answer.author }}</b>
+                  </footer>
+                </div>
+              </blockquote>
+            </div>
           </div>
         </div>
       </div>
