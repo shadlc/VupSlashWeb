@@ -52,7 +52,7 @@ a:hover {
   background: transparent;
 }
 
-@keyframes title-move {
+@keyframes TitleMove {
   from {
     height: 100%;
   }
@@ -65,7 +65,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  animation: title-move 1.5s cubic-bezier(0.5, 0, 0.5, 1.2) 1s 1;
+  animation: TitleMove 1.5s cubic-bezier(0.5, 0, 0.5, 1.2) 1s;
   animation-fill-mode: forwards;
 }
 .title > h1 {

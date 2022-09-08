@@ -194,11 +194,12 @@ body {
   transition: all 0.3s ease-out;
 }
 .zoom-fade-enter-active {
-  transition: all 0.3s ease-in;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1.5);
 }
 
 .zoom-fade-enter-from {
   opacity: 0;
+  transform: translateY(20px);
 }
 .zoom-fade-enter-to {
   opacity: 1;
@@ -208,6 +209,7 @@ body {
 }
 .zoom-fade-leave-to {
   opacity: 0;
+  transform: translateY(-30px);
 }
 
 nav a {

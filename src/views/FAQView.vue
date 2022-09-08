@@ -24,22 +24,20 @@ onMounted(() => {
     });
     let value = (search_box as HTMLInputElement).value;
     document.querySelectorAll(".faq-subtype").forEach((each) => {
-      each.classList.add("hide");
-    });
-    document.querySelectorAll(".faq-card").forEach((each) => {
       if (
         (each.textContent as string).toLowerCase().includes(value.toLowerCase())
       ) {
         if (value != "") highLight(each as HTMLElement, value);
         each.classList.remove("hide");
-        each.parentElement?.classList.remove("hide");
       } else {
         each.classList.add("hide");
       }
     });
-    let showCardNum = document.querySelectorAll(".faq-card:not(.hide)").length;
+    let showCardNum = document.querySelectorAll(
+      ".faq-subtype:not(.hide)"
+    ).length;
     let searchResult = document.querySelector(".search-result") as HTMLElement;
-    if (showCardNum && document.querySelectorAll(".faq-card.hide").length) {
+    if (showCardNum && document.querySelectorAll(".faq-subtype.hide").length) {
       searchResult.innerHTML =
         "寻找到" + showCardNum + "条关于“" + value + "”的记录";
     } else if (showCardNum) {
