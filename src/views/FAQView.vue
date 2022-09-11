@@ -9,11 +9,13 @@ onBeforeMount(async () => {
 
     // 自动滚动到锚点位置
     setTimeout(() => {
-      let element = document.querySelector(
-        decodeURIComponent(window.location.hash)
-      );
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+      if (window.location.hash) {
+        let element = document.querySelector(
+          decodeURIComponent(window.location.hash)
+        );
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
       }
     }, 200);
   });
