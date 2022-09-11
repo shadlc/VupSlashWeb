@@ -78,6 +78,7 @@ watch(
   () => {
     batchCard.value.code = props.character;
     cd.setCard(batchCard.value, props.cardList, props.parties);
+    processInfo(processText, process.value, batchCard.value);
   }
 );
 // 当输出名称或者过程变化时重绘阶段提示
@@ -294,7 +295,7 @@ function shuffle() {
         <canvas class="canvas_copy" width="600" height="870"></canvas>
         <canvas id="batch_canvas" width="600" height="870"></canvas>
       </div>
-      <div class="p-2">
+      <div class="p-2 text-center">
         <span>{{ processText }}</span>
       </div>
     </div>
@@ -426,6 +427,11 @@ a:hover {
   width: 300px;
   height: 435px;
   margin: 3vh;
+}
+@media only screen and (max-width: 500px) {
+  .canvases {
+    transform: scale(0.75, 0.75);
+  }
 }
 .canvases canvas {
   position: absolute;

@@ -48,10 +48,7 @@ function avatarFloating() {
       </blockquote>
     </div>
     <div class="my-5 text-center fadeIn">
-      <img
-        class="img-fluid col-lg-8 shadow"
-        v-lazy="require('@/img/battle.jpg')"
-      />
+      <img class="img-fluid col-lg-8 shadow" lazy-src="img/battle.jpg" />
     </div>
 
     <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fadeIn">
@@ -76,22 +73,22 @@ function avatarFloating() {
       <img
         id="c1"
         class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
-        v-lazy="require('@/img/c1.jpg')"
+        lazy-src="img/c1.jpg"
       />
       <img
         id="c2"
         class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
-        v-lazy="require('@/img/c2.jpg')"
+        lazy-src="img/c2.jpg"
       />
       <img
         id="c3"
         class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
-        v-lazy="require('@/img/c3.jpg')"
+        lazy-src="img/c3.jpg"
       />
       <img
         id="c4"
         class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
-        v-lazy="require('@/img/c4.jpg')"
+        lazy-src="img/c4.jpg"
       />
     </div>
     <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fadeIn">
@@ -113,10 +110,7 @@ function avatarFloating() {
       </blockquote>
     </div>
     <div class="text-center my-5 fadeIn">
-      <img
-        class="img-fluid col-12 col-lg-6"
-        v-lazy="require('@/img/cards.png')"
-      />
+      <img class="img-fluid col-12 col-lg-6" lazy-src="img/cards.png" />
     </div>
 
     <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fadeIn">

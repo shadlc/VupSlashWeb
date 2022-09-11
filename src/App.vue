@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import WebFooter from "./components/WebFooter.vue";
 import axios from "axios";
-import { onBeforeMount, onUpdated, ref } from "vue";
-import ScrollMagic from "scrollmagic";
+import { onBeforeMount, ref } from "vue";
 
 let thanks = ref();
 onBeforeMount(() => {
@@ -11,29 +13,10 @@ onBeforeMount(() => {
   });
 });
 
-onUpdated(() => {
-  doScrollMagic();
-});
-
 // 隐藏顶部导航栏
 function hideFloatNav() {
   let btn = document.querySelector(".navbar-toggler") as HTMLElement;
   if (getComputedStyle(btn, null).display != "none") btn.click();
-}
-
-//页面动画
-function doScrollMagic() {
-  let controller = new ScrollMagic.Controller();
-  let fadeInElements = document.querySelectorAll(".fadeIn");
-  fadeInElements.forEach((each) => {
-    new ScrollMagic.Scene({
-      triggerElement: each,
-      triggerHook: 0.8,
-      reverse: false,
-    })
-      .setClassToggle(each, "fadedIn")
-      .addTo(controller);
-  });
 }
 
 // 动态背景
@@ -174,6 +157,7 @@ mark {
 }
 html,
 body {
+  position: relative;
   margin: 0;
   height: 100%;
   width: 100%;
@@ -213,14 +197,10 @@ body {
 }
 
 nav a {
-  font-weight: bold;
+  font-weight: bold !important;
   color: #75828f;
   text-decoration: none;
   padding: 0.5em;
-}
-
-nav a.router-link-exact-active {
-  color: #3d6cb4;
 }
 
 .badge {
@@ -232,16 +212,20 @@ nav a.router-link-exact-active {
   color: #f8f9fa;
   margin: 0.5rem;
   padding: 0.4rem 0.5rem;
+  border: 1px solid #f8f9fa;
   border-radius: 1rem;
   box-shadow: 0 0 3px 2px #f8f9fadd;
   transition: all 0.15s ease-in-out;
 }
 .btn:hover {
-  color: #f8f9fa;
   box-shadow: 0 0 5px 4px #f8f9fadd;
+  border-color: #f8f9fadd !important;
+  background-color: #212529 !important;
 }
 .btn:active {
   transform: scale(0.9, 0.9) !important;
+  background-color: #212529 !important;
+  border-color: #f8f9fadd !important;
 }
 .btn-check:focus + .btn,
 .btn:focus,

@@ -13,19 +13,19 @@ onBeforeMount(async () => {
   (document.querySelector("#character_btn") as HTMLElement).innerHTML =
     "角色(" + document.querySelectorAll(".vup-card").length + ")";
   //图片懒加载
-  document.querySelectorAll("img[later_src]").forEach(function (item) {
-    let later_img = item;
+  document.querySelectorAll("img[lazy-src]").forEach(function (item) {
+    let lazy_img = item;
     let img = new Image();
     img.addEventListener("load", loadHandler);
-    img.setAttribute("src", item.getAttribute("later_src") as string);
+    img.setAttribute("src", item.getAttribute("lazy-src") as string);
     function loadHandler() {
-      later_img.setAttribute("src", img.src);
-      later_img.removeAttribute("later_src");
+      lazy_img.setAttribute("src", img.src);
+      lazy_img.removeAttribute("lazy-src");
     }
-    later_img.addEventListener("click", function () {
-      later_img.setAttribute("src", img.src);
+    lazy_img.addEventListener("click", function () {
+      lazy_img.setAttribute("src", img.src);
       let inner_img = document.querySelector(
-        later_img.getAttribute("data-bs-target") + " img[inner_src]"
+        lazy_img.getAttribute("data-bs-target") + " img[inner_src]"
       ) as HTMLElement;
       inner_img.setAttribute(
         "src",
@@ -142,7 +142,7 @@ function scrollToTop() {
                 class="img-fluid"
                 data-bs-toggle="modal"
                 :data-bs-target="'#modal' + index"
-                :later_src="
+                :lazy-src="
                   'https://static.vupslash.icu/img/cards/' + each.code + '.png'
                 "
                 src="https://static.vupslash.icu/img/cards/_unknown.png"
@@ -494,6 +494,6 @@ function scrollToTop() {
 .power {
   margin: 0 0.1em;
   padding-right: 1em;
-  background: url("@/img/power.svg") no-repeat;
+  background: url("/public/img/power.svg") no-repeat;
 }
 </style>

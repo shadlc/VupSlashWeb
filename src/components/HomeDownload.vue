@@ -8,7 +8,7 @@
     <div class="row my-5">
       <div class="fadeIn my-5">
         <p class="fs-2 fw-bold">
-          <img class="mb-2" v-lazy="require('@/img/windows.svg')" />
+          <i class="bi bi-windows"></i>
           Windows平台 Vup杀启动器
         </p>
         <p class="lead fw-bold">无需繁琐的安装步骤</p>
@@ -44,22 +44,13 @@
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img
-                class="img-fluid mb-5"
-                v-lazy="require('@/img/launcher_main.png')"
-              />
+              <img class="img-fluid mb-5" lazy-src="img/launcher_main.png" />
             </div>
             <div class="carousel-item">
-              <img
-                class="img-fluid mb-5"
-                v-lazy="require('@/img/launcher_theme.png')"
-              />
+              <img class="img-fluid mb-5" lazy-src="img/launcher_theme.png" />
             </div>
             <div class="carousel-item">
-              <img
-                class="img-fluid mb-5"
-                v-lazy="require('@/img/launcher_install.png')"
-              />
+              <img class="img-fluid mb-5" lazy-src="img/launcher_install.png" />
             </div>
           </div>
         </div>
@@ -88,14 +79,14 @@
               class="mt-2 mb-5 text-body"
               href="https://gitee.com/shadlc/vup-slash-launcher"
             >
-              <img class="me-1" v-lazy="require('@/img/gitee.svg')" />更新日志
+              <img class="me-1" lazy-src="img/gitee.svg" />更新日志
             </a>
           </li>
         </ul>
       </div>
     </div>
     <div class="row my-5 fadeIn">
-      <p class="my-5 fs-2 fw-bold"><i class="bi bi-windows"></i>其他平台游玩</p>
+      <p class="my-5 fs-2 fw-bold">其他平台游玩</p>
       <p class="lead my-5 fw-bold">o((&#62;ω&#60; ))o 敬请期待啦...</p>
     </div>
   </div>

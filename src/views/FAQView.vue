@@ -6,16 +6,39 @@ let faqs = ref();
 onBeforeMount(async () => {
   await axios.get("https://api.vupslash.icu/json/faq_list/").then((respond) => {
     faqs.value = respond.data;
+
+    // 自动滚动到锚点位置
+    setTimeout(() => {
+      let element = document.querySelector(
+        decodeURIComponent(window.location.hash)
+      );
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 200);
   });
+
   // 导航栏滚动监听
-  let body = document.querySelector("body") as HTMLElement;
-  body.setAttribute("data-bs-spy", "scroll");
-  body.setAttribute("data-bs-target", ".faq-navbar");
-  body.setAttribute("data-bs-offset", "100");
+  const links = document.querySelectorAll(".faq-navbar a");
+  window.addEventListener("scroll", () => {
+    let scrolls = window.scrollY;
+    let had = false;
+    for (let i = links.length - 1; i >= 0; i--) {
+      let item = document.querySelector(
+        "h3" + links[i].getAttribute("href")
+      ) as HTMLElement;
+      if (!had && item && scrolls >= item.offsetTop + 260) {
+        links[i].classList.add("active");
+        had = true;
+      } else {
+        links[i].classList.remove("active");
+      }
+    }
+  });
 });
 
-// 搜索
 onMounted(() => {
+  // 搜索
   let search_box = document.querySelector("#search_box") as HTMLElement;
   search_box.onkeyup = () => {
     document.querySelectorAll("mark").forEach((each) => {
@@ -102,7 +125,7 @@ function scrollToTop() {
 </script>
 
 <template>
-  <div>
+  <div id="faq_div">
     <div class="p-5 text-center" id="title">
       <h1>
         <a class="link-light text-decoration-none fw-bold display-5" href="">
@@ -180,7 +203,7 @@ function scrollToTop() {
           <nav class="faq-navbar">
             <ul class="navbar-nav" v-if="faqs">
               <div v-for="(subtypes, type, index) in faqs.types" :key="index">
-                <h3 class="pt-3 type">
+                <h3 class="type">
                   <a
                     :href="'#nav-' + type"
                     data-bs-toggle="collapse"
@@ -195,9 +218,9 @@ function scrollToTop() {
                     v-for="(data, subtype, index) in subtypes.subtypes"
                     :key="index"
                   >
-                    <a class="nav-link ps-3 fs-5" :href="'#' + subtype">{{
-                      subtype
-                    }}</a>
+                    <a class="nav-link ps-3 fs-5" :href="'#' + subtype">
+                      {{ subtype }}
+                    </a>
                   </li>
                 </div>
               </div>
@@ -338,11 +361,8 @@ function scrollToTop() {
 .offcanvas-body a:hover {
   color: grey;
 }
-.active {
-  font-weight: 600;
-}
 .navbar-left .active {
-  font-weight: bolder;
+  font-weight: bolder !important;
   border-left: 0.2em solid #f8f9fa !important;
 }
 .nav-link {
@@ -350,7 +370,7 @@ function scrollToTop() {
   padding: 0.2rem 1rem !important;
 }
 nav a {
-  font-weight: unset;
+  font-weight: unset !important;
 }
 
 .scroll-hide::-webkit-scrollbar {

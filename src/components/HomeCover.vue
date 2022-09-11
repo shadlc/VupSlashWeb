@@ -57,7 +57,7 @@ a:hover {
     height: 100%;
   }
   to {
-    height: 60%;
+    height: 50%;
   }
 }
 .title {
@@ -98,7 +98,7 @@ a:hover {
 #down_arrow {
   position: relative;
   width: 36px;
-  top: -8em;
+  top: -14em;
   opacity: 0;
   margin: 0 auto;
   animation: Show 1s ease 2.5s 1;

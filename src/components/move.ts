@@ -6,6 +6,7 @@ export class Mouse {
   y = 0
   startX = 0
   startY = 0
+  screenRatio = 1
 
   isMoveable = false
   x2 = 0

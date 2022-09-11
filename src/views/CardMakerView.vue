@@ -197,6 +197,13 @@ onMounted(() => {
     loopTimeout = true;
   }, 1000);
   window.requestAnimationFrame(loop);
+
+  // 检测屏幕宽度缩小卡片大小
+  if (window.screen.width <= 500) {
+    mouse.value.screenRatio = 1 / 2;
+  } else {
+    mouse.value.screenRatio = 2 / 3;
+  }
 });
 
 // 移动立绘
@@ -204,18 +211,24 @@ function movePortrait(card: Card, mouse: Mouse) {
   if (mouse.isMoveable) {
     card.portraitX =
       oldPortraitX +
-      (((mouse.x - mouse.startX + (mouse.x2 - mouse.startX2)) / 2) * 3) / 2;
+      (mouse.x - mouse.startX + (mouse.x2 - mouse.startX2)) /
+        mouse.screenRatio /
+        2;
     card.portraitY =
       oldPortraitY +
-      (((mouse.y - mouse.startY + (mouse.y2 - mouse.startY2)) / 2) * 3) / 2;
+      (mouse.y - mouse.startY + (mouse.y2 - mouse.startY2)) /
+        mouse.screenRatio /
+        2;
     let distance = Math.hypot(mouse.x - mouse.x2, mouse.y - mouse.y2);
     card.portraitW = oldPortraitW * (distance / mouse.distance);
     card.portraitH = oldPortraitH * (distance / mouse.distance);
     card.portraitX += (oldPortraitW - card.portraitW) / 2;
     card.portraitY += (oldPortraitH - card.portraitH) / 2;
   } else {
-    card.portraitX = oldPortraitX + ((mouse.x - mouse.startX) * 3) / 2;
-    card.portraitY = oldPortraitY + ((mouse.y - mouse.startY) * 3) / 2;
+    card.portraitX =
+      oldPortraitX + (mouse.x - mouse.startX) / mouse.screenRatio;
+    card.portraitY =
+      oldPortraitY + (mouse.y - mouse.startY) / mouse.screenRatio;
   }
 }
 // 缩放立绘
@@ -1061,6 +1074,11 @@ function toggleMaker(maker: string) {
 #card_view {
   width: 420px;
   padding: 30px 10px;
+}
+@media only screen and (max-width: 500px) {
+  #card_view {
+    transform: scale(0.75, 0.75);
+  }
 }
 #card_canvas {
   width: 400px;

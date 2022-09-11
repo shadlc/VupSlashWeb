@@ -1,8 +1,24 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
+
 defineProps<{
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   thanks: Array<any>;
 }>();
+
+onMounted(() => {
+  //图片懒加载
+  document.querySelectorAll("img[lazy-src]").forEach(function (item) {
+    let lazy_img = item;
+    let img = new Image();
+    img.addEventListener("load", loadHandler);
+    img.setAttribute("src", item.getAttribute("lazy-src") as string);
+    function loadHandler() {
+      lazy_img.setAttribute("src", img.src);
+      lazy_img.removeAttribute("lazy-src");
+    }
+  });
+});
 </script>
 
 <template>
@@ -29,7 +45,7 @@ defineProps<{
       >
         <div class="col-12">
           <a class="fs-4" href="https://space.bilibili.com/699889791">
-            <img class="me-2" v-lazy="require('@/img/bilibili.svg')" />哔哩哔哩
+            <img class="me-2" lazy-src="img/bilibili.svg" />哔哩哔哩
           </a>
         </div>
         <div class="col-12">
@@ -37,12 +53,12 @@ defineProps<{
             class="fs-4"
             href="https://github.com/meng-long-shao-zhu/VupSlash_V0"
           >
-            <img class="me-2" v-lazy="require('@/img/github.svg')" />游戏主体
+            <img class="me-2" lazy-src="img/github.svg" />游戏主体
           </a>
         </div>
         <div class="col-12">
           <a class="fs-4" href="https://github.com/shadlc/VupSlashWeb">
-            <img class="me-2" v-lazy="require('@/img/github.svg')" />网页项目
+            <img class="me-2" lazy-src="img/github.svg" />网页项目
           </a>
         </div>
       </div>

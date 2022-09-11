@@ -1,17 +1,32 @@
 <script setup lang="ts">
+import { onBeforeMount, onMounted, ref } from "vue";
+import axios from "axios";
 import HomeCover from "@/components/HomeCover.vue";
 import HomeIntroduce from "@/components/HomeIntroduce.vue";
 import HomeDownload from "@/components/HomeDownload.vue";
 import HomeUpdate from "@/components/HomeUpdate.vue";
 import HomeAbout from "@/components/HomeAbout.vue";
-import axios from "axios";
-import { onBeforeMount, ref } from "vue";
+import ScrollMagic from "scrollmagic";
 
-// eslint-disable-next-line prettier/prettier
-let versions = ref([{ "version": "" }]);
+let versions = ref([{ version: "" }]);
 onBeforeMount(() => {
   axios.get("https://api.vupslash.icu/json/version_list/").then((respond) => {
     versions.value = respond.data;
+  });
+});
+
+onMounted(() => {
+  doScrollMagic();
+  //图片懒加载
+  document.querySelectorAll("img[lazy-src]").forEach(function (item) {
+    let lazy_img = item;
+    let img = new Image();
+    img.addEventListener("load", loadHandler);
+    img.setAttribute("src", item.getAttribute("lazy-src") as string);
+    function loadHandler() {
+      lazy_img.setAttribute("src", img.src);
+      lazy_img.removeAttribute("lazy-src");
+    }
   });
 });
 
@@ -37,9 +52,24 @@ link.addEventListener("click", hideFloatNav);
 function hideFloatNav() {
   let navbar = document.querySelector("#float_navBar") as HTMLElement;
   let toggler = document.querySelector(".navbar-toggler") as HTMLElement;
-  if (navbar.classList.contains("show")) {
+  if (navbar && navbar.classList.contains("show")) {
     toggler.dispatchEvent(new Event("click"));
   }
+}
+
+//页面动画
+function doScrollMagic() {
+  let controller = new ScrollMagic.Controller();
+  let fadeInElements = document.querySelectorAll(".fadeIn");
+  fadeInElements.forEach((each) => {
+    new ScrollMagic.Scene({
+      triggerElement: each,
+      triggerHook: 0.8,
+      reverse: false,
+    })
+      .setClassToggle(each, "fadedIn")
+      .addTo(controller);
+  });
 }
 </script>
 
@@ -100,7 +130,7 @@ function hideFloatNav() {
   top: 0;
   opacity: 1;
   background: #211f2f;
-  background: #211f2fcc;
+  background: rgba(33, 31, 47, 0.8);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   transition: all 0.2s;

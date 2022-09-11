@@ -349,9 +349,9 @@ function drawLabel(cvs: HTMLCanvasElement, card: Card) {
     fontBoxWidth = Math.max(160, temp[1])
   }
   
-  temp_ctx.transform(1, -0.12, 0, 1, 0, cvs.height * 0.865 - fontSize * 1.4)
+  temp_ctx.transform(1, -0.12, 0, 1, 0, cvs.height * 0.865 - fontSize * 1.43)
   
-  temp_ctx.fillStyle = String(card.themeColor + "aa")
+  temp_ctx.fillStyle = hexToRgba(card.themeColor + "aa")
   temp_ctx.beginPath()
   temp_ctx.moveTo(cvs.width, 0)
   temp_ctx.lineTo(cvs.width, fontSize * 1.4)
@@ -480,4 +480,13 @@ function computeText(text:string, font: string, fontSize: number, fontColor: str
 }
 function repeat(str: string, num: number): string{
   return num > 1 ? str += repeat(str, --num): str
+}
+
+// 16进制颜色转化为RGBA方法
+function hexToRgba(hex: string) {
+  const rgba = 'rgba(' + parseInt('0x' + hex.slice(1,3)) + ',' +
+    parseInt('0x' + hex.slice(3,5)) + ',' +
+    parseInt('0x' + hex.slice(5,7)) + ',' +
+    parseInt('0x' + hex.slice(7, 9))/255 + ')'
+  return rgba
 }
