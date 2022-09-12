@@ -277,7 +277,7 @@ function reset(card: Card) {
   card.nameEng = "NORA SILENT";
   card.label = "幽海鸢行";
   card.party = cd.getPartyCode("鸽舍", parties.value);
-  cd.setPortrait(card);
+  card.importPortrait("https://static.vupslash.icu/img/portrait/default.png");
   cd.setShadow(card);
   cd.setParty(card, parties.value);
   card.shadowDistance = 50;
@@ -816,7 +816,8 @@ select {
   .input-color-text {
     width: 7rem !important;
   }
-  .btn-save {
+  .btn-save,
+  .btn-portrait {
     margin-left: 0.5rem !important;
   }
   #shine-color + input {

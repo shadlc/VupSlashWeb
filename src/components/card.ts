@@ -135,12 +135,6 @@ export class Card {
   }
 }
 
-export function setPortrait(card: Card) {
-  card.importPortrait(
-    "https://static.vupslash.icu/img/portrait/" + card.code + ".png"
-  );
-}
-
 export function setParty(card: Card, parties: any) {
   parties.forEach((p: any) => {
     if (p.code == card.party) {
@@ -154,11 +148,7 @@ export function setParty(card: Card, parties: any) {
 }
 
 export function setShadow(card: Card) {
-  if (card.shadowType == "default") {
-    card.importShadow("https://static.vupslash.icu/img/shadow/" + card.shadowType + ".png");
-  } else {
-    card.importShadow("https://static.vupslash.icu/img/shadow/" + card.shadowType + ".png");
-  }
+  card.importShadow("https://static.vupslash.icu/img/shadow/" + card.shadowType + ".png");
 }
 
 // 获取势力名称
