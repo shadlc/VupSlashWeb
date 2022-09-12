@@ -891,8 +891,6 @@ select {
 
 .border-vup {
   border-bottom: 1px solid;
-  border-image: linear-gradient(to right, #212529 10%, #fafafa, #212529 90%) 20
-    20;
   border-image: -webkit-linear-gradient(
       to right,
       #212529 10%,
@@ -900,6 +898,8 @@ select {
       #212529 90%
     )
     20 20;
+  border-image: linear-gradient(to right, #212529 10%, #fafafa, #212529 90%) 20
+    20;
 }
 
 @media (min-width: 576px) {
