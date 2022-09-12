@@ -133,46 +133,12 @@ export class Card {
     // 绘制圆角
     drawRadius(cvs, 60);
   }
-
-  drawEmpty(cvs: HTMLCanvasElement) {
-    // 绘制背景
-    drawBackground(cvs, this);
-    // 绘制上层
-    drawCover(cvs, this);
-    // 绘制圆角
-    drawRadius(cvs, 60);
-  }
 }
 
-export function setCard(card: Card, cardList: any, parties: any, isNew = false) {
-  if (cardList[card.code]) {
-    const d = cardList[card.code];
-    card.importPortrait(
-      "https://static.vupslash.icu/img/portrait/" + card.code + ".png"
-    );
-    card.name = d.name;
-    card.nameEng = d.nameEng;
-    card.label = d.label;
-    card.party = getPartyCode(d.party, parties);
-    card.shadowType = d.shadowType;
-    card.isShine = d.isShine;
-    card.isOverflow = d.isOverflow;
-    card.shadowDistance = d.shadowDistance;
-    card.portraitX = d.portraitX;
-    card.portraitY = d.portraitY;
-    card.portraitW = d.portraitW;
-    card.portraitH = d.portraitH;
-    card.shineColor = d.shineColor;
-    setShadow(card);
-    setParty(card, parties);
-    if (isNew) {
-      card.portraitX = 0;
-      card.portraitY = 0;
-      card.portraitW = card.portrait.img.width;
-      card.portraitH = card.portrait.img.height;
-      card.shadowDistance = card.portraitW / 10;
-    }
-  }
+export function setPortrait(card: Card) {
+  card.importPortrait(
+    "https://static.vupslash.icu/img/portrait/" + card.code + ".png"
+  );
 }
 
 export function setParty(card: Card, parties: any) {
