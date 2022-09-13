@@ -2,49 +2,49 @@
 import axios from "axios";
 import { onMounted, onBeforeMount, ref } from "vue";
 
-let characters = ref();
+const characters = ref();
 onBeforeMount(async () => {
   await axios
     .get("https://api.vupslash.icu/json/character_list/")
     .then((respond) => {
       characters.value = respond.data;
     });
-  //角色数量统计
+  // 角色数量统计
   (document.querySelector("#character_btn") as HTMLElement).innerHTML =
     "角色(" + document.querySelectorAll(".vup-card").length + ")";
-  //图片懒加载
+  // 图片懒加载
   document.querySelectorAll("img[lazy-src]").forEach(function (item) {
-    let lazy_img = item;
-    let img = new Image();
+    const lazyImg = item;
+    const img = new Image();
     img.addEventListener("load", loadHandler);
     img.setAttribute("src", item.getAttribute("lazy-src") as string);
     function loadHandler() {
-      lazy_img.setAttribute("src", img.src);
-      lazy_img.removeAttribute("lazy-src");
+      lazyImg.setAttribute("src", img.src);
+      lazyImg.removeAttribute("lazy-src");
     }
-    lazy_img.addEventListener("click", function () {
-      lazy_img.setAttribute("src", img.src);
-      let inner_img = document.querySelector(
-        lazy_img.getAttribute("data-bs-target") + " img[inner_src]"
+    lazyImg.addEventListener("click", function () {
+      lazyImg.setAttribute("src", img.src);
+      const innerImg = document.querySelector(
+        lazyImg.getAttribute("data-bs-target") + " img[inner_src]"
       ) as HTMLElement;
-      inner_img.setAttribute(
+      innerImg.setAttribute(
         "src",
-        inner_img.getAttribute("inner_src") as string
+        innerImg.getAttribute("inner_src") as string
       );
-      inner_img.removeAttribute("inner_src");
+      innerImg.removeAttribute("inner_src");
     });
   });
 });
 
-//背景变化
+// 背景变化
 (document.querySelector("body") as HTMLElement).style.background =
   "linear-gradient(320deg, #211f2f, #001010) repeat fixed";
 
 onMounted(() => {
   // 搜索
-  let searchBox = document.querySelector("#search_box") as HTMLElement;
+  const searchBox = document.querySelector("#search_box") as HTMLElement;
   searchBox.onkeyup = function () {
-    let text = (searchBox as HTMLInputElement).value as string;
+    const text = (searchBox as HTMLInputElement).value as string;
     document.querySelectorAll(".vup-card").forEach(function (item) {
       if (item.innerHTML.toLowerCase().includes(text.toLowerCase())) {
         item.classList.remove("hide");
@@ -52,9 +52,9 @@ onMounted(() => {
         item.classList.add("hide");
       }
     });
-    let card_count = document.querySelectorAll(".vup-card:not(.hide)")
+    const cardCount = document.querySelectorAll(".vup-card:not(.hide)")
       .length as number;
-    if (card_count == 0) {
+    if (cardCount === 0) {
       (document.querySelector(".no-card") as HTMLInputElement).classList.remove(
         "hide"
       );
@@ -63,12 +63,12 @@ onMounted(() => {
         "hide"
       );
     }
-    let cBtn = document.querySelector("#character_btn") as HTMLElement;
-    cBtn.innerHTML = "角色(" + card_count + ")";
+    const cBtn = document.querySelector("#character_btn") as HTMLElement;
+    cBtn.innerHTML = "角色(" + cardCount + ")";
   };
   // 显示回到顶部按钮
   window.addEventListener("scroll", showBtn, true);
-  let btnToTop = document.querySelector("#btn_to_top") as HTMLElement;
+  const btnToTop = document.querySelector("#btn_to_top") as HTMLElement;
   function showBtn() {
     if (btnToTop) {
       if (window.scrollY <= 100) {
@@ -106,10 +106,10 @@ function scrollToTop() {
         </li>
         <!-- <li class="list-group-item">
         <a class="fs-5 fw-bold disabled" title="此分区未开启">卡牌</a>
-      </li>
-      <li class="list-group-item">
-        <a class="fs-5 fw-bold disabled" title="此分区未开启">模式</a>
-      </li> -->
+        </li>
+        <li class="list-group-item">
+          <a class="fs-5 fw-bold disabled" title="此分区未开启">模式</a>
+        </li> -->
       </ul>
     </div>
     <div class="container-fluid">
@@ -159,12 +159,12 @@ function scrollToTop() {
                     <div class="modal-title mx-auto">
                       <img
                         class="px-2 d-none d-sm-inline"
-                        src="img/vup_title_border.svg"
+                        src="/img/vup_title_border.svg"
                       />
                       <p class="m-0 p-0 fs-4 fw-bold center">角色介绍</p>
                       <img
                         class="px-2 d-none d-sm-inline"
-                        src="img/vup_title_border.svg"
+                        src="/img/vup_title_border.svg"
                       />
                     </div>
                   </div>
@@ -494,6 +494,6 @@ function scrollToTop() {
 .power {
   margin: 0 0.1em;
   padding-right: 1em;
-  background: url("/public/img/power.svg") no-repeat;
+  background: url("/img/power.svg") no-repeat;
 }
 </style>
