@@ -7,15 +7,15 @@ defineProps<{
 }>();
 
 onMounted(() => {
-  //图片懒加载
+  // 图片懒加载
   document.querySelectorAll("img[lazy-src]").forEach(function (item) {
-    let lazy_img = item;
-    let img = new Image();
+    const lazyImg = item;
+    const img = new Image();
     img.addEventListener("load", loadHandler);
     img.setAttribute("src", item.getAttribute("lazy-src") as string);
     function loadHandler() {
-      lazy_img.setAttribute("src", img.src);
-      lazy_img.removeAttribute("lazy-src");
+      lazyImg.setAttribute("src", img.src);
+      lazyImg.removeAttribute("lazy-src");
     }
   });
 });
@@ -27,7 +27,7 @@ onMounted(() => {
       <div class="col-lg-6 offset-lg-1">
         <h2 class="fw-bold">关于我们</h2>
         <p class="fs-5 mx-4">
-          正如你看到的这样，我们为我们所热爱的东西创作不一样的玩法，如果你也有能力、有意愿，欢迎加入我们一起创作！
+          正如你看到的这样，我们为我们所热爱的事物创作不一样的玩法，如果你也有能力、有意愿，欢迎加入我们一起观测，一起创作！
         </p>
         <h5 class="fw-bold" title="ヾ(≧▽≦*)o感谢一路上有你">鸣谢</h5>
         <p class="mx-4" v-if="thanks">
