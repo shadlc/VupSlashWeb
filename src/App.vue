@@ -6,7 +6,7 @@ import WebFooter from "./components/WebFooter.vue";
 import axios from "axios";
 import { onBeforeMount, ref } from "vue";
 
-let thanks = ref();
+const thanks = ref();
 onBeforeMount(() => {
   axios.get("https://api.vupslash.icu/json/thanks_list/").then((respond) => {
     thanks.value = respond.data;
@@ -15,15 +15,15 @@ onBeforeMount(() => {
 
 // 隐藏顶部导航栏
 function hideFloatNav() {
-  let btn = document.querySelector(".navbar-toggler") as HTMLElement;
-  if (getComputedStyle(btn, null).display != "none") btn.click();
+  const btn = document.querySelector(".navbar-toggler") as HTMLElement;
+  if (getComputedStyle(btn, null).display !== "none") btn.click();
 }
 
 // 动态背景
 setTimeout(() => {
   let deg = 320;
-  let header = document.querySelector("body") as HTMLElement;
-  let dynamic = setInterval(() => {
+  const header = document.querySelector("body") as HTMLElement;
+  const dynamic = setInterval(() => {
     if (deg <= 680) {
       header.style.background =
         "linear-gradient(" + deg + "deg, #211f2f, #001010) no-repeat fixed";
@@ -54,16 +54,15 @@ setTimeout(() => {
         <ul class="navbar-nav fs-5">
           <li class="nav-item">
             <router-link class="nav-link" to="/" @click="hideFloatNav"
-              >主页</router-link
-            >
+              >主页
+            </router-link>
           </li>
           <li class="nav-item">
             <a
               class="nav-link"
               href="https://shimo.im/docs/R13j8bJ2DVUJjZk5/read"
               @click="hideFloatNav"
-            >
-              入门
+              >入门
             </a>
           </li>
           <li class="nav-item">
@@ -79,18 +78,18 @@ setTimeout(() => {
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/cards" @click="hideFloatNav"
-              >卡查</router-link
-            >
+              >卡查
+            </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/maker" @click="hideFloatNav"
-              >制卡</router-link
-            >
+              >制卡
+            </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/faq" @click="hideFloatNav"
-              >FAQ</router-link
-            >
+              >FAQ
+            </router-link>
           </li>
         </ul>
       </div>
@@ -109,15 +108,15 @@ setTimeout(() => {
 <style>
 @font-face {
   font-family: "vup_font";
-  src: url("/public/fonts/vup.ttf");
+  src: url("/fonts/vup.ttf");
 }
 @font-face {
   font-family: "sha_font";
-  src: url("/public/fonts/sha.ttf");
+  src: url("/fonts/sha.ttf");
 }
 @font-face {
   font-family: "zhengkuchaojihei";
-  src: url("/public/fonts/zhengkuchaojihei.ttf");
+  src: url("/fonts/zhengkuchaojihei.ttf");
 }
 .vup {
   font-family: vup_font;

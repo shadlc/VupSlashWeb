@@ -1,20 +1,20 @@
 module.exports = {
-  root: true,
   env: {
-    node: true,
-    "vue/setup-compiler-macros": true,
+    browser: true,
+    es2021: true,
   },
   extends: [
     "plugin:vue/vue3-essential",
     "eslint:recommended",
+    "standard-with-typescript",
     "@vue/typescript/recommended",
     "plugin:prettier/recommended",
   ],
+  overrides: [],
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: "latest",
+    sourceType: "module",
   },
-  rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
-  },
+  plugins: ["vue"],
+  rules: {},
 };

@@ -8,7 +8,7 @@ import HomeUpdate from "@/components/HomeUpdate.vue";
 import HomeAbout from "@/components/HomeAbout.vue";
 import ScrollMagic from "scrollmagic";
 
-let versions = ref([{ version: "" }]);
+const versions = ref([{ version: "" }]);
 onBeforeMount(() => {
   axios.get("https://api.vupslash.icu/json/version_list/").then((respond) => {
     versions.value = respond.data;
@@ -17,15 +17,15 @@ onBeforeMount(() => {
 
 onMounted(() => {
   doScrollMagic();
-  //图片懒加载
+  // 图片懒加载
   document.querySelectorAll("img[lazy-src]").forEach(function (item) {
-    let lazy_img = item;
-    let img = new Image();
+    const lazyImg = item;
+    const img = new Image();
     img.addEventListener("load", loadHandler);
     img.setAttribute("src", item.getAttribute("lazy-src") as string);
     function loadHandler() {
-      lazy_img.setAttribute("src", img.src);
-      lazy_img.removeAttribute("lazy-src");
+      lazyImg.setAttribute("src", img.src);
+      lazyImg.removeAttribute("lazy-src");
     }
   });
 });
@@ -34,9 +34,9 @@ onMounted(() => {
 window.addEventListener("scroll", showFloatNav, true);
 function showFloatNav() {
   if (document.querySelector(".cover") as HTMLElement) {
-    let scrolls = window.scrollY;
-    let cover = document.querySelector(".cover") as HTMLElement;
-    let nav = document.querySelector("#float_nav") as HTMLElement;
+    const scrolls = window.scrollY;
+    const cover = document.querySelector(".cover") as HTMLElement;
+    const nav = document.querySelector("#float_nav") as HTMLElement;
     if (scrolls >= cover.clientHeight) {
       nav.classList.remove("hide-nav");
     } else {
@@ -46,21 +46,21 @@ function showFloatNav() {
 }
 
 // 点击导航栏进行定位后隐藏导航栏
-let link = document.querySelector(".navbar-nav a") as HTMLElement;
+const link = document.querySelector(".navbar-nav a") as HTMLElement;
 link.addEventListener("click", hideFloatNav);
 
 function hideFloatNav() {
-  let navbar = document.querySelector("#float_navBar") as HTMLElement;
-  let toggler = document.querySelector(".navbar-toggler") as HTMLElement;
+  const navbar = document.querySelector("#float_navBar") as HTMLElement;
+  const toggler = document.querySelector(".navbar-toggler") as HTMLElement;
   if (navbar && navbar.classList.contains("show")) {
     toggler.dispatchEvent(new Event("click"));
   }
 }
 
-//页面动画
+// 页面动画
 function doScrollMagic() {
-  let controller = new ScrollMagic.Controller();
-  let fadeInElements = document.querySelectorAll(".fadeIn");
+  const controller = new ScrollMagic.Controller();
+  const fadeInElements = document.querySelectorAll(".fadeIn");
   fadeInElements.forEach((each) => {
     new ScrollMagic.Scene({
       triggerElement: each,
