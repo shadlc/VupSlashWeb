@@ -439,15 +439,6 @@ function click(element: string) {
               <span>角色立绘</span>
             </div>
             <div class="col-12 fw-bold my-2 center">
-              <a class="btn" @click="click('#import-config')">导入配置</a>
-              <input
-                id="import-config"
-                type="file"
-                style="display: none"
-                accept="application/json"
-                @change="uploadConfig(card, $event)"
-              />
-              <a class="btn" @click="downloadConfig(card)">导出配置</a>
               <a class="btn btn-portrait" @click="click('#import-portrait')">
                 上传自定义立绘
               </a>
@@ -695,6 +686,15 @@ function click(element: string) {
             </div>
           </div>
           <div class="center">
+            <a class="btn" @click="click('#import-config')">导入配置</a>
+            <input
+              id="import-config"
+              type="file"
+              style="display: none"
+              accept="application/json"
+              @change="uploadConfig(card, $event)"
+            />
+            <a class="btn" @click="downloadConfig(card)">导出配置</a>
             <a class="btn" @click="reset(card)">重置配置</a>
             <a class="btn btn-save" @click="downloadCard(card)">保存卡片</a>
           </div>
@@ -816,8 +816,7 @@ select {
   .input-color-text {
     width: 7rem !important;
   }
-  .btn-save,
-  .btn-portrait {
+  .btn-save {
     margin-left: 0.5rem !important;
   }
   #shine-color + input {
@@ -836,10 +835,7 @@ select {
   vertical-align: text-top;
 }
 .btn-save {
-  margin-left: 6rem;
-}
-.btn-portrait {
-  margin-left: 6rem;
+  margin-left: 4rem;
 }
 
 .div-shine {
