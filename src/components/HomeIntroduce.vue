@@ -3,21 +3,21 @@
 window.addEventListener("scroll", avatarFloating, true);
 function avatarFloating() {
   if (document.querySelector("#c1") as HTMLElement) {
-    var c1 = document.querySelector("#c1") as HTMLElement;
-    var c2 = document.querySelector("#c2") as HTMLElement;
-    var c3 = document.querySelector("#c3") as HTMLElement;
-    var c4 = document.querySelector("#c4") as HTMLElement;
-    var floating_up = 400;
-    var scrolls =
+    const c1 = document.querySelector("#c1") as HTMLElement;
+    const c2 = document.querySelector("#c2") as HTMLElement;
+    const c3 = document.querySelector("#c3") as HTMLElement;
+    const c4 = document.querySelector("#c4") as HTMLElement;
+    let floatingUp = 400;
+    const scrolls =
       document.documentElement.scrollTop ||
       window.pageYOffset ||
       document.body.scrollTop;
-    floating_up = c1.offsetTop - scrolls - 200;
-    if (floating_up >= 0 && floating_up <= 600) {
-      c1.style.transform = "translateY(" + floating_up * 0.1 + "px)";
-      c2.style.transform = "translateY(" + floating_up * 0.3 + "px)";
-      c3.style.transform = "translateY(" + floating_up * 0.2 + "px)";
-      c4.style.transform = "translateY(" + floating_up * 0.4 + "px)";
+    floatingUp = c1.offsetTop - scrolls - 200;
+    if (floatingUp >= 0 && floatingUp <= 600) {
+      c1.style.transform = "translateY(" + floatingUp * 0.1 + "px)";
+      c2.style.transform = "translateY(" + floatingUp * 0.3 + "px)";
+      c3.style.transform = "translateY(" + floatingUp * 0.2 + "px)";
+      c4.style.transform = "translateY(" + floatingUp * 0.4 + "px)";
       c1.style.opacity = "1";
       c2.style.opacity = "1";
       c3.style.opacity = "1";
@@ -48,7 +48,10 @@ function avatarFloating() {
       </blockquote>
     </div>
     <div class="my-5 text-center fadeIn">
-      <img class="img-fluid col-lg-8 shadow" lazy-src="img/battle.jpg" />
+      <img
+        class="img-fluid col-lg-8 shadow"
+        lazy-src="/assets/img/battle.jpg"
+      />
     </div>
 
     <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fadeIn">
@@ -73,22 +76,22 @@ function avatarFloating() {
       <img
         id="c1"
         class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
-        lazy-src="img/c1.jpg"
+        lazy-src="/assets/img/c1.jpg"
       />
       <img
         id="c2"
         class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
-        lazy-src="img/c2.jpg"
+        lazy-src="/assets/img/c2.jpg"
       />
       <img
         id="c3"
         class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
-        lazy-src="img/c3.jpg"
+        lazy-src="/assets/img/c3.jpg"
       />
       <img
         id="c4"
         class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
-        lazy-src="img/c4.jpg"
+        lazy-src="/assets/img/c4.jpg"
       />
     </div>
     <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fadeIn">
@@ -110,7 +113,7 @@ function avatarFloating() {
       </blockquote>
     </div>
     <div class="text-center my-5 fadeIn">
-      <img class="img-fluid col-12 col-lg-6" lazy-src="img/cards.png" />
+      <img class="img-fluid col-12 col-lg-6" lazy-src="/assets/img/cards.png" />
     </div>
 
     <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fadeIn">

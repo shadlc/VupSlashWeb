@@ -159,12 +159,12 @@ function scrollToTop() {
                     <div class="modal-title mx-auto">
                       <img
                         class="px-2 d-none d-sm-inline"
-                        src="/img/vup_title_border.svg"
+                        src="/assets/img/vup_title_border.svg"
                       />
                       <p class="m-0 p-0 fs-4 fw-bold center">角色介绍</p>
                       <img
                         class="px-2 d-none d-sm-inline"
-                        src="/img/vup_title_border.svg"
+                        src="/assets/img/vup_title_border.svg"
                       />
                     </div>
                   </div>
@@ -494,6 +494,6 @@ function scrollToTop() {
 .power {
   margin: 0 0.1em;
   padding-right: 1em;
-  background: url("/img/power.svg") no-repeat;
+  background: url("/assets/img/power.svg") no-repeat;
 }
 </style>
