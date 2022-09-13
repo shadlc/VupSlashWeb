@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Ref, ref, onMounted, onBeforeMount, watch } from "vue";
+import { type Ref, ref, onMounted, onBeforeMount, watch } from "vue";
 import axios from "axios";
 import * as cd from "../components/card";
 import { Card } from "../components/card";
@@ -10,7 +10,7 @@ import { Mouse } from "../components/move";
 const width = 600;
 const height = 870;
 let cardCvs: Ref<Canvas>;
-let card = ref(new Card());
+const card = ref(new Card());
 let isCardChanged = false;
 let loopTimeout = false;
 
@@ -22,8 +22,8 @@ let oldPortraitW = 0;
 let oldPortraitH = 0;
 
 // 载入数据
-let characters = ref();
-let parties = ref();
+const characters = ref();
+const parties = ref();
 
 // 挂载前读取数据
 onBeforeMount(async () => {
@@ -123,7 +123,7 @@ function moveListen(cvs: HTMLCanvasElement, card: Card, mouse: Mouse) {
   });
 
   addEL("touchend", (e) => {
-    if (e.touches.length == 0) {
+    if (e.touches.length === 0) {
       mouse.isDown = false;
     } else if (e.touches.length <= 1) {
       mouse.isMoveable = false;
@@ -201,7 +201,7 @@ function movePortrait(card: Card, mouse: Mouse) {
       (mouse.y - mouse.startY + (mouse.y2 - mouse.startY2)) /
         mouse.screenRatio /
         2;
-    let distance = Math.hypot(mouse.x - mouse.x2, mouse.y - mouse.y2);
+    const distance = Math.hypot(mouse.x - mouse.x2, mouse.y - mouse.y2);
     card.portraitW = oldPortraitW * (distance / mouse.distance);
     card.portraitH = oldPortraitH * (distance / mouse.distance);
     card.portraitX += (oldPortraitW - card.portraitW) / 2;
@@ -216,9 +216,9 @@ function movePortrait(card: Card, mouse: Mouse) {
 // 缩放立绘
 function zoomPortrait(card: Card, event: WheelEvent) {
   if (card.portrait.isLoad) {
-    let direction: number = event.deltaY;
-    let oldPortraitW = card.portraitW;
-    let oldPortraitH = card.portraitH;
+    const direction: number = event.deltaY;
+    const oldPortraitW = card.portraitW;
+    const oldPortraitH = card.portraitH;
     if (direction < 0) {
       card.portraitW *= 1.020408;
       card.portraitH *= 1.020408;
@@ -297,12 +297,12 @@ function reset(card: Card) {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function uploadConfig(c: Card, event: any) {
   const file = event.target.files[0];
-  let reader = new FileReader();
+  const reader = new FileReader();
   reader.readAsText(file, "UTF-8");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   reader.onload = function (read: any) {
     event.target.value = "";
-    let data = JSON.parse(read.target.result);
+    const data = JSON.parse(read.target.result);
     c.name = data.name ?? "未知名称";
     c.nameEng = data.nameEng ?? "undefined";
     c.label = data.label ?? "未知称号";
@@ -330,7 +330,7 @@ function uploadConfig(c: Card, event: any) {
 
 // 下载配置
 function downloadConfig(c: Card) {
-  let data: { [key: string]: string | number | boolean } = {};
+  const data: { [key: string]: string | number | boolean } = {};
   data.name = c.name;
   data.nameEng = c.nameEng;
   data.label = c.label;
@@ -353,7 +353,7 @@ function downloadConfig(c: Card) {
   data.labelColor = c.labelColor;
   data.borderColor = c.borderColor;
 
-  let d = new Date();
+  const d = new Date();
   const time = d.toLocaleDateString();
   const content =
     "data:text/Json;charset=utf-8," +
