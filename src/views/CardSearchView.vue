@@ -133,7 +133,8 @@ function cardAnchor(event: MouseEvent, id: string) {
   const card = event.target as HTMLImageElement;
   card.setAttribute("src", card.src);
 
-  history.pushState({ cards: "#" }, "", "#" + id);
+  if (window.location.hash !== "#" + id)
+    history.pushState({ cards: "#" }, "", "#" + id);
 }
 
 // 滚动到顶部
@@ -246,8 +247,8 @@ function click(id: string) {
                     </div>
                   </div>
                   <div class="modal-body">
-                    <div class="row mx-4">
-                      <div class="col-4 p-1 p-lg-4 pb-4 mx-auto">
+                    <div class="row m-sm-3">
+                      <div class="col-4 p-1 p-lg-3 pb-4 mx-auto">
                         <img
                           class="img-fluid border border-2 rounded-1rem"
                           :inner_src="
@@ -267,7 +268,6 @@ function click(id: string) {
                                   <span class="vup-label">
                                     {{ each.label }}
                                   </span>
-                                  &nbsp;
                                   <span class="vup-name">
                                     {{ each.name }}
                                   </span>
@@ -323,6 +323,18 @@ function click(id: string) {
                                   </span>
                                 </td>
                               </tr>
+                              <tr>
+                                <td>设计师</td>
+                                <td>
+                                  {{ each.designer }}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>观测日期</td>
+                                <td>
+                                  {{ each.birthDate }}
+                                </td>
+                              </tr>
                             </tbody>
                           </table>
                         </div>
@@ -337,7 +349,7 @@ function click(id: string) {
                         {{ each.skillName1 }}
                       </div>
                       <div
-                        class="text col-12 col-sm-10 center"
+                        class="text col-12 col-sm-10"
                         v-html="each.skill1"
                       ></div>
                     </div>
@@ -350,7 +362,7 @@ function click(id: string) {
                         {{ each.skillName2 }}
                       </div>
                       <div
-                        class="text col-12 col-sm-10 center"
+                        class="text col-12 col-sm-10"
                         v-html="each.skill2"
                       ></div>
                     </div>
@@ -363,7 +375,7 @@ function click(id: string) {
                         {{ each.skillName3 }}
                       </div>
                       <div
-                        class="text col-12 col-sm-10 center"
+                        class="text col-12 col-sm-10"
                         v-html="each.skill3"
                       ></div>
                     </div>
@@ -375,7 +387,7 @@ function click(id: string) {
                       <div class="col fs-5 center">
                         {{ each.derivedSkillName1 }}
                       </div>
-                      <div class="text col-12 col-sm-10 center">
+                      <div class="text col-12 col-sm-10">
                         {{ each.derivedSkill1 }}
                       </div>
                     </div>
@@ -387,7 +399,7 @@ function click(id: string) {
                       <div class="col fs-5 center">
                         {{ each.derivedSkillName2 }}
                       </div>
-                      <div class="text col-12 col-sm-10 center">
+                      <div class="text col-12 col-sm-10">
                         {{ each.derivedSkill2 }}
                       </div>
                     </div>
@@ -398,21 +410,34 @@ function click(id: string) {
                     >
                       <div class="col-12 fs-5 center">概念介绍</div>
                       <div
-                        class="text col-12 center"
+                        class="text col-12 fit-content"
                         v-html="each.notion"
                       ></div>
                     </div>
                     <div
                       class="row m-2 p-2 p-lg-3 border border-2 border-warning text-warning rounded-1rem"
                       title="角色特性"
-                      v-if="each.feature"
+                      v-if="each.feature1"
                     >
                       <div class="col-12 fs-5 center">
-                        {{ each.featureName }}
+                        {{ each.featureName1 }}
                       </div>
                       <div
-                        class="text col-12 center"
-                        v-html="each.feature"
+                        class="text col-12 fit-content"
+                        v-html="each.feature1"
+                      ></div>
+                    </div>
+                    <div
+                      class="row m-2 p-2 p-lg-3 border border-2 border-warning text-warning rounded-1rem"
+                      title="角色特性"
+                      v-if="each.feature2"
+                    >
+                      <div class="col-12 fs-5 center">
+                        {{ each.featureName2 }}
+                      </div>
+                      <div
+                        class="text col-12 fit-content"
+                        v-html="each.feature2"
                       ></div>
                     </div>
                   </div>
@@ -470,6 +495,15 @@ function click(id: string) {
 }
 .text {
   display: block;
+  height: fit-content;
+  margin: auto;
+}
+.fit-content {
+  width: fit-content;
+  margin: 0 auto;
+}
+.talk {
+  cursor: pointer;
 }
 </style>
 <style scoped>
@@ -543,7 +577,7 @@ function click(id: string) {
 .card {
   background: #fafafa;
   border: 3px solid #fafafa;
-  border-radius: 16px;
+  border-radius: 10%/6%;
   overflow: hidden;
   transition: transform 0.25s ease;
 }
@@ -587,6 +621,9 @@ function click(id: string) {
 .derived-skill:hover {
   opacity: 1;
   transition: all 0.5s ease-out;
+}
+.table {
+  font-size: 0.8rem;
 }
 .table > :not(caption) > * > *:nth-child(1),
 .table > :not(caption) > * > *:nth-child(2) {
