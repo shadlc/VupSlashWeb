@@ -2,31 +2,25 @@
 import axios from "axios";
 import { onMounted, onBeforeMount, ref } from "vue";
 
-let faqs = ref();
+const faqs = ref();
 onBeforeMount(async () => {
   await axios.get("https://api.vupslash.icu/json/faq_list/").then((respond) => {
     faqs.value = respond.data;
-
-    // 自动滚动到锚点位置
-    setTimeout(() => {
-      if (window.location.hash) {
-        let element = document.querySelector(
-          decodeURIComponent(window.location.hash)
-        );
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }
-    }, 200);
   });
+
+  // 自动滚动到锚点位置
+  const anchor = decodeURIComponent(window.location.hash);
+  if (anchor) {
+    window.location.href = anchor;
+  }
 
   // 导航栏滚动监听
   const links = document.querySelectorAll(".faq-navbar a");
   window.addEventListener("scroll", () => {
-    let scrolls = window.scrollY;
+    const scrolls = window.scrollY;
     let had = false;
     for (let i = links.length - 1; i >= 0; i--) {
-      let item = document.querySelector(
+      const item = document.querySelector(
         "h3" + links[i].getAttribute("href")
       ) as HTMLElement;
       if (!had && item && scrolls >= item.offsetTop + 260) {
@@ -41,27 +35,29 @@ onBeforeMount(async () => {
 
 onMounted(() => {
   // 搜索
-  let search_box = document.querySelector("#search_box") as HTMLElement;
-  search_box.onkeyup = () => {
+  const searchBox = document.querySelector("#search_box") as HTMLElement;
+  searchBox.onkeyup = () => {
     document.querySelectorAll("mark").forEach((each) => {
-      let text = each.textContent as string;
+      const text = each.textContent as string;
       each.replaceWith(text);
     });
-    let value = (search_box as HTMLInputElement).value;
+    const value = (searchBox as HTMLInputElement).value;
     document.querySelectorAll(".faq-subtype").forEach((each) => {
       if (
         (each.textContent as string).toLowerCase().includes(value.toLowerCase())
       ) {
-        if (value != "") highLight(each as HTMLElement, value);
+        if (value !== "") highLight(each as HTMLElement, value);
         each.classList.remove("hide");
       } else {
         each.classList.add("hide");
       }
     });
-    let showCardNum = document.querySelectorAll(
+    const showCardNum = document.querySelectorAll(
       ".faq-subtype:not(.hide)"
     ).length;
-    let searchResult = document.querySelector(".search-result") as HTMLElement;
+    const searchResult = document.querySelector(
+      ".search-result"
+    ) as HTMLElement;
     if (showCardNum && document.querySelectorAll(".faq-subtype.hide").length) {
       searchResult.innerHTML =
         "寻找到" + showCardNum + "条关于“" + value + "”的记录";
@@ -75,7 +71,7 @@ onMounted(() => {
 
 // 高亮
 function highLight(ele: HTMLElement, keys: string) {
-  let reg = new RegExp("(" + keys.replace(/,/, "|") + ")", "g");
+  const reg = new RegExp("(" + keys.replace(/,/, "|") + ")", "g");
   ele.innerHTML = ele.innerHTML.replace(/>([^<>]*)</g, function ($1) {
     $1 = $1.replace(reg, "<mark>$&</mark>");
     return $1;
@@ -84,10 +80,10 @@ function highLight(ele: HTMLElement, keys: string) {
 
 window.addEventListener("scroll", doScroll, true);
 function doScroll() {
-  let btnToTop = document.querySelector("#btn_to_top") as HTMLElement;
-  let navbarLeft = document.querySelector(".navbar-left") as HTMLElement;
+  const btnToTop = document.querySelector("#btn_to_top") as HTMLElement;
+  const navbarLeft = document.querySelector(".navbar-left") as HTMLElement;
   if (navbarLeft) {
-    let scrolls = window.scrollY;
+    const scrolls = window.scrollY;
     // 显示回到顶部按钮
     if (btnToTop) {
       if (window.scrollY <= 100) {
@@ -97,11 +93,11 @@ function doScroll() {
       }
     }
     // 固定左侧导航栏
-    let navbarContainer = document.querySelector(
+    const navbarContainer = document.querySelector(
       ".navbar-container"
     ) as HTMLElement;
-    let navbarToTop: number = navbarContainer.offsetTop - scrolls;
-    let navbarToBottom: number = -(
+    const navbarToTop: number = navbarContainer.offsetTop - scrolls;
+    const navbarToBottom: number = -(
       navbarToTop +
       navbarContainer.clientHeight -
       document.body.clientHeight
@@ -241,7 +237,10 @@ function scrollToTop() {
               v-for="(quests, subtype, index) in subtypes.subtypes"
               :key="index"
             >
-              <h3 class="type" :id="String(subtype)">{{ subtype }}</h3>
+              <h3 class="type" :id="String(subtype)">
+                <a class="anchor-subtype" :href="'#' + String(subtype)">#</a>
+                {{ subtype }}
+              </h3>
               <blockquote
                 class="faq-card blockquote"
                 v-for="(answers, quest, index) in quests.quests"
@@ -412,5 +411,13 @@ blockquote {
   font-weight: bold;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid grey;
+}
+.anchor-subtype {
+  opacity: 0;
+  color: #f8f9fa;
+  font-size: 1.4rem;
+}
+.type:hover > .anchor-subtype {
+  opacity: 1;
 }
 </style>

@@ -7,7 +7,7 @@ onBeforeMount(async () => {
   await axios
     .get("https://api.vupslash.icu/json/character_list/")
     .then((respond) => {
-      characters.value = respond.data;
+      characters.value = convertUrl(respond.data);
     });
   // 角色数量统计
   (document.querySelector("#character_btn") as HTMLElement).innerHTML =
@@ -22,23 +22,15 @@ onBeforeMount(async () => {
       lazyImg.setAttribute("src", img.src);
       lazyImg.removeAttribute("lazy-src");
     }
-    lazyImg.addEventListener("click", function () {
-      lazyImg.setAttribute("src", img.src);
-      const innerImg = document.querySelector(
-        lazyImg.getAttribute("data-bs-target") + " img[inner_src]"
-      ) as HTMLElement;
-      innerImg.setAttribute(
-        "src",
-        innerImg.getAttribute("inner_src") as string
-      );
-      innerImg.removeAttribute("inner_src");
-    });
   });
-});
 
-// 背景变化
-(document.querySelector("body") as HTMLElement).style.background =
-  "linear-gradient(320deg, #211f2f, #001010) repeat fixed";
+  // 自动打开卡片
+  const anchor = decodeURIComponent(window.location.hash);
+  if (anchor) {
+    scrollTo(anchor);
+    click(anchor + ">.card>img");
+  }
+});
 
 onMounted(() => {
   // 搜索
@@ -79,14 +71,95 @@ onMounted(() => {
     }
   }
 });
+
+let timeout: number;
+window.onhashchange = () => {
+  show();
+  hideModal();
+};
+document.addEventListener("click", () => {
+  show();
+});
+
+// 处理MarkDown链接
+function convertUrl(data: unknown): unknown {
+  let text = JSON.stringify(data);
+  text = text.replace(
+    /\[([^[\]()]*)\]\(([^[\]()]*)\)/g,
+    "<a class='hyperlink' href='$2' target='_blank'>$1</a>"
+  );
+  return JSON.parse(text);
+}
+
+// 关闭模态框
+function hideModal() {
+  const modal = document.querySelector(".modal.show");
+  const anchor = decodeURIComponent(window.location.hash);
+  if (!anchor && modal) {
+    (document.querySelector("#default_modal") as HTMLElement).click();
+  }
+}
+
+// 显示卡片
+function show() {
+  const modal = document.querySelector(".modal.show");
+  const anchor = decodeURIComponent(window.location.hash);
+  if (anchor && !modal) {
+    const aLink = document.getElementById(
+      anchor.replace("#", "a_")
+    ) as HTMLImageElement;
+    aLink.click();
+
+    const img = document.querySelector(
+      aLink.getAttribute("data-bs-target") + " img[inner_src]"
+    ) as HTMLElement;
+    if (img) {
+      img.setAttribute("src", String(img.getAttribute("inner_src")));
+      img.removeAttribute("inner_src");
+    }
+
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      const modal = document.querySelector(".modal.show");
+      if (!modal) {
+        history.pushState({ cards: "#" }, "", "#");
+      }
+    }, 200);
+  }
+}
+
+// 记录锚点
+function cardAnchor(event: MouseEvent, id: string) {
+  const card = event.target as HTMLImageElement;
+  card.setAttribute("src", card.src);
+
+  history.pushState({ cards: "#" }, "", "#" + id);
+}
+
 // 滚动到顶部
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// 滚动到元素
+function scrollTo(id: string) {
+  setTimeout(() => {
+    window.location.href = id;
+  }, 200);
+}
+
+// 点击元素
+function click(id: string) {
+  const element = document.querySelector(id) as HTMLElement;
+  if (element) {
+    element.click();
+  }
 }
 </script>
 
 <template>
   <div>
+    <a id="default_modal" data-bs-toggle="modal"></a>
     <div class="p-5 center" id="title">
       <h1>
         <a class="link-light text-decoration-none fw-bold display-5" href="">
@@ -140,15 +213,19 @@ function scrollToTop() {
             <div class="card center">
               <img
                 class="img-fluid"
-                data-bs-toggle="modal"
-                :data-bs-target="'#modal' + index"
                 :lazy-src="
                   'https://static.vupslash.icu/img/cards/' + each.code + '.png'
                 "
                 src="https://static.vupslash.icu/img/cards/_unknown.png"
                 :alt="each.label + '&nbsp;' + each.name"
                 :title="each.label + '&nbsp;' + each.name"
+                @click="cardAnchor($event, each.code)"
               />
+              <a
+                :id="'a_' + each.code"
+                data-bs-toggle="modal"
+                :data-bs-target="'#modal' + index"
+              ></a>
             </div>
             <div class="modal fade" :id="'modal' + index">
               <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -187,10 +264,11 @@ function scrollToTop() {
                               <tr>
                                 <td>角色</td>
                                 <td>
-                                  <span class="vup-label">{{
-                                    each.label
-                                  }}</span>
-                                  &nbsp;<span class="vup-name">
+                                  <span class="vup-label">
+                                    {{ each.label }}
+                                  </span>
+                                  &nbsp;
+                                  <span class="vup-name">
                                     {{ each.name }}
                                   </span>
                                 </td>
@@ -258,9 +336,10 @@ function scrollToTop() {
                       <div class="col fs-5 center">
                         {{ each.skillName1 }}
                       </div>
-                      <div class="col-12 col-sm-10 center">
-                        {{ each.skill1 }}
-                      </div>
+                      <div
+                        class="text col-12 col-sm-10 center"
+                        v-html="each.skill1"
+                      ></div>
                     </div>
                     <div
                       class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem"
@@ -270,9 +349,10 @@ function scrollToTop() {
                       <div class="col fs-5 center">
                         {{ each.skillName2 }}
                       </div>
-                      <div class="col-12 col-sm-10 center">
-                        {{ each.skill2 }}
-                      </div>
+                      <div
+                        class="text col-12 col-sm-10 center"
+                        v-html="each.skill2"
+                      ></div>
                     </div>
                     <div
                       class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem"
@@ -282,9 +362,10 @@ function scrollToTop() {
                       <div class="col fs-5 center">
                         {{ each.skillName3 }}
                       </div>
-                      <div class="col-12 col-sm-10 center">
-                        {{ each.skill3 }}
-                      </div>
+                      <div
+                        class="text col-12 col-sm-10 center"
+                        v-html="each.skill3"
+                      ></div>
                     </div>
                     <div
                       class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem derived-skill"
@@ -294,7 +375,7 @@ function scrollToTop() {
                       <div class="col fs-5 center">
                         {{ each.derivedSkillName1 }}
                       </div>
-                      <div class="col-12 col-sm-10 center">
+                      <div class="text col-12 col-sm-10 center">
                         {{ each.derivedSkill1 }}
                       </div>
                     </div>
@@ -306,7 +387,7 @@ function scrollToTop() {
                       <div class="col fs-5 center">
                         {{ each.derivedSkillName2 }}
                       </div>
-                      <div class="col-12 col-sm-10 center">
+                      <div class="text col-12 col-sm-10 center">
                         {{ each.derivedSkill2 }}
                       </div>
                     </div>
@@ -316,9 +397,10 @@ function scrollToTop() {
                       v-if="each.notion"
                     >
                       <div class="col-12 fs-5 center">概念介绍</div>
-                      <div class="col-12 center">
-                        {{ each.notion }}
-                      </div>
+                      <div
+                        class="text col-12 center"
+                        v-html="each.notion"
+                      ></div>
                     </div>
                     <div
                       class="row m-2 p-2 p-lg-3 border border-2 border-warning text-warning rounded-1rem"
@@ -328,21 +410,22 @@ function scrollToTop() {
                       <div class="col-12 fs-5 center">
                         {{ each.featureName }}
                       </div>
-                      <div class="col-12 center">
-                        {{ each.feature }}
-                      </div>
+                      <div
+                        class="text col-12 center"
+                        v-html="each.feature"
+                      ></div>
                     </div>
                   </div>
                   <div class="modal-footer border-0">
                     <div class="mx-auto">
                       <a
-                        class="fs-5 fw-bold mx-4 btn border-2 rounded-1rem"
+                        class="fw-bold mx-4 btn border-2 rounded-1rem"
                         :href="'../wiki/?title=' + each.name"
                         >详情</a
                       >
                       <button
                         type="button"
-                        class="fs-5 fw-bold mx-4 btn border-2 rounded-1rem"
+                        class="fw-bold mx-4 btn border-2 rounded-1rem"
                         data-bs-dismiss="modal"
                       >
                         关闭
@@ -359,6 +442,36 @@ function scrollToTop() {
   </div>
 </template>
 
+<style lang="css">
+.vup-label {
+  font-weight: bold;
+  color: #fafafa;
+  text-shadow: grey 2px 0 3px, grey 0 2px 3px, grey -2px 0 3px, grey 0 -2px 3px;
+}
+.vup-name {
+  margin: auto 0.2em;
+  font-weight: bold;
+  color: #fcf271;
+  text-shadow: #f69920 2px 0 3px, #f69920 0 2px 3px, #f69920 -2px 0 3px,
+    #f69920 0 -2px 3px;
+}
+.power {
+  margin: 0 0.1em;
+  padding-right: 1em;
+  background: url("/assets/img/power.svg") no-repeat;
+}
+.hyperlink {
+  display: inline;
+  color: inherit;
+  text-decoration: underline dashed;
+}
+.hyperlink:hover {
+  color: inherit;
+}
+.text {
+  display: block;
+}
+</style>
 <style scoped>
 #btn_to_top {
   position: fixed;
@@ -478,22 +591,5 @@ function scrollToTop() {
 .table > :not(caption) > * > *:nth-child(1),
 .table > :not(caption) > * > *:nth-child(2) {
   border-top-width: 1px;
-}
-.vup-label {
-  font-weight: bold;
-  color: #fafafa;
-  text-shadow: grey 2px 0 3px, grey 0 2px 3px, grey -2px 0 3px, grey 0 -2px 3px;
-}
-.vup-name {
-  margin: auto 0.2em;
-  font-weight: bold;
-  color: #fcf271;
-  text-shadow: #f69920 2px 0 3px, #f69920 0 2px 3px, #f69920 -2px 0 3px,
-    #f69920 0 -2px 3px;
-}
-.power {
-  margin: 0 0.1em;
-  padding-right: 1em;
-  background: url("/assets/img/power.svg") no-repeat;
 }
 </style>
