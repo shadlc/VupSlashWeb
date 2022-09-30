@@ -485,14 +485,6 @@ function click(id: string) {
   padding-right: 1em;
   background: url("/assets/img/power.svg") no-repeat;
 }
-.hyperlink {
-  display: inline;
-  color: inherit;
-  text-decoration: underline dashed;
-}
-.hyperlink:hover {
-  color: inherit;
-}
 .text {
   display: block;
   height: fit-content;

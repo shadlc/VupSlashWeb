@@ -154,6 +154,17 @@ mark {
   padding: 0.1em;
   margin: 0 0.2em;
 }
+.hyperlink {
+  display: inline;
+  color: inherit;
+  text-decoration: underline dashed;
+}
+.hyperlink:hover {
+  color: inherit;
+}
+#text {
+  display: inline;
+}
 html,
 body {
   position: relative;

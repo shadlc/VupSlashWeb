@@ -5,7 +5,7 @@ import { onMounted, onBeforeMount, ref } from "vue";
 const faqs = ref();
 onBeforeMount(async () => {
   await axios.get("https://api.vupslash.icu/json/faq_list/").then((respond) => {
-    faqs.value = respond.data;
+    faqs.value = convertUrl(respond.data);
   });
 
   // 自动滚动到锚点位置
@@ -76,6 +76,16 @@ function highLight(ele: HTMLElement, keys: string) {
     $1 = $1.replace(reg, "<mark>$&</mark>");
     return $1;
   });
+}
+
+// 处理MarkDown链接
+function convertUrl(data: unknown): unknown {
+  let text = JSON.stringify(data);
+  text = text.replace(
+    /\[([^[\]()]*)\]\(([^[\]()]*)\)/g,
+    "<a class='hyperlink' href='$2' target='_blank'>$1</a>"
+  );
+  return JSON.parse(text);
 }
 
 window.addEventListener("scroll", doScroll, true);
@@ -246,9 +256,9 @@ function scrollToTop() {
                 v-for="(answers, quest, index) in quests.quests"
                 :key="index"
               >
-                <p>Q: {{ quest }}</p>
+                <p v-html="'Q: ' + quest"></p>
                 <div v-for="(answer, index) in answers.answers" :key="index">
-                  <pre>A: {{ answer.answer }}</pre>
+                  <pre v-html="'A: ' + answer.answer"></pre>
                   <footer class="blockquote-footer">
                     回答自 <b>{{ answer.author }}</b>
                   </footer>
