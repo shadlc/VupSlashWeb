@@ -16,12 +16,11 @@ onBeforeMount(async () => {
   document.querySelectorAll("img[lazy-src]").forEach(function (item) {
     const lazyImg = item;
     const img = new Image();
-    img.addEventListener("load", loadHandler);
-    img.setAttribute("src", item.getAttribute("lazy-src") as string);
-    function loadHandler() {
+    img.setAttribute("src", String(lazyImg.getAttribute("lazy-src")));
+    img.onload = () => {
       lazyImg.setAttribute("src", img.src);
       lazyImg.removeAttribute("lazy-src");
-    }
+    };
   });
 
   // 自动打开卡片
@@ -111,11 +110,11 @@ function show() {
     aLink.click();
 
     const img = document.querySelector(
-      aLink.getAttribute("data-bs-target") + " img[inner_src]"
+      aLink.getAttribute("data-bs-target") + " img[inner-src]"
     ) as HTMLElement;
     if (img) {
-      img.setAttribute("src", String(img.getAttribute("inner_src")));
-      img.removeAttribute("inner_src");
+      img.setAttribute("src", String(img.getAttribute("inner-src")));
+      img.removeAttribute("inner-src");
     }
 
     clearTimeout(timeout);
@@ -218,6 +217,7 @@ function click(id: string) {
                   'https://static.vupslash.icu/img/cards/' + each.code + '.png'
                 "
                 src="https://static.vupslash.icu/img/cards/_unknown.png"
+                :id="each.code"
                 :alt="each.label + '&nbsp;' + each.name"
                 :title="each.label + '&nbsp;' + each.name"
                 @click="cardAnchor($event, each.code)"
@@ -250,8 +250,8 @@ function click(id: string) {
                     <div class="row m-sm-3">
                       <div class="col-4 p-1 p-lg-3 pb-4 mx-auto">
                         <img
-                          class="img-fluid border border-2 rounded-1rem"
-                          :inner_src="
+                          class="img-fluid border border-2 rounded-1rem w-100 h-100"
+                          :inner-src="
                             'https://static.vupslash.icu/img/avatars/' +
                             each.code +
                             '.png'

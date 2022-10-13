@@ -29,12 +29,12 @@ onMounted(() => {
         <p class="fs-5 mx-4">
           正如你看到的这样，我们为我们所热爱的事物创作不一样的玩法，如果你也有能力、有意愿，欢迎加入我们一起观测，一起创作！
         </p>
-        <div class="col-4">
+        <div class="col-12 col-sm-4">
           <a class="fs-4" href="https://space.bilibili.com/699889791">
             <img class="me-2" lazy-src="assets/img/bilibili.svg" />哔哩哔哩
           </a>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-sm-4">
           <a
             class="fs-4"
             href="https://github.com/meng-long-shao-zhu/VupSlash_V0"
@@ -42,7 +42,7 @@ onMounted(() => {
             <img class="me-2" lazy-src="assets/img/github.svg" />游戏主体
           </a>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-sm-4">
           <a class="fs-4" href="https://github.com/shadlc/VupSlashWeb">
             <img class="me-2" lazy-src="assets/img/github.svg" />网页项目
           </a>
