@@ -248,9 +248,9 @@ function click(id: string) {
                   </div>
                   <div class="modal-body">
                     <div class="row m-sm-3">
-                      <div class="col-4 p-1 p-lg-3 pb-4 mx-auto">
+                      <div class="col-4 p-1 p-lg-3 pb-4 mx-auto center">
                         <img
-                          class="img-fluid border border-2 rounded-1rem w-100 h-100"
+                          class="img-fluid border border-2 rounded-1rem w-100"
                           :inner-src="
                             'https://static.vupslash.icu/img/avatars/' +
                             each.code +
