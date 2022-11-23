@@ -31,10 +31,12 @@ function avatarFloating() {
   <div class="container py-5" id="introduce">
     <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fadeIn">
       <h2 class="pb-3 display-5 fw-bold border-bottom text-center">
-        「VUP杀」以三国杀为基础的卡牌游戏
+        「VUP杀」基于三国杀创作的衍生作品
       </h2>
       <blockquote class="lead fs-5 px-5">
-        <p class="mb-0">本游戏是一款基于《三国杀》创作的桌游</p>
+        <p class="mb-0">
+          本作是一款以《三国杀》为基础创作的多人回合制战略卡牌游戏
+        </p>
         <p class="mt-0">
           卡牌皆由目前盛行的Vup作为人物角色组成，作为其“存在记录”，也便于各位DD们记住这段美好时光，并进行对外宣传
         </p>
