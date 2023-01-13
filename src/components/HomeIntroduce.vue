@@ -258,6 +258,7 @@ function cardPolling() {
   height: 50vw;
   width: 50vw;
   max-width: 500px;
+  max-height: 500px;
 }
 @keyframes CardRotate {
   0% {
