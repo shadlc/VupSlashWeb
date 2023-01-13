@@ -60,14 +60,25 @@ function hideFloatNav() {
 // 页面动画
 function doScrollMagic() {
   const controller = new ScrollMagic.Controller();
-  const fadeInElements = document.querySelectorAll(".fadeIn");
+  const fadeInElements = document.querySelectorAll(".fade-in");
   fadeInElements.forEach((each) => {
     new ScrollMagic.Scene({
       triggerElement: each,
       triggerHook: 0.8,
       reverse: false,
     })
-      .setClassToggle(each, "fadedIn")
+      .setClassToggle(each, "faded-in")
+      .addTo(controller);
+  });
+  const expandElements = document.querySelectorAll(".expand");
+  expandElements.forEach((each) => {
+    new ScrollMagic.Scene({
+      triggerElement: each,
+      triggerHook: 0.8,
+      reverse: false,
+      offset: 250,
+    })
+      .setClassToggle(each, "expanded")
       .addTo(controller);
   });
 }

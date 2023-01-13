@@ -1,4 +1,45 @@
 <script setup lang="ts">
+const cardList = randomSort([
+  "xingyenaixu",
+  "ssfusang",
+  "xueniangaogun",
+  "lianglunche",
+  "fire_attack",
+  "befriend_attacking",
+  "duel",
+  "amazing_grace",
+  "ex_nihilo",
+  "savage_assault",
+  "supply_shortage",
+  "nullification",
+  "peach",
+  "ice_slash",
+]);
+function randomSort(arr: string[]) {
+  for (let i = arr.length - 1; i >= 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    const itemAtIndex = arr[randomIndex];
+    arr[randomIndex] = arr[i];
+    arr[i] = itemAtIndex;
+  }
+  return arr;
+}
+
+function displayCard(element: EventTarget | null) {
+  let isDisplay = true;
+  if (element) {
+    isDisplay = (element as HTMLElement).classList.contains("display");
+  }
+  document.querySelectorAll("img.display").forEach((element) => {
+    element.classList.remove("display");
+    element.classList.add("display-back");
+  });
+  if (!isDisplay) {
+    (element as HTMLElement).classList.remove("display-back");
+    (element as HTMLElement).classList.add("display");
+  }
+}
+
 // 图片差视
 window.addEventListener("scroll", avatarFloating, true);
 function avatarFloating() {
@@ -25,11 +66,32 @@ function avatarFloating() {
     }
   }
 }
+
+const detectCardDiv = setInterval(() => {
+  if (document.querySelector(".example-card-div.expanded")) {
+    cardPolling();
+    clearInterval(detectCardDiv);
+  }
+}, 1000);
+function cardPolling() {
+  setInterval(() => {
+    const cardDiv = document.querySelector(
+      ".example-card-div:not(:hover)"
+    ) as HTMLElement;
+    if (
+      cardDiv &&
+      cardDiv.lastChild &&
+      !document.querySelector(".example-card-div img.display")
+    ) {
+      cardDiv.prepend(cardDiv.lastChild);
+    }
+  }, 2000);
+}
 </script>
 
 <template>
   <div class="container py-5" id="introduce">
-    <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fadeIn">
+    <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fade-in">
       <h2 class="pb-3 display-5 fw-bold border-bottom text-center">
         「VUP杀」基于三国杀创作的衍生作品
       </h2>
@@ -49,14 +111,14 @@ function avatarFloating() {
         </a>
       </blockquote>
     </div>
-    <div class="my-5 text-center fadeIn">
+    <div class="my-5 text-center fade-in">
       <img
         class="img-fluid col-lg-8 shadow"
         lazy-src="/assets/img/battle.jpg"
       />
     </div>
 
-    <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fadeIn">
+    <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fade-in">
       <h2 class="pb-3 display-5 fw-bold border-bottom text-center">
         同台竞技的各位可爱VUP
       </h2>
@@ -77,32 +139,32 @@ function avatarFloating() {
     <div class="text-center my-5 pb-5">
       <img
         id="c1"
-        class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
+        class="img-fluid col-5 col-lg-2 mx-2 shadow fade-in"
         lazy-src="/assets/img/c1.jpg"
       />
       <img
         id="c2"
-        class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
+        class="img-fluid col-5 col-lg-2 mx-2 shadow fade-in"
         lazy-src="/assets/img/c2.jpg"
       />
       <img
         id="c3"
-        class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
+        class="img-fluid col-5 col-lg-2 mx-2 shadow fade-in"
         lazy-src="/assets/img/c3.jpg"
       />
       <img
         id="c4"
-        class="img-fluid col-5 col-lg-2 mx-2 shadow fadeIn"
+        class="img-fluid col-5 col-lg-2 mx-2 shadow fade-in"
         lazy-src="/assets/img/c4.jpg"
       />
     </div>
-    <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fadeIn">
+    <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fade-in">
       <h2 class="pb-3 display-5 fw-bold border-bottom text-center">
-        更多特殊卡牌
+        风格卡牌与特殊卡牌
       </h2>
       <blockquote class="fs-5 px-5">
         <p class="lead">
-          为了给各位旅人们带来全新体验和更多的参与感，特制诸多功能卡片
+          为了给各位旅人们带来更强的沉浸游玩体验与更多玩法，特制诸多风格化卡片和功能卡片
         </p>
         <p>有更多想法？欢迎加入我们共同创作！</p>
         <a
@@ -114,11 +176,21 @@ function avatarFloating() {
         </a>
       </blockquote>
     </div>
-    <div class="text-center my-5 fadeIn">
-      <img class="img-fluid col-12 col-lg-6" lazy-src="/assets/img/cards.png" />
+    <div class="text-center my-5 fade-in">
+      <div
+        class="example-card-div col-12 col-lg-6 mx-auto expand"
+        @mouseleave="displayCard(null)"
+      >
+        <img
+          v-for="(card, index) in cardList"
+          :key="index"
+          :lazy-src="'/assets/img/example_card/' + card + '.webp'"
+          @click="displayCard($event.target)"
+        />
+      </div>
     </div>
 
-    <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fadeIn">
+    <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fade-in">
       <h2 class="pb-3 display-5 fw-bold border-bottom text-center">游戏指南</h2>
       <blockquote class="fs-5 px-5">
         <p class="lead">
@@ -126,7 +198,7 @@ function avatarFloating() {
         </p>
       </blockquote>
     </div>
-    <div class="row m-md-5 px-md-5 fw-bold fadeIn">
+    <div class="row m-md-5 px-md-5 fw-bold fade-in">
       <div class="col-10 offset-1 col-lg-4 offset-lg-0">
         <div class="link-card overflow-hidden text-center shadow m-2">
           <p class="p-4 my-2 fs-5">旅者们，究竟如何扬帆起航</p>
@@ -180,5 +252,137 @@ function avatarFloating() {
 #c4 {
   transition: all 0.2s;
   opacity: 0;
+}
+.example-card-div {
+  position: relative;
+  height: 50vw;
+  width: 50vw;
+  max-width: 500px;
+}
+@keyframes CardRotate {
+  0% {
+    left: 25%;
+    transform: rotate(0deg);
+  }
+}
+@keyframes CardShuffle {
+  0% {
+    left: 25%;
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes CardDisplay {
+  100% {
+    left: 25%;
+    top: 0%;
+    transform: rotate(0deg);
+    z-index: 2;
+  }
+}
+@keyframes CardDisplayBack {
+  0% {
+    left: 25%;
+    top: 0%;
+    transform: rotate(0deg);
+    z-index: 2;
+  }
+  50% {
+    left: 25%;
+    top: -70%;
+    transform: rotate(0deg);
+    z-index: 2;
+  }
+  51% {
+    left: 25%;
+    top: -70%;
+    transform: rotate(0deg);
+    z-index: unset;
+  }
+}
+.example-card-div img {
+  position: absolute;
+  height: auto;
+  width: 50%;
+  top: 25%;
+  transform: translateX(200px);
+  cursor: pointer;
+  transition: 1s all ease-in-out;
+  animation: CardShuffle 0.3s ease-in-out 0s 2 alternate,
+    CardShuffle 0.3s ease-in-out 0.6s 2 alternate,
+    CardRotate 0.5s cubic-bezier(0.5, 1.2, 0.8, 1.1) 1.2s;
+  animation-play-state: paused;
+}
+.example-card-div.expanded img {
+  animation-play-state: running;
+}
+.example-card-div.expanded img.display {
+  animation: CardDisplay 0.5s ease-in-out !important;
+  animation-fill-mode: forwards !important;
+}
+.example-card-div.expanded img.display-back {
+  animation: CardDisplayBack 1s ease-in-out !important;
+}
+.example-card-div img:nth-child(1) {
+  left: -5%;
+  transform: rotate(-52deg);
+  opacity: 0;
+  pointer-events: none;
+}
+.example-card-div img:nth-child(2) {
+  left: 0%;
+  transform: rotate(-44deg);
+}
+.example-card-div img:nth-child(3) {
+  left: 5%;
+  transform: rotate(-36deg);
+}
+.example-card-div img:nth-child(4) {
+  left: 10%;
+  transform: rotate(-28deg);
+}
+.example-card-div img:nth-child(5) {
+  left: 15%;
+  transform: rotate(-20deg);
+}
+.example-card-div img:nth-child(6) {
+  left: 20%;
+  transform: rotate(-12deg);
+}
+.example-card-div img:nth-child(7) {
+  left: 25%;
+  transform: rotate(-4deg);
+}
+.example-card-div img:nth-child(8) {
+  left: 30%;
+  transform: rotate(4deg);
+}
+.example-card-div img:nth-child(9) {
+  left: 35%;
+  transform: rotate(12deg);
+}
+.example-card-div img:nth-child(10) {
+  left: 40%;
+  transform: rotate(20deg);
+}
+.example-card-div img:nth-child(11) {
+  left: 45%;
+  transform: rotate(28deg);
+}
+.example-card-div img:nth-child(12) {
+  left: 50%;
+  transform: rotate(36deg);
+}
+.example-card-div img:nth-child(13) {
+  left: 55%;
+  transform: rotate(44deg);
+}
+.example-card-div img:nth-child(14) {
+  left: 60%;
+  transform: rotate(52deg);
+  opacity: 0;
+  pointer-events: none;
 }
 </style>

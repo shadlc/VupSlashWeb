@@ -87,6 +87,10 @@ function convertUrl(data: unknown): unknown {
     /\[([^[\]()]*)\]\(([^[\]()]*)\)/g,
     "<a class='hyperlink' href='$2' target='_blank'>$1</a>"
   );
+  text = text.replace(
+    /(锁定技|限定技|觉醒技|主公技|转换技|征询技|衍生技|登场技|变身技)(?=，)/g,
+    "<b>$1</b>"
+  );
   return JSON.parse(text);
 }
 
@@ -387,9 +391,10 @@ function click(id: string) {
                       <div class="col fs-5 center">
                         {{ each.derivedSkillName1 }}
                       </div>
-                      <div class="text col-12 col-sm-10">
-                        {{ each.derivedSkill1 }}
-                      </div>
+                      <div
+                        class="text col-12 col-sm-10"
+                        v-html="each.derivedSkill1"
+                      ></div>
                     </div>
                     <div
                       class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem derived-skill"
@@ -399,9 +404,10 @@ function click(id: string) {
                       <div class="col fs-5 center">
                         {{ each.derivedSkillName2 }}
                       </div>
-                      <div class="text col-12 col-sm-10">
-                        {{ each.derivedSkill2 }}
-                      </div>
+                      <div
+                        class="text col-12 col-sm-10"
+                        v-html="each.derivedSkill2"
+                      ></div>
                     </div>
                     <div
                       class="row m-2 p-2 p-lg-3 border border-2 rounded-1rem"

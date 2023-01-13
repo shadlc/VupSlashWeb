@@ -62,7 +62,7 @@ onMounted(() => {
       </div>
     </div>
     <div class="w-100 row border-top p-2 mx-auto justify-content-center">
-      <span class="col-lg-4">Vup杀制作组 © 2022</span>
+      <span class="col-lg-4">Vup杀制作组 © 2020-2023</span>
       <a class="col-lg-4" href="https://beian.miit.gov.cn/">
         沪ICP备2021016716号
       </a>
