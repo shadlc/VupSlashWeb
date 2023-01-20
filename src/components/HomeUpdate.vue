@@ -76,6 +76,40 @@ defineProps<{
     <div class="accordion-card my-5 mx-2 p-3 p-lg-5 bg-body shadow fadeIn">
       <div class="accordion accordion-flush">
         <h3 class="pb-4 fw-bold accordion-header">玩法更新</h3>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#play_collapse0"
+              aria-controls="play_collapse0"
+            >
+              <p class="my-auto">
+                联动大作战
+                <span class="badge small bg-primary align-top">特殊模式</span>
+                <span class="badge small bg-warning align-top">核心玩法</span>
+              </p>
+            </button>
+          </h2>
+          <div id="play_collapse0" class="accordion-collapse collapse">
+            <div
+              class="accordion-body row d-grid gap-3 gap-lg-0 d-md-flex mx-auto p-2 p-lg-5"
+            >
+              <div class="col-lg-4 offset-lg-3 text-start">
+                <span><i class="bi bi-clock mx-1"></i>最后更新日期</span>
+                <span class="badge bg-secondary mx-1">2022-05-06</span>
+              </div>
+              <div class="col-lg-4 text-start">
+                <a href="scenarios/tietiebattle.html">
+                  <i class="bi bi-info-circle mx-1"></i>详细内容
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button
@@ -88,7 +122,6 @@ defineProps<{
               <p class="my-auto">
                 CP协战
                 <span class="badge small bg-primary align-top">特殊模式</span>
-                <span class="badge small bg-success align-top">new</span>
               </p>
             </button>
           </h2>
@@ -98,7 +131,7 @@ defineProps<{
             >
               <div class="col-lg-4 offset-lg-3 text-start">
                 <span><i class="bi bi-clock mx-1"></i>最后更新日期</span>
-                <span class="badge bg-secondary mx-1">2022-5-6</span>
+                <span class="badge bg-secondary mx-1">2023-1-11</span>
               </div>
               <div class="col-lg-4 text-start">
                 <a href="scenarios/couple.html">
@@ -115,26 +148,25 @@ defineProps<{
               class="accordion-button collapsed"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#play_collapse0"
-              aria-controls="play_collapse0"
+              data-bs-target="#play_collapse2"
+              aria-controls="play_collapse2"
             >
               <p class="my-auto">
-                贴贴大作战
+                冰火歌会
                 <span class="badge small bg-primary align-top">特殊模式</span>
-                <span class="badge small bg-warning align-top">核心玩法</span>
               </p>
             </button>
           </h2>
-          <div id="play_collapse0" class="accordion-collapse collapse">
+          <div id="play_collapse2" class="accordion-collapse collapse">
             <div
-              class="accordion-body row d-grid gap-3 gap-lg-0 d-md-flex mx-auto p-2 p-lg-5"
+              class="accordion-body row d-grid gap-3 gap-lg-0 d-md-flex mx-auto p-2 p-lg-5 px-lg-2"
             >
               <div class="col-lg-4 offset-lg-3 text-start">
                 <span><i class="bi bi-clock mx-1"></i>最后更新日期</span>
-                <span class="badge bg-secondary mx-1">2021-7-27</span>
+                <span class="badge bg-secondary mx-1">2022-12-31</span>
               </div>
               <div class="col-lg-4 text-start">
-                <a href="scenarios/tietiebattle.html">
+                <a href="scenarios/icefire.html">
                   <i class="bi bi-info-circle mx-1"></i>详细内容
                 </a>
               </div>
