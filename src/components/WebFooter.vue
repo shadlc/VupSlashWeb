@@ -39,7 +39,7 @@ onMounted(() => {
             class="fs-4"
             href="https://github.com/meng-long-shao-zhu/VupSlash_V0"
           >
-            <img class="me-2" lazy-src="assets/img/github.svg" />游戏主体
+            <img class="me-2" lazy-src="assets/img/github.svg" />游戏源码
           </a>
         </div>
         <div class="col-12 col-sm-4">
