@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import axios from "axios";
 import { onMounted, onBeforeMount, ref } from "vue";
+import CardShare from "@/components/CardShare.vue";
 
 const characters = ref();
+const website = ref(window.location.origin);
+const cardShareId = ref("");
 onBeforeMount(async () => {
   await axios
     .get("https://api.vupslash.icu/json/character_list/")
@@ -129,6 +132,12 @@ function show() {
       }
     }, 200);
   }
+}
+
+// 卡片分享
+function showCardShare(id: string) {
+  console.log("share " + id + "!");
+  cardShareId.value = id;
 }
 
 // 记录锚点
@@ -461,10 +470,40 @@ function click(id: string) {
                       >
                         关闭
                       </button>
+                      <a
+                        class="fw-bold mx-4 btn border-2 rounded-1rem"
+                        data-bs-toggle="modal"
+                        data-bs-target="#card_share_modal"
+                        @click="showCardShare(each.code)"
+                      >
+                        分享
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="card_share_modal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white rounded-1rem">
+          <div class="modal-header border-0">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <CardShare :card_info="{ url: website, id: cardShareId }" />
+          </div>
+          <div class="modal-footer border-0">
+            <div class="mx-auto">
+              <a>{{ website + "/cards#" + cardShareId }}</a>
             </div>
           </div>
         </div>
@@ -610,6 +649,11 @@ function click(id: string) {
 }
 .modal-title > img:last-child {
   transform: scaleX(-1);
+}
+.btn-close {
+  background: transparent
+    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e")
+    center/1em auto no-repeat;
 }
 
 .derived-skill {
