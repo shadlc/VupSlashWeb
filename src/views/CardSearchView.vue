@@ -3,9 +3,9 @@ import axios from "axios";
 import { onMounted, onBeforeMount, ref } from "vue";
 import CardShare from "@/components/CardShare.vue";
 
+const website = window.location.origin;
 const characters = ref();
-const website = ref(window.location.origin);
-const cardShareId = ref("");
+const characterInfo = ref();
 onBeforeMount(async () => {
   await axios
     .get("https://api.vupslash.icu/json/character_list/")
@@ -135,9 +135,8 @@ function show() {
 }
 
 // 卡片分享
-function showCardShare(id: string) {
-  console.log("share " + id + "!");
-  cardShareId.value = id;
+function showCardShare(info: { (key: string): string }) {
+  characterInfo.value = info;
 }
 
 // 记录锚点
@@ -474,7 +473,7 @@ function click(id: string) {
                         class="fw-bold mx-4 btn border-2 rounded-1rem"
                         data-bs-toggle="modal"
                         data-bs-target="#card_share_modal"
-                        @click="showCardShare(each.code)"
+                        @click="showCardShare(each)"
                       >
                         分享
                       </a>
@@ -499,11 +498,11 @@ function click(id: string) {
             ></button>
           </div>
           <div class="modal-body">
-            <CardShare :card_info="{ url: website, id: cardShareId }" />
+            <CardShare :card_info="characterInfo" />
           </div>
           <div class="modal-footer border-0">
             <div class="mx-auto">
-              <a>{{ website + "/cards#" + cardShareId }}</a>
+              <a>{{ website + "/cards#" + characterInfo.id }}</a>
             </div>
           </div>
         </div>

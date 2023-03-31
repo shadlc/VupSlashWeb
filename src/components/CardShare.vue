@@ -3,22 +3,39 @@ import { onMounted } from "vue";
 import html2canvas from "html2canvas";
 import vueQr from "vue-qr/src/packages/vue-qr.vue";
 
+const website = window.location.origin;
 defineProps<{
-  card_info: { url: string; id: string };
+  card_info: {
+    code: string;
+    name: string;
+    label: string;
+    sex: string;
+    race: string;
+    party: string;
+    power: string;
+    maxPower: string;
+    birthDate: string;
+    designer: string;
+    skillName1: string;
+    skill1: string;
+    skillName2: string;
+    skill2: string;
+    skillName3: string;
+    skill3: string;
+    derivedSkillName1: string;
+    derivedSkill1: string;
+    derivedSkillName2: string;
+    derivedSkill2: string;
+    notion: string;
+    featureName1: string;
+    feature1: string;
+    featureName2: string;
+    feature2: string;
+  };
 }>();
 
 onMounted(() => {
-  // 图片懒加载
-  document.querySelectorAll("img[lazy-src]").forEach(function (item) {
-    const lazyImg = item;
-    const img = new Image();
-    img.addEventListener("load", loadHandler);
-    img.setAttribute("src", item.getAttribute("lazy-src") as string);
-    function loadHandler() {
-      lazyImg.setAttribute("src", img.src);
-      lazyImg.removeAttribute("lazy-src");
-    }
-  });
+  console.log(html2canvas.length);
 });
 </script>
 
@@ -26,7 +43,7 @@ onMounted(() => {
   <div class="center">
     <vue-qr
       class="qrcode"
-      :text="$props.card_info.url + '/cards#' + $props.card_info.id"
+      :text="website + '/cards#' + $props.card_info.code"
       :correctLevel="3"
       :margin="30"
       :size="1000"
