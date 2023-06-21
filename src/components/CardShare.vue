@@ -43,13 +43,13 @@ onMounted(() => {
   <div class="center">
     <vue-qr
       class="qrcode"
-      :text="website + '/cards#' + $props.card_info.code"
+      :text="website + '/web/cards#' + $props.card_info.code"
       :correctLevel="3"
       :margin="30"
       :size="1000"
       colorDark="#131e2f"
       colorLight="#f8f8f8"
-      logoSrc="/assets/img/vupslash.png"
+      logoSrc="../../assets/img/vupslash.png"
       :logoScale="0.6"
       logoBackgroundColor="#00000000"
     />
