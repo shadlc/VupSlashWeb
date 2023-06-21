@@ -46,19 +46,19 @@
             <div class="carousel-item active">
               <img
                 class="img-fluid mb-5"
-                lazy-src="/assets/img/launcher_main.png"
+                lazy-src="assets/img/launcher_main.png"
               />
             </div>
             <div class="carousel-item">
               <img
                 class="img-fluid mb-5"
-                lazy-src="/assets/img/launcher_theme.png"
+                lazy-src="assets/img/launcher_theme.png"
               />
             </div>
             <div class="carousel-item">
               <img
                 class="img-fluid mb-5"
-                lazy-src="/assets/img/launcher_install.png"
+                lazy-src="assets/img/launcher_install.png"
               />
             </div>
           </div>
@@ -88,7 +88,7 @@
               class="mt-2 mb-5 text-body"
               href="https://gitee.com/shadlc/vup-slash-launcher"
             >
-              <img class="me-1" lazy-src="/assets/img/gitee_black.svg" />更新日志
+              <img class="me-1" lazy-src="assets/img/gitee_black.svg" />更新日志
             </a>
           </li>
         </ul>

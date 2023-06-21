@@ -114,7 +114,7 @@ function cardPolling() {
     <div class="my-5 text-center fade-in">
       <img
         class="img-fluid col-lg-8 shadow"
-        lazy-src="/assets/img/battle.jpg"
+        lazy-src="assets/img/battle.jpg"
       />
     </div>
 
@@ -140,22 +140,22 @@ function cardPolling() {
       <img
         id="c1"
         class="img-fluid col-5 col-lg-2 mx-2 shadow fade-in"
-        lazy-src="/assets/img/c1.jpg"
+        lazy-src="assets/img/c1.jpg"
       />
       <img
         id="c2"
         class="img-fluid col-5 col-lg-2 mx-2 shadow fade-in"
-        lazy-src="/assets/img/c2.jpg"
+        lazy-src="assets/img/c2.jpg"
       />
       <img
         id="c3"
         class="img-fluid col-5 col-lg-2 mx-2 shadow fade-in"
-        lazy-src="/assets/img/c3.jpg"
+        lazy-src="assets/img/c3.jpg"
       />
       <img
         id="c4"
         class="img-fluid col-5 col-lg-2 mx-2 shadow fade-in"
-        lazy-src="/assets/img/c4.jpg"
+        lazy-src="assets/img/c4.jpg"
       />
     </div>
     <div class="row mt-5 pt-5 col-lg-8 offset-lg-2 fade-in">
@@ -184,7 +184,7 @@ function cardPolling() {
         <img
           v-for="(card, index) in cardList"
           :key="index"
-          :lazy-src="'/assets/img/example_card/' + card + '.webp'"
+          :lazy-src="'assets/img/example_card/' + card + '.webp'"
           @click="displayCard($event.target)"
         />
       </div>

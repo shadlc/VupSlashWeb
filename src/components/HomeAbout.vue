@@ -27,8 +27,8 @@
         </div>
       </div>
       <div class="col-lg-6 my-auto">
-        <img class="m-2" lazy-src="/assets/img/bilibili.png" height="180" />
-        <img class="m-2" lazy-src="/assets/img/qq.png" height="180" />
+        <img class="m-2" lazy-src="assets/img/bilibili.png" height="180" />
+        <img class="m-2" lazy-src="assets/img/qq.png" height="180" />
       </div>
     </div>
   </div>

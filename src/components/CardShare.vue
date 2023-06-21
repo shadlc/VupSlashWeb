@@ -49,7 +49,7 @@ onMounted(() => {
       :size="1000"
       colorDark="#131e2f"
       colorLight="#f8f8f8"
-      logoSrc="../../assets/img/vupslash.png"
+      logoSrc="assets/img/vupslash.png"
       :logoScale="0.6"
       logoBackgroundColor="#00000000"
     />

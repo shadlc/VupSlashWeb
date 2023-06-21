@@ -529,7 +529,7 @@ function click(id: string) {
 .power {
   margin: 0 0.1em;
   padding-right: 1em;
-  background: url("/assets/img/power.svg") no-repeat;
+  background: url("../../public/assets/img/power.svg") no-repeat;
 }
 .text {
   display: block;
