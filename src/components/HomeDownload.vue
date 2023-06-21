@@ -88,7 +88,7 @@
               class="mt-2 mb-5 text-body"
               href="https://gitee.com/shadlc/vup-slash-launcher"
             >
-              <img class="me-1" lazy-src="/assets/img/gitee.svg" />更新日志
+              <img class="me-1" lazy-src="/assets/img/gitee_black.svg" />更新日志
             </a>
           </li>
         </ul>

@@ -74,7 +74,7 @@ setTimeout(() => {
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/wiki" @click="hideFloatNav">百科</a>
+            <a class="nav-link" href="https://wiki.vupslash.icu" @click="hideFloatNav">百科</a>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/cards" @click="hideFloatNav"

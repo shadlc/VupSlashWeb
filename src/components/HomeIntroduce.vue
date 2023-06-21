@@ -231,7 +231,7 @@ function cardPolling() {
           <div class="border-top border-2">
             <a
               class="btn btn-outline-secondary m-3 fs-5 fw-bold px-3"
-              href="wiki"
+              href="https://wiki.vupslash.icu"
             >
               <i class="bi bi-archive me-2"></i>官方百科
             </a>

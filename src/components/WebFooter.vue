@@ -43,8 +43,8 @@ onMounted(() => {
           </a>
         </div>
         <div class="col-12 col-sm-4">
-          <a class="fs-4" href="https://github.com/shadlc/VupSlashWeb">
-            <img class="me-2" lazy-src="assets/img/github.svg" />网页项目
+          <a class="fs-4" href="https://gitee.com/vupslash/VupSlashWeb">
+            <img class="me-2" lazy-src="assets/img/gitee.svg" />网页项目
           </a>
         </div>
       </div>
