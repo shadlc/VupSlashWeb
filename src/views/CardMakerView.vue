@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { type Ref, ref, onMounted, onBeforeMount, watch } from "vue";
 import axios from "axios";
-import * as cd from "../components/card";
-import { Card } from "../components/card";
-import { Canvas } from "../components/canvas";
-import { Mouse } from "../components/move";
+import * as cd from "@/components/card";
+import { Card } from "@/components/card";
+import { Canvas } from "@/components/canvas";
+import { Mouse } from "@/components/move";
 
 // Canvas相关变量
 const width = 600;
