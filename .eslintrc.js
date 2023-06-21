@@ -17,4 +17,5 @@ module.exports = {
   },
   plugins: ["vue"],
   rules: {},
+  endOfLine: "auto",
 };
