@@ -53,7 +53,7 @@ setTimeout(() => {
       >
         <ul class="navbar-nav fs-5">
           <li class="nav-item">
-            <router-link class="nav-link" to="/" @click="hideFloatNav"
+            <router-link class="nav-link" to="/web" @click="hideFloatNav"
               >主页
             </router-link>
           </li>
@@ -77,17 +77,17 @@ setTimeout(() => {
             <a class="nav-link" href="https://wiki.vupslash.icu" @click="hideFloatNav">百科</a>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/cards" @click="hideFloatNav"
+            <router-link class="nav-link" to="/web/cards" @click="hideFloatNav"
               >卡查
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/maker" @click="hideFloatNav"
+            <router-link class="nav-link" to="/web/maker" @click="hideFloatNav"
               >制卡
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/faq" @click="hideFloatNav"
+            <router-link class="nav-link" to="/web/faq" @click="hideFloatNav"
               >FAQ
             </router-link>
           </li>
