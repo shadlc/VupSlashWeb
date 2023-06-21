@@ -6,11 +6,13 @@ import CardShare from "@/components/CardShare.vue";
 const website = window.location.origin;
 const characters = ref();
 const characterInfo = ref();
+characterInfo.value = {"code":""};
 onBeforeMount(async () => {
   await axios
     .get("https://api.vupslash.icu/json/character_list/")
     .then((respond) => {
       characters.value = convertUrl(respond.data);
+      characterInfo.value = characters.value[0];
     });
   // 角色数量统计
   (document.querySelector("#character_btn") as HTMLElement).innerHTML =
@@ -459,7 +461,7 @@ function click(id: string) {
                     <div class="mx-auto">
                       <a
                         class="fw-bold mx-4 btn border-2 rounded-1rem"
-                        :href="'../wiki/?title=' + each.name"
+                        :href="'https://wiki.vupslash.icu/' + each.name"
                         >详情</a
                       >
                       <button
@@ -502,7 +504,7 @@ function click(id: string) {
           </div>
           <div class="modal-footer border-0">
             <div class="mx-auto">
-              <a>{{ website + "/cards#" + characterInfo.id }}</a>
+              <a>{{ website + "/cards#" + characterInfo.code }}</a>
             </div>
           </div>
         </div>
@@ -653,6 +655,10 @@ function click(id: string) {
   background: transparent
     url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e")
     center/1em auto no-repeat;
+}
+.btn-close:focus {
+    outline: none;
+    box-shadow: none;
 }
 
 .derived-skill {
