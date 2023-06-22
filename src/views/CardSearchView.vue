@@ -228,9 +228,9 @@ function click(id: string) {
               <img
                 class="img-fluid"
                 :lazy-src="
-                  'https://static.vupslash.icu/img/cards/' + each.code + '.png'
+                  'https://gitee.com/vupslash/img/raw/master/cards/' + each.code + '.png'
                 "
-                src="https://static.vupslash.icu/img/cards/_unknown.png"
+                src="https://gitee.com/vupslash/img/raw/master/cards/_unknown.png"
                 :id="each.code"
                 :alt="each.label + '&nbsp;' + each.name"
                 :title="each.label + '&nbsp;' + each.name"
@@ -266,7 +266,7 @@ function click(id: string) {
                         <img
                           class="img-fluid border border-2 rounded-1rem w-100"
                           :inner-src="
-                            'https://static.vupslash.icu/img/avatars/' +
+                            'https://gitee.com/vupslash/img/raw/master/avatars/' +
                             each.code +
                             '.png'
                           "

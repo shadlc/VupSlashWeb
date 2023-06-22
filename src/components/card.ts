@@ -139,7 +139,7 @@ export function setParty(card: Card, parties: any) {
   parties.forEach((p: any) => {
     if (p.code == card.party) {
       card.importLogo(
-        "https://static.vupslash.icu/img/logo/" + card.party + ".png",
+        "https://gitee.com/vupslash/img/raw/master/logo/" + card.party + ".png",
         card
       );
       card.themeColor = p.themeColor ?? card.themeColor;
@@ -152,7 +152,7 @@ export function setParty(card: Card, parties: any) {
 
 export function setShadow(card: Card) {
   card.importShadow(
-    "https://static.vupslash.icu/img/shadow/" + card.shadowType + ".png"
+    "https://gitee.com/vupslash/img/raw/master/shadow/" + card.shadowType + ".png"
   );
 }
 
