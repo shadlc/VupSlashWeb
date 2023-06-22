@@ -277,7 +277,7 @@ function reset(card: Card) {
   card.nameEng = "NORA SILENT";
   card.label = "幽海鸢行";
   card.party = cd.getPartyCode("鸽舍", parties.value);
-  card.importPortrait("https://static.vupslash.icu/img/portrait/default.png");
+  card.importPortrait("https://gitee.com/vupslash/img/raw/master/portrait/default.png");
   cd.setShadow(card);
   cd.setParty(card, parties.value);
   card.shadowDistance = 50;
@@ -324,7 +324,7 @@ function uploadConfig(c: Card, event: any) {
     c.nameColor = data.nameColor ?? "#000000";
     c.labelColor = data.labelColor ?? "#dddddd";
     c.borderColor = data.borderColor ?? "#333333";
-    c.importLogo("https://static.vupslash.icu/img/logo/" + c.party + ".png");
+    c.importLogo("https://gitee.com/vupslash/img/raw/master/logo/" + c.party + ".png");
   };
 }
 

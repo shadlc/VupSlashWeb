@@ -86,7 +86,7 @@
             源代码
             <a
               class="mt-2 mb-5 text-body"
-              href="https://gitee.com/shadlc/vup-slash-launcher"
+              href="https://gitee.com/vupslash/vup-slash-launcher"
             >
               <img class="me-1" lazy-src="assets/img/gitee_black.svg" />更新日志
             </a>
