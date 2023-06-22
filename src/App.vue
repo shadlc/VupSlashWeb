@@ -68,7 +68,7 @@ setTimeout(() => {
           <li class="nav-item">
             <a
               class="nav-link"
-              href="/scenarios/newgamerules.html"
+              href="/web/scenarios/newgamerules.html"
               @click="hideFloatNav"
               >规则</a
             >
