@@ -1,28 +1,28 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
-  history: createWebHistory("/"),
+  history: createWebHistory("/web"),
   routes: [
     {
-      path: "/web/",
+      path: "/",
       name: "home",
       meta: { title: "VUP杀——旅人的港湾" },
       component: () => import("@/views/HomeView.vue"),
     },
     {
-      path: "/web/cards",
+      path: "/cards",
       name: "cards",
       meta: { title: "卡牌查看器——VUP杀" },
       component: () => import("@/views/CardSearchView.vue"),
     },
     {
-      path: "/web/maker",
+      path: "/maker",
       name: "maker",
       meta: { title: "卡牌制作器——VUP杀" },
       component: () => import("@/views/CardMakerView.vue"),
     },
     {
-      path: "/web/faq",
+      path: "/faq",
       name: "faq",
       meta: { title: "常见问题——VUP杀" },
       component: () => import("@/views/FAQView.vue"),
