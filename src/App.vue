@@ -108,15 +108,15 @@ setTimeout(() => {
 <style>
 @font-face {
   font-family: "vup_font";
-  src: url("assets/fonts/vup.ttf");
+  src: url("fonts/vup.ttf");
 }
 @font-face {
   font-family: "sha_font";
-  src: url("assets/fonts/sha.ttf");
+  src: url("fonts/sha.ttf");
 }
 @font-face {
   font-family: "zhengkuchaojihei";
-  src: url("assets/fonts/zhengkuchaojihei.ttf");
+  src: url("fonts/zhengkuchaojihei.ttf");
 }
 .vup {
   font-family: vup_font;
