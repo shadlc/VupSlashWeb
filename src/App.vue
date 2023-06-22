@@ -53,7 +53,7 @@ setTimeout(() => {
       >
         <ul class="navbar-nav fs-5">
           <li class="nav-item">
-            <router-link class="nav-link" to="/web" @click="hideFloatNav"
+            <router-link class="nav-link" to="/web/" @click="hideFloatNav"
               >主页
             </router-link>
           </li>
@@ -68,7 +68,7 @@ setTimeout(() => {
           <li class="nav-item">
             <a
               class="nav-link"
-              href="https://api.vupslash.icu/scenarios/newgamerules.html"
+              href="/web/scenarios/newgamerules.html"
               @click="hideFloatNav"
               >规则</a
             >

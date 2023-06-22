@@ -4,7 +4,7 @@ const router = createRouter({
   history: createWebHistory("/"),
   routes: [
     {
-      path: "/web",
+      path: "/web/",
       name: "home",
       meta: { title: "VUP杀——旅人的港湾" },
       component: () => import("@/views/HomeView.vue"),

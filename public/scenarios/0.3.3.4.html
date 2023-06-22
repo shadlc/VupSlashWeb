@@ -1,0 +1,780 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.6" />
+<title>版本更新内容</title>
+<style type="text/css">/* Sans-serif font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+div#toctitle,
+span#author, span#revnumber, span#revdate, span#revremark,
+div#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+/* Serif font. */
+div.sectionbody {
+  font-family: Georgia,"Times New Roman",Times,serif;
+}
+
+/* Monospace font. */
+tt {
+  font-size: inherit;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+tt {
+  font-size: inherit;
+  color: navy;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+span#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+span#email {
+}
+span#revnumber, span#revdate, span#revremark {
+}
+
+div#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+div#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+div#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+div#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.tableblock, div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  border-radius:25px;
+  background: #F0F0FA;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #777777;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  div#footer-badges { display: none; }
+}
+
+div#toc {
+  margin-bottom: 2.5em;
+}
+
+div#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+window.onload = function(){asciidoc.footnotes();}
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([2-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  var cont = document.getElementById("content");
+  var noteholder = document.getElementById("footnotes");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      // Use [\s\S] in place of . so multi-line matches work.
+      // Because JavaScript has no s (dotall) regex flag.
+      note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      spans[i].innerHTML =
+        "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+        "' title='View footnote' class='footnote'>" + n + "</a>]";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+}
+
+}
+</script>
+</head>
+<body class="article">
+
+<div id="header">
+	<h1>版本更新内容</h1>
+</div>
+
+<div id="content">
+	<br/>
+	<div class="sectionbody">
+	<div class="paragraph"><p>版本号：V0.3.3.4</p></div>
+	</div>
+	
+	
+	<div class="sect1"><br><hr/>
+		<h2>新角色</h2>
+		<div class="sectionbody">
+			<div class="paragraph"><br><p>详细内容请查阅角色一览</p></div>
+			
+			
+			<h3>1、夏川玥玥</h3>
+			<div class="paragraph"><br><p>作为月球驻地球考察团的优秀代表， 对酒有着极低的抗性，经过调查，发现其缺乏桂花酒抗性，合理怀疑其身份来源的正确性。另，有观测员侦察到其在地球上存在“妹妹”，但在前往目标甜品店的路上失踪，留下的记录请参见其他动态记录，我们将派出更多观测员以期尽快解决问题。</p></div>
+			<div class="title">体力上限：4</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>月醴</strong> 准备阶段，你可以弃置一张点数>3的牌发动此技能，直到你的下个准备阶段前，有角色使用与之花色相同的牌时，你令其失去1点体力，<font color='#DC143C'><u><b>2级</b> 本回合其不能使用此花色的牌</u></font>。
+					<br/><br/>
+					<strong>辄醉</strong> 觉醒技，你失去体力时或使用【酒】时，你失去1点体力上限，回复1点体力，<font color='#DC143C'>升级</font>“月醴”。
+				</tt></div>
+			</div>
+			
+			
+			<h3>2、绮良Kira</h3>
+			<div class="paragraph"><br><p>作为一名以偶像身份进行活动的女高中生，以狮子为代表的她掌握着一种禁咒，只要呼喊就能在演奏中绽放光芒，只可惜这一切已经被遗忘。<br/>“Kira☆——Pika☆——！”</p></div>
+			<div class="title">体力上限：4</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>鸣光</strong> 你可以将两张手牌当【杀】使用或打出。此牌结算结束后，若之未造成伤害则你摸一张牌，否则此牌不计入出牌阶段的使用次数。
+					<br/><br/>
+					<strong>角色特性: 小狮子应援队！</strong> <font color='#DAA520'>游戏开始时，将3张【白银小狮子】加入牌堆。（效果与白银狮子相同）</font>
+				</tt></div>
+			</div>
+			
+			
+			<h3>3、犽月</h3>
+			<div class="paragraph"><br><p>原本是红色的狼妖，之后<s>因为太喜欢吃巧克力了就</s>变成了黑色。生活拮据但从未抛弃对美食的向往，在听说本世界有优质可可豆后果断穿越前往采摘。（<s>其实是明抢</s>）</p></div>
+			<div class="title">体力上限：4</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>毫变</strong> 锁定技，你的♦牌视为♣牌。你使用的黑色【杀】对有防具的角色造成的伤害＋1。
+					<br/><br/>
+					<strong>渴可</strong> 你使用【杀】对一名其他角色造成伤害后，你可以发动此技能，观看其手牌和装备区内的牌并可以获得其中一张黑色牌，然后其可以对你使用一张【杀】（无距离限制）。 
+				</tt></div>
+			</div>
+			
+			
+			<h3>4、李豆沙</h3>
+			<div class="paragraph"><br><p>为了寻找<s>美少女和</s>失散的朋友而前来异世界旅行的熊猫。作为来自另一个世界的瑞兽，她在本世界（特别是女性群体中）非常受欢迎，本站的观测员们甚至在猜测本世界已经产生福瑞（字面义）控群体了。</p></div>
+			<div class="title">体力上限：3</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>祥瑞</strong> 锁定技，若你的装备区没有防具牌，视为你装备【八卦阵】。<br/>每回合限一次，你以此法判定后，若结果为黑色，你获得判定牌。
+					<br/><br/>
+					<strong>执夷</strong> 你对一名其他角色造成伤害后，你可以弃置一张牌发动此技能，破坏其所有与此牌花色相同的牌。
+					<br/><br/>
+					<strong>角色特性: 我是直女！</strong> <font color='#DAA520'>你可以对女性角色发动【雌雄双股剑MK2】。</font>
+				</tt></div>
+			</div>
+			
+			
+			<h3>5、小千村柚柚·淘气少女</h3>
+			<div class="paragraph"><br><p>普通的人类女孩，喜欢躲在暗处偷偷恶作剧并观察人类的反应。（人类为什么要观察人类啊喂）声明：由于本世界福瑞控过多导致她经常被幻视成兽耳形态，实际上是没有的，如果你看见了请及时就医。</p></div>
+			<div class="title">体力上限：4</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>寻笑</strong> 出牌阶段限一次，你可以将一张黑色牌交给一名其他角色，然后其与你选择的另一名角色拼点，赢的角色视为对没赢的角色随机使用一张<font color='#008B8B'>恶作剧牌</font>。<br/><font color='#008B8B'>恶作剧牌：冰杀、火攻、决斗、过河拆桥、顺手牵羊</font>
+				</tt></div>
+			</div>
+			
+			
+			<h3>6、小千村柚柚·妖灵白鼬</h3>
+			<div class="paragraph"><br><p>「观测对象：“看来只能亲自把麻烦解决掉了。”」 ——某失踪观测员留下的最后一行记录</p></div>
+			<div class="title">体力上限：3</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>袭穴</strong> 你使用牌时，若此牌与你上次使用的牌花色不同且颜色相同，你可以摸一张牌。
+				</tt></div>
+			</div>
+			
+			
+		</div>
+	</div>
+	
+	
+	<div class="sect1"><br><hr/>
+		<h2>☆奖励角色</h2>
+		<div class="sectionbody">
+			<div class="paragraph"><br><p>我们推出了很多隐藏角色，可以在角色一览中查看解锁条件。达成解锁条件后即可使用该角色哦~<br/>奖励角色会用<font color='orange'>★</font>标出，解锁后不会出现在角色选择框中，需要玩家使用点将功能指定出场。<br/>PS：奖励角色大部分时间不在服务器开放，但联机时拥有奖励角色的玩家可以将其作为头像。</p></div>
+		</div>
+		
+		<div class="sect2">
+		<h3 id="__">本次推出的隐藏角色解锁条件</h3>
+		<h3 id="__">独立势</h3>
+		<div class="paragraph"><br>·<i>使用绫濑光在体力上限为1的情况下获得游戏胜利</i></div>
+		</div>
+		
+	</div>
+	
+	
+	<div class="sect1"><hr/>
+		<h2>平衡性调整</h2>
+		<div class="sectionbody">
+			<div class="paragraph"><br><p>根据服务器的胜率统计，我们将对角色进行调整。</p></div>
+			
+			
+			<h3>1、星之谷米娅</h3>
+			<div class="paragraph"><br><p>为了降低冰糖玩家的血压，我们对星猫进行了一点微小的加强。什么？米娅？米娅有这个技能吗？</p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>星猫</strong> 锁定技，你使用【闪】响应【杀】后，<font color='red'>若此【杀】的使用者为当前回合角色，</font>本回合其不能使用基本牌。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>星猫</strong> 锁定技，你使用【闪】响应【杀】后，<font color='blue'>此【杀】的使用者</font>本回合不能使用基本牌。
+				</tt></div>
+			</div>
+			
+			
+			<h3>2、小桃</h3>
+			<div class="paragraph"><br><p>在上次对小桃进行加强后，小桃显得过于强势了。为了让小桃的对手可以反制，我们回调了其手牌上限加成的部分。</p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>变频</strong> 转换技，出牌阶段开始时，你可以发动此技能，①摸两张牌，本回合你的手牌上限<font color='red'>为4</font>且你不能对其他角色使用牌 ②破坏两张牌，本回合你造成的伤害＋1且你不能对自己使用牌。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>变频</strong> 转换技，出牌阶段开始时，你可以发动此技能，①摸两张牌，本回合你的手牌上限<font color='blue'>＋1</font>且你不能对其他角色使用牌 ②破坏两张牌，本回合你造成的伤害＋1且你不能对自己使用牌。
+				</tt></div>
+			</div>
+			
+			
+			<h3>3、诺拉</h3>
+			<div class="paragraph"><br><p>诺拉刚上线时，由于程序问题，“贵胄”的设计原稿无法实现，我们不得不暂时移植三国杀本家的技能“流离”作为代替。现在问题已经解决，我们成功地实现了“贵胄”原稿。相比“流离”，现版本的“贵胄”能更好地呼应另一个技能，也能帮助断距离的队友攻击远距离的敌人。</p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>贵胄</strong> 你成为【杀】的目标时，你可以弃置一张牌发动此技能，将此牌转移给一名<font color='red'>你攻击范围内</font>的其他角色。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>贵胄</strong> 你成为【杀】<font color='blue'>或【决斗】</font>的目标时，你可以弃置一张牌发动此技能，将此牌转移给一名<font color='blue'>攻击范围内有你</font>的其他角色。
+				</tt></div>
+			</div>
+			
+			
+			<h3>4、笙歌</h3>
+			<div class="paragraph"><br><p>笙歌的胜率偏高，为了降低她的手牌控制能力（和搅浑水能力），我们为埋薯增加了限制条件。PS：此版本Novus势力的主题是颜色。（<s>明明是黑色</s>）</p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>埋薯</strong> 出牌阶段限一次，你可以将一张牌返回牌堆并标记为“土豆雷”。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>埋薯</strong> 出牌阶段限一次，你可以将一张<font color='blue'>黑色</font>牌返回牌堆并标记为“土豆雷”。
+				</tt></div>
+			</div>
+			
+			
+			<h3>5、喵田弥夜</h3>
+			<div class="paragraph"><br><p>不出所料，喵田弥夜的技能组就是高级花瓶。当看到喵田弥夜33%的胜率时，我们觉得很不可思议，这只人畜无害的猫猫居然能有胜场！</p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>域界</strong> 每轮限<font color='red'>1</font>次，你成为其他角色使用非装备牌的目标后，你可以发动此技能，令其选择一项：1.明置一张与之同类别的手牌 2.此牌对你无效。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>域界</strong> 每轮限<font color='blue'>3</font>次，你成为其他角色使用非装备牌的目标后，你可以发动此技能，令其选择一项：1.明置一张与之同类别的手牌 2.此牌对你无效。
+				</tt></div>
+			</div>
+			
+			
+		</div>
+	</div>
+	
+	<div class="sect1"><hr/>
+		<h2>优化与修复</h2>
+			<div class="sectionbody">
+			<div class="paragraph"><br><p>写bug是编程的一部分。 ——主程序·萌龙少主</p></div>
+			
+			<div class="title">系统</div>
+			<div class="paragraph"><p>修复了大量可能导致内存泄漏的问题。（特别感谢：Notify）</p></div>
+			<div class="paragraph"><p>废除装备区改为在角色图上显示文字标记。</p></div>
+			<div class="paragraph"><p>查看手牌上限按钮的显示方式不再是弹窗，改为了短暂的信息框（类似于鼠标悬停显示的注释）。</p></div>
+			<div class="paragraph"><p>胜率统计数据增加了“导出为Excel文件”功能。</p></div>
+			
+			<div class="title">联动大作战</div>
+			<div class="paragraph"><p>由于系统自带的投降功能不稳定，此模式中增加了一个“投降”按钮（位置与应援相同）。</p></div>
+			<div class="paragraph"><p>优化了“应援”的ai。</p></div>
+			<div class="paragraph"><p>询问是否更换角色的等待时间改为10秒（确认更换角色后，选择角色时间不变）。</p></div>
+			
+			<div class="title">莲汰、南音乃、拉法等角色</div>
+			<div class="paragraph"><p>“混音”、“隐游”、“废宅”、“满愿”、“势惜”、“应激”、“神伴”、“神语”在延时效果生效时，会在角色图上显示文字标记。现在鼠标悬停在这些文字标记上会显示注释信息了。</p></div>
+			
+			<div class="title">星汐</div>
+			<div class="paragraph"><p>修复了“余光”无法正常使用的问题。</p></div>
+			
+			<div class="title">冰糖</div>
+			<div class="paragraph"><p>语音实装！</p></div>
+			
+			<div class="title">小柔</div>
+			<div class="paragraph"><p>修复了“情柔”交出的牌正面向上的错误。</p></div>
+			
+			<div class="title">信使AKANE</div>
+			<div class="paragraph"><p>势力改为月見喫茶。</p></div>
+			
+			<div class="title">绫濑光</div>
+			<div class="paragraph"><p>修复了“逝随”观看的牌不会被计入已知牌窗口的问题。</p></div>
+			
+			<div class="title">竹菇笙</div>
+			<div class="paragraph"><p>修复了“应援”等技能会受到“隐林”影响的问题。</p></div>
+			
+			<div class="title">海月薰</div>
+			<div class="paragraph"><p>修复了ai会在不合适的时机通过“浮光”与队友拼点的问题。</p></div>
+			
+		</div>
+	</div>
+</div>
+
+<div id="footnotes"><hr /></div>
+<div id="footer">
+	<div id="footer-text">
+		更新日期 2021/12/23
+	</div>
+</div>
+
+</body>
+</html>

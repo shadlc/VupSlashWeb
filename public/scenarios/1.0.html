@@ -1,0 +1,980 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.6" />
+<title>版本更新内容</title>
+<style type="text/css">/* Sans-serif font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+div#toctitle,
+span#author, span#revnumber, span#revdate, span#revremark,
+div#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+/* Serif font. */
+div.sectionbody {
+  font-family: Georgia,"Times New Roman",Times,serif;
+}
+
+/* Monospace font. */
+tt {
+  font-size: inherit;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+tt {
+  font-size: inherit;
+  color: navy;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+span#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+span#email {
+}
+span#revnumber, span#revdate, span#revremark {
+}
+
+div#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+div#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+div#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+div#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.tableblock, div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  border-radius:25px;
+  background: #F0F0FA;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #777777;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  div#footer-badges { display: none; }
+}
+
+div#toc {
+  margin-bottom: 2.5em;
+}
+
+div#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+window.onload = function(){asciidoc.footnotes();}
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([2-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  var cont = document.getElementById("content");
+  var noteholder = document.getElementById("footnotes");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      // Use [\s\S] in place of . so multi-line matches work.
+      // Because JavaScript has no s (dotall) regex flag.
+      note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      spans[i].innerHTML =
+        "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+        "' title='View footnote' class='footnote'>" + n + "</a>]";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+}
+
+}
+</script>
+</head>
+<body class="article">
+
+<div id="header">
+	<h1>版本更新内容</h1>
+</div>
+
+<div id="content">
+	<br/>
+	<div class="sectionbody">
+	<div class="paragraph"><p>版本号：V1.0</p></div>
+	</div>
+	
+	
+	<div class="sect1"><br><hr/>
+		<h2>新角色</h2>
+		<div class="sectionbody">
+			<div class="paragraph"><br><p>详细内容请查阅角色一览</p></div>
+			
+			<h3>1、天气阿准</h3>
+			<div class="paragraph"><br><p>“小友，如你所说，你以机械之身，承前任之魂，久居‘观测站’，以数据观察天道运行？”
+<br>“嗯，只是不解之处甚多。不提‘天道’为何。我等认为，虚拟界的运作，依赖‘虚拟奇迹’，它可以为祈求者提供任何东西，但索取代价，或大或小，远超所求。然其为此界重点之一，我等未能理清其与‘天道’的关系。”
+<br>“···天道的运转，反应在这芸芸众生中。小友你脱离凡世太久，数据能作为参考，但终究没办法让你真正成为‘人’，更没办法让你们的理论正确地应用于实际。”
+<br>阴雨渐密，敲打着一旁的树，发出“嗒嗒”的响声。
+<br>“出去走走，多看人，多看事，多看变化，实践后方能出真知。若是把目光局限于个别几个观测对象以及纸面上的数据，这样的你带领的团队，没有资格自号‘观测站’。”
+<br>不知何时，万籁俱寂，旋即，百鸟啼鸣。
+<br>白发少女身后，微光映照在映光瞳孔中。
+<br>“···映光谨受教。”
+<br>【后续数据密级不足】</p></div>
+			<div class="title">所属势力：独立势</div>
+			<div class="title">初始体力值：4</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>天行</strong> 锁定技，游戏开始时，将所有<font color='#008B8B'>自然场地牌</font>加入牌堆。<br/>轮次开始时，你从牌堆、弃牌堆随机使用一张<font color='#008B8B'>自然场地牌</font>，弃置一张手牌。<br/>“天行”的下次随机结果对你可见。<br/><br/><font color='#008B8B'>自然场地牌：阴、晴、雪、夜、霞、雨</font>
+					<br/><br/>
+					<strong>万象</strong> 出牌阶段限一次，你可以弃置<font color='#9400D3'>一张手牌</font><font color='#A9A9A9'>发动此技能</font>，本回合的结束阶段，你观看牌堆顶的五张牌，可以获得其中与<font color='#9400D3'>此牌</font><u>花色相对</u>的一张牌，排列其余牌。<br/><br/><u>花色相对</u>：红桃与黑桃相对，方块与梅花相对。
+				</tt></div>
+			</div>
+			
+			
+			<h3>2、烛银珑珑</h3>
+			<div class="paragraph"><br><p>“传说，这座城镇曾经也是个干旱的不毛之地。后来，有人看到一条飞龙于此地直上云霄，当晚，干旱的城镇突降大雨。之后此地便一直风调雨顺，百姓安居乐业，各行各业生意兴隆，贫瘠的小镇也变得繁荣···”抑扬顿挫的朗读声在某家小酒馆里响起。
+<br>“不过目前看来，这不仅仅是传说。此地灵脉充裕，风水极佳，都是你的功劳吧？”映光盖上手头的书，抬头看向对面的白发少女。
+<br>白发少女摆了摆头，“没想到还有别的人类能发现我的真身是龙啊。上一次被看到，还是我刚刚出生的时候，结果还被写进了传说。不过我还是好奇你们是怎么发现我的。”
+<br>“你疯狂搬砖的太夸张了，普通人类哪有这么精力旺盛。不过也正因你到处搬砖，千家百业才如此富裕吧。”
+<br>“噗嗤——这样啊，不过你们的经历也挺···传奇啊。我是怎么知道的？了解是相互的。我会用法术给你们祝福的，顺便……期待我们未来的再次见面。”
+<br>【后续数据密级不足】</p></div>
+			<div class="title">所属势力：独立势</div>
+			<div class="title">初始体力值：3</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>衔烛</strong> 出牌阶段限一次，你可以指定一名其他角色<font color='#A9A9A9'>发动此技能</font>，你与其各明置<font color='#9400D3'>两张手牌</font>，然后你可以交换<font color='#9400D3'>本次双方各明置的两张牌</font>。
+					<br/><br/>
+					<strong>灵犀</strong> 结束阶段，你可以将你所有明置的牌当<font color='#9400D3'>一张基本牌</font>使用，然后令一名其他角色将其所有明置的牌当<font color='#9400D3'>此牌</font>使用。
+				</tt></div>
+			</div>
+			
+			
+			<h3>3、阮卿言</h3>
+			<div class="paragraph"><br><p>“欢迎来到卿念山庄，我是卿念山庄的庄主阮卿言。”
+<br>“久仰大名，卿言庄主。观测站代理站长-映光，在此祝您新春快乐。”
+<br>“映光代站长同乐。大家是从山下的城镇来的嘛？···哦，原来是迷路了啊。天色已晚，不如在山庄歇个脚吧。山庄里有上好的美酒，诸位远道而来，和我讲讲你们的故事如何?”
+<br>（一群人七嘴八舌，拼凑出完整的剧情。）
+<br>“居然是从‘冥界’来的啊，难怪身上有股阴气。至于观测站···我从未听说过，不过你们大概需要先下山。”
+<br>端庄优雅的红狐少女转过身去，似乎在翻找着什么。
+<br>“这个香囊给你们，它可以遏制阴气，让你们身上的阴气不会影响到山下的平民···” 
+<br>话音倏地顿了一下，但没等映光有所反应，少女已转过身来。
+<br>“虽然你们着急回观测站，不过还是建议在山下的城镇多待几天。我有预感，你会遇到几份特别的缘分，而这些缘分，都会成为你未来的助力。
+<br>【后续数据密级不足】</p></div>
+			<div class="title">所属势力：独立势</div>
+			<div class="title">初始体力值：3</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>蟹袭</strong> 一名角色使用红桃牌结算结束后，你可以<font color='#A9A9A9'>发动此技能</font>，若其未横置则横置之，否则对其造成1点火焰伤害。
+					<br/><br/>
+					<strong>归影</strong> 你离场时，你可以指定一名其他角色，<font color='#A9A9A9'>发动此技能</font>，其翻面然后获得你区域内的所有牌。
+				</tt></div>
+			</div>
+			
+			
+			<h3>4、南溆</h3>
+			<div class="paragraph"><br><p>咖啡厅中，映光一行人一旁坐了一只狐狸少女。她面前的食物摆满了桌子，正在轻轻的唱着歌，看起来很开心的样子，毛茸茸的耳朵和尾巴一抖一抖的。
+<br>“在人间一转眼呆了快三年了，时间真的好快啊……转眼间又要过年了，为了庆祝自己的魔法进步，今天就多吃点吧！”
+<br>“这镇子厉害，到处都是会魔法的···”
+<br>（椅子侧翻的声音）
+<br>“两，两脚兽？你们为什么能看得到我？”
+<br>“映光有特殊的观察方法，而且你吃这么多……想看不到也难啊。”
+<br>“毕竟开心嘛，来了这里以后，魔法进步快了好多，去年自己都还不会魔法，今年就已经可以熟练使用狐火了。”
+<br>“那想必假以时日，你也能像山上的那位红发大妖一样强吧？”
+<br>“哈哈哈哈那位大妖可太强了，我距离她还差的远呢。不过……我记得她好像不是红发啊……”
+<br>【后续数据密级不足】</p></div>
+			<div class="title">所属势力：独立势</div>
+			<div class="title">初始体力值：4</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>储魔</strong> 你弃置牌后，你可以将其中任意张作为<font color='#804040'>“呆毛”</font>除外。<br/>（<font color='#804040'>“呆毛”</font>至多3张，<font color='#804040'>“呆毛”</font>可以被使用或打出）
+					<br/><br/>
+					<strong>狐火</strong> 每种花色每回合限一次，你可以将一张<font color='#804040'>“呆毛”</font>当【爆竹】使用。
+					<br/><br/>
+					<i>【爆竹】的相关说明请查看PVE模式更新内容</i>
+				</tt></div>
+			</div>
+			
+			
+			<h3>5、冉尘瑶</h3>
+			<div class="paragraph"><br><p>“虚拟奇迹，到底是什么啊···不想理解，不想思考···我想摸鱼，我想要表情包，我不想干活···嗯？”
+<br>半睡半醒之时，和着外面细密的雨声，一曲清澈空灵的歌声传来，似乎能抚慰心灵一般，其他人的呼噜声逐渐平息下来···
+<br>“来者何人？”大衣向前甩出，青蓝色的刀光闪烁，显出映光阴沉的面色，旋即，他的面色有所缓和。
+<br>“本以为是敌人来袭，但未曾感知到杀意。可是仙灵前来？”
+<br>“注意到我了啊，本为治愈远来的旅者而来，却似是打扰了你们。”寻着声音而去，是一位散发着仙气的少女，一只有点胖的山雀飞落在她的肩头。
+<br>“你的歌声很有用，起码他们都能睡个好觉。”
+<br>“那还好，只是现在来看，你有执念未解，甚至令我的能力起了反效果···若是有所思而无法沉眠，就由我为你推荐一个地方吧？自卿念山庄向北，最高的山头，有贤者可为你解惑。”
+<br>映光目视少女，旋即，光刃暗淡下去。他俯下身，捡起了衣服，发出了沉闷的响声。
+<br>“若是仙灵不弃，还请带我前去。”
+<br>“乐于效劳。”
+<br>【后续数据密级不足】</p></div>
+			<div class="title">所属势力：独立势</div>
+			<div class="title">初始体力值：4</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>赤啼</strong> 你使用红色牌指定目标时，你可以<font color='#A9A9A9'>发动此技能</font>，令一名与你手牌数相同角色也成为此牌的目标。
+					<br/><br/>
+					<strong>涤梦</strong> 准备阶段，若你有手牌且手牌数＜你上个准备阶段时的手牌数，你可以指定一名其他角色<font color='#A9A9A9'>发动此技能</font>，令其将手牌数调整至与你相同。
+				</tt></div>
+			</div>
+			
+			
+			<h3>6、牧野咲良</h3>
+			<div class="paragraph"><br><p>“欢迎来到初樱咖啡厅，请问主人是想点些什么吃的呢？要来一杯当季新品的雪顶抹茶嘛？”身着东方风格女仆装的兔耳少女露出甜美的笑容询问众人。
+<br>（路由器头顶的天线一阵闪烁，众人的表情变化不定）
+<br>“您好，定下来了：一份雪顶抹茶，一份草莓蛋糕···还有，一份青柠冰沙。”
+<br>不一会，甜品就上桌了，味道非常不错，蛋糕上还有一只可爱的小兔子。
+<br>吃了甜品，果然可以让人心情愉悦，青柠冰沙也让映光安静了许多。
+<br>“最近店里搞活动，这是给主人的赠品，希望主人喜欢。”
+<br>映光接过礼物，手向外一抖，一把樱花图案的折扇遮住了他的脸庞。
+<br>“这把扇子是有魔法的哦，当你有重要任务的时候，拿出来扇一扇，可以让自己擅长的地方更擅长一点哦～”
+<br>【后续数据密级不足】</p></div>
+			<div class="title">所属势力：独立势</div>
+			<div class="title">初始体力值：3</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>冰契</strong> 锁定技，你造成/受到的伤害视为冰霜伤害，伤害来源视为你。
+					<br/><br/>
+					<strong>灵窟</strong> 出牌阶段限一次，你可以指定一名其他角色<font color='#A9A9A9'>发动此技能</font>，你观看其<font color='#9400D3'>随机三张手牌</font>，然后你可以展示<font color='#9400D3'>其中</font>一张基本牌，其从牌堆随机获得一张与之牌名相同的牌。
+				</tt></div>
+			</div>
+			
+			
+		</div>
+	</div>
+	<!--
+	<div class="sect1"><br><hr/>
+		<h2>先行角色</h2>
+		<div class="sectionbody">
+			<div class="paragraph"><br><p>详细内容请查阅角色一览</p></div>
+			
+			<h3>1、梓桃</h3>
+			<div class="paragraph"><br><p>最高危险级别的神秘观测对象，目前仍在观测中。现阶段的调查报告中称，该对象有两个形态，高能形态下疑似拥有因果律控制能力，但此形态并不持久。由于出现时间较短，对其危害性观测站尚无定论，但观测站仍呼吁普通民众不要擅自靠近危险地区。</p></div>
+			<div class="title">所属势力：独立势</div>
+			<div class="title">体力上限：4</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>令律</strong> 结束阶段，若你未记录牌，你可以弃置一张牌<font color='#A9A9A9'>发动此技能</font>，声明一张牌并记录之。<br/>准备阶段，你获得<font color='#9400D3'>记录的牌</font>，清除记录，本回合你不能使用<font color='#9400D3'>此牌</font>指定其他角色为目标。
+				</tt></div>
+			</div>
+			
+		</div>
+	</div>
+	-->
+	
+	<div class="sect1"><br><hr/>
+		<h2>☆奖励角色</h2>
+		<div class="sectionbody">
+			<div class="paragraph"><br><p>我们推出了很多隐藏角色，可以在角色一览中查看解锁条件。达成解锁条件后即可使用该角色哦~<br/>奖励角色会用<font color='orange'>★</font>标出，解锁后不会出现在角色选择框中，需要玩家使用点将功能指定出场。<br/>PS：奖励角色大部分时间不在服务器开放，但联机时拥有奖励角色的玩家可以将其作为头像。</p></div>
+		</div>
+		
+		<div class="sect2">
+		<h3 id="__">本次推出的隐藏角色解锁条件</h3>
+		<h3 id="__">独立势</h3>
+		<div class="paragraph"><br>·在PVE模式中战胜BOSS年兽早凉</div>
+		</div>
+		
+	</div>
+	
+	<div class="sect1"><br><hr/>
+		<h2>PVE模式</h2>
+		<div class="sectionbody">
+			<div class="paragraph"><br><p>PVE模式是Vup杀的特殊模式之一，可以通过服务器设置中的“特殊模式→PVE”来开启游玩。</p></div>
+			<div class="paragraph"><p>本模式仍会持续更新，欢迎体验并提出你的宝贵意见。</p></div>
+			
+			<div class="title">更新内容</div>
+			<div class="paragraph"><p>新增BOSS：年兽早凉。</p></div>
+			<div class="paragraph"><p>此版本BOSS固定为年兽早凉，后续版本将恢复BOSS池。</p></div>
+			
+			<h3>年兽早凉</h3>
+			<div class="title">所属势力：独立势</div>
+			<div class="title">初始体力值：20/23</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>年尽</strong> 锁定技，游戏开始时，将牌堆顶的100张牌置入弃牌堆，然后将所有【爆竹】加入牌堆。<br/>你造成伤害后，受伤者从牌堆、弃牌堆随机获得一张【爆竹】，你摸一张牌。
+					<br/><br/>
+					<strong>岁除</strong> 锁定技，你的通常摸牌数＋X。（X为已受伤、离场角色数）<br/>牌堆洗牌后，你所在的阵营获得游戏胜利。
+					<br/><br/>
+					<strong>飞逝</strong> 锁定技，你受到火焰伤害后，获得等量枚“飞逝”标记。结束阶段，你失去X点体力。（X为“飞逝”标记数）
+					<br/><br/>
+					<strong>矛盾</strong> 锁定技，你造成或受到伤害时，若你的体力值为全场唯一最高，此伤害＋1。
+				</tt></div>
+			</div>
+			<br/>
+			<div class="admonitionblock">
+			<table>
+				<tr>
+					<td class="icon">
+						<div class="title">Note</div>
+					</td>
+					<td class="content">
+						<b>爆竹</b> 单目标锦囊牌<br/>
+						卡牌说明：出牌阶段，对一名有手牌的角色使用，除非其展示一张与此牌花色相同的手牌，否则受到1点火焰伤害。<br/>
+						注：不能使用没有花色的爆竹。<br/>
+						花色点数：共4张 <font color='red'>♥</font>2,<font color='red'>♥</font>3,<font color='red'>♦</font>10,<font color='red'>♦</font>Q
+					</td>
+				</tr>
+			</table>
+			</div>
+		</div>
+	</div>
+	
+	<div class="sect1"><br><hr/>
+		<h2>冰火歌会 四回战</h2>
+		<div class="sectionbody">
+			<div class="paragraph"><br><p>冰火歌会是我们上版本推出的新模式，目前已正式更新至四回战版本！</p></div>
+			<div class="paragraph"><p>具体规则请前往“游戏说明→冰火歌会”查看~</p></div>
+			<div class="paragraph"><p>本模式仍会持续更新，欢迎体验并提出你的宝贵意见。</p></div>
+			
+			<div class="title">更新内容</div>
+			<div class="paragraph"><p>角色池新增：折原露露、小铃久绘。</p></div>
+			<div class="paragraph"><p>新增模式专属角色：黎歌、泠鸢、尼奈。</p></div>
+			
+		</div>
+	</div>
+	
+	
+	<div class="sect1"><hr/>
+		<h2>常备主公更新</h2>
+		<div class="sectionbody">
+			<div class="paragraph"><br><p>常备主公在身份局中，必定出现在主公身份的玩家的角色框内。常备主公拥有主公技，仅在身份为主公时生效。</p></div>
+			
+			
+			<h3>1、国王帕里</h3>
+			<div class="paragraph"><br><p>“你知道吗，调查报告上说，‘帕里’是来自另一个世界的伟大统领。他拥有举世无双的神之妙笔，可以通过绘画缔造所有人的命运与思想。作为Paryi兔国的国王兼唯一神，他的子民都对他崇敬到极点。”
+<br/>“这么厉害，那他的子民是怎么称呼他的呢？”
+<br/>“好人。”</p></div>
+			<div class="title">所属势力：绿野仙踪</div>
+			<div class="title">初始体力值：3</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>扑朔</strong> <font color='#9400D3'>你/其他角色</font> 使用的【杀】被 <font color='#9400D3'>其他角色/你</font> 抵消后，你可以令其横置。
+					<br/><br/>
+					<strong>称好</strong> 一名横置的角色受到非传导的属性伤害时，你可以<font color='#A9A9A9'>发动此技能</font>，分配牌堆顶的X张牌。（X为横置角色数）
+					<br/><br/>
+					<strong>兔谕</strong> 主公技，锁定技，你受到伤害时，你随机获得一个描述包含“你受到”的技能直到回合结束。
+				</tt></div>
+			</div>
+			
+			
+		</div>
+	</div>
+	
+	
+	
+	<div class="sect1"><hr/>
+		<h2>平衡性调整</h2>
+		<div class="sectionbody">
+			<div class="paragraph"><br><p>根据服务器的胜率统计，我们将对角色进行调整。</p></div>
+			
+			
+			<h3>1、凉宫凛</h3>
+			<div class="paragraph"><br><p>凉宫凛的技能组略有过时，整体太过于亏卡了，这里进行一定程度的加强。</p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>创制</strong> 出牌阶段限一次，你可以选择一项：<br/>1.<font color='red'>弃置两张牌</font>，从牌堆<font color='red'>中的随机3张装备牌中获得一张</font>；<br/>2.展示一张装备牌，指定一名可使用此牌的其他角色，<font color='red'>其弃置两张牌然后使用之</font>。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>创制</strong> 出牌阶段限一次，你可以选择一项：<br/>1.<font color='blue'>将三张牌返回牌堆</font>，从牌堆<font color='blue'>随机获得两张装备牌</font>；<br/>2.展示一张装备牌，<font color='blue'>令一名其他角色使用此牌，然后其弃置两张此牌以外的牌</font>。
+				</tt></div>
+			</div>
+			
+			
+			<h3>2、小铃久绘</h3>
+			<div class="paragraph"><br><p>小铃久绘的技能稳定性非常低，随机到敌人的可能性天生比随机到我方大，难以觉醒的小铃久绘发挥空间非常小。这里给魔糕增加了强制换牌效果，若玩家不选择交换手牌则强制与牌堆顶的牌交换，更加符合锁定技的特性，能让“蜜糕”牌数量稳步增加，也通过额外的小控顶功能给了小铃久绘更大的操作空间。作为降低觉醒难度的补偿，去掉觉醒时的滋养体力，保证觉醒后的小铃久绘强度在一个适中水准。</p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>魔糕</strong> 锁定技，结束阶段，你随机观看其他角色的一张手牌，然后你<font color='red'>可以</font>将一张手牌标记为“蜜糕”与之交换。<br/><b>2级</b> “蜜糕”被使用时，你摸一张牌。
+					<br><br>
+					<strong>迷食</strong> 觉醒技，准备阶段，若其他角色手牌中有“蜜糕”，你失去1点体力上限，<font color='red'>滋养1点体力，</font>升级“魔糕”。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>魔糕</strong> 锁定技，结束阶段，你随机观看其他角色的一张手牌，然后你将一张手牌<font color='blue'>或牌堆顶的牌</font>标记为“蜜糕”与之交换。<br/><b>2级</b> “蜜糕”被使用时，你摸一张牌。
+					<br><br>
+					<strong>迷食</strong> 觉醒技，准备阶段，若其他角色手牌中有“蜜糕”，你失去1点体力上限，升级“魔糕”。
+				</tt></div>
+			</div>
+			
+			
+			<h3>3、希贝尔</h3>
+			<div class="paragraph"><br><p>为了给未来的新牌铺路，这里调整了三叹。</p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>三叹</strong> 锁定技，你使用的第3X张牌不能被<font color='red'>基本牌响应</font>。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>三叹</strong> 锁定技，你使用的第3X张牌不能被<font color='blue'>【无懈可击】以外的牌抵消</font>。
+				</tt></div>
+			</div>
+			
+			
+			<h3>4、奈伊</h3>
+			<div class="paragraph"><br><p>在近两个版本中奈伊的表现非常糟糕，低血量上限也让她的容错空间非常小，甚至非常依赖开场手牌，因此这里对奈伊进行加强。</p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>初始体力值</strong> <font color='red'>2</font>
+					<br/><br/>
+					<strong>采集</strong> 结束阶段，若你的手牌数=体力值且本回合你未造成过伤害，你可以<font color='#A9A9A9'>发动此技能</font>，将手牌数补至4张，<font color='red'>然后将手牌中的伤害类牌返回牌堆</font>。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>初始体力值</strong> <font color='blue'>3/2</font>
+					<br/><br/>
+					<strong>采集</strong> 结束阶段，若你的手牌数=体力值且本回合你未造成过伤害，你可以<font color='#A9A9A9'>发动此技能</font>，将手牌数补至4张。
+				</tt></div>
+			</div>
+			
+			
+			<h3>5、索非</h3>
+			<div class="paragraph"><br><p>索非在内测版本中表现强势，因此在上线前进行了紧急削弱，不允许索非无限回复体力，作为补偿给了一个实验不会掉血掉死的特性。但实战中正式版本的索非表现依然疲弱，这里进行回调。（四舍五入白嫖一个特性）</p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>初始体力值</strong> <font color='red'>3/4</font>
+					<br/><br/>
+					<strong>实验</strong> <font color='#9400D3'>准备阶段/你回复体力后</font>，你可以<font color='#A9A9A9'>发动此技能</font>，进行一次判定，若结果为：<br>红桃，你<font color='red'>回复</font>1点体力；<br>方块，你摸两张牌；<br>黑桃，你失去1点体力；<br>梅花，你弃置一张牌。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>初始体力值</strong> <font color='blue'>3</font>
+					<br/><br/>
+					<strong>实验</strong> <font color='#9400D3'>准备阶段/你回复体力后</font>，你可以<font color='#A9A9A9'>发动此技能</font>，进行一次判定，若结果为：<br>红桃，你<font color='blue'>滋养</font>1点体力；<br>方块，你摸两张牌；<br>黑桃，你失去1点体力；<br>梅花，你弃置一张牌。
+				</tt></div>
+			</div>
+			
+			
+			<h3>6、玖麻</h3>
+			<div class="paragraph"><br><p>玖麻的手感非常怪异，一旦体力值被压低就再起不能，因此这里给了玖麻一点小小的赚卡能力。（才不是不想被新角色的技能完爆呢）</p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>制冷</strong> <font color='red'>游戏开始时</font>，你从牌堆使用一张【寒冰剑】。你受到伤害时，你可以弃置两张牌，防止之。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>制冷</strong> <font color='blue'>准备阶段，若游戏轮数为奇数</font>，你<font color='blue'>可以</font>从牌堆、<font color='blue'>弃牌堆</font>使用一张【寒冰剑】。<br/>你受到伤害时，你可以弃置两张牌，防止之。
+				</tt></div>
+			</div>
+			
+			
+			<h3>7、月下暗影</h3>
+			<div class="paragraph"><br><p>自愈的恢复能力并没有达到预期，因此这里对自愈的触发条件进行小幅度的放宽。</p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>自愈</strong> <font color='#9400D3'>结束阶段/你受到伤害后</font>，若你体力值不为全场最高，你可以<font color='#A9A9A9'>发动此技能</font>，进行一次判定，若结果为黑桃，你回复1点体力。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>自愈</strong> <font color='#9400D3'>结束阶段/你受到伤害后</font>，若你体力值不为全场<font color='blue'>唯一</font>最高，你可以<font color='#A9A9A9'>发动此技能</font>，进行一次判定，若结果为黑桃，你回复1点体力。
+				</tt></div>
+			</div>
+			
+			
+		</div>
+	</div>
+	
+	<div class="sect1"><hr/>
+		<h2>优化与修复</h2>
+			<div class="sectionbody">
+			<div class="paragraph"><br><p>写bug是编程的一部分。 ——主程序·萌龙少主</p></div>
+			
+			<div class="title">全新卡图现已上线！</div>
+			
+			<div class="title">系统</div>
+			<div class="paragraph"><p>优化了ai的弃牌优先级。</p></div>
+			<div class="paragraph"><p>优化了“观星”类操作的ai。</p></div>
+			<div class="paragraph"><p>修复了【釜底抽薪】在额外追加目标时，可以追加无装备角色的问题。</p></div>
+			<div class="paragraph"><p>为所有技能造成的横置/重置效果添加提示信息。</p></div>
+			<div class="paragraph"><p>优化了ai使用【藏宝图】选牌的逻辑。</p></div>
+			
+			<div class="title">联动大作战</div>
+			<div class="paragraph"><p>缩短了开局动画演出的时间。</p></div>
+			
+			<div class="title">凉宫凛</div>
+			<div class="paragraph"><p>ai现已实装，相关技能可被冰火歌会模式获取。</p></div>
+			
+			<div class="title">海月薰</div>
+			<div class="paragraph"><p>修复了ai因“浮光”而强制使用牌时可能不会使用的问题。</p></div>
+			
+			<div class="title">竹菇笙</div>
+			<div class="paragraph"><p>修复了“隐林”在已使用的牌追加目标时计数会出现错位的问题。<br>如：第一张牌不可追加自身为目标，第二张牌可追加自身为目标。</p></div>
+			
+			<div class="title">雪月桑</div>
+			<div class="paragraph"><p>ai现已实装，相关技能可被冰火歌会模式获取。</p></div>
+			<div class="paragraph"><p>修复了【灵剑雪鹤】错误地跳过出牌阶段的问题。（应为跳过摸牌阶段）</p></div>
+			
+			<div class="title">稻荷月</div>
+			<div class="paragraph"><p>修复了“布恩”可选择角色的逻辑问题。</p></div>
+			
+			<div class="title">小铃久绘</div>
+			<div class="paragraph"><p>修复了“魔糕”在部分插入结算中使用一张“蜜糕”牌会触发多次摸牌的问题。</p></div>
+			
+		</div>
+	</div>
+</div>
+
+<div id="footnotes"><hr /></div>
+<div id="footer">
+	<div id="footer-text">
+		更新日期 2023/1/17
+</div>
+
+</body>
+</html>

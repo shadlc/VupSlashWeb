@@ -1,0 +1,824 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.3" />
+<title>冰火歌会</title>
+<style type="text/css">
+/* Sans-serif font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+div#toctitle,
+span#author, span#revnumber, span#revdate, span#revremark,
+div#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+/* Serif font. */
+div.sectionbody {
+  font-family: Georgia,"Times New Roman",Times,serif;
+}
+
+/* Monospace font. */
+tt {
+  font-size: inherit;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+tt {
+  font-size: inherit;
+  color: navy;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+span#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+span#email {
+}
+span#revnumber, span#revdate, span#revremark {
+}
+
+div#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+div#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+div#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+div#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.tableblock, div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #777777;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  div#footer-badges { display: none; }
+}
+
+div#toc {
+  margin-bottom: 2.5em;
+}
+
+div#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+window.onload = function(){asciidoc.footnotes();}
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+///////////////////////////////////////\/////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([2-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  var cont = document.getElementById("content");
+  var noteholder = document.getElementById("footnotes");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      // Use [\s\S] in place of . so multi-line matches work.
+      // Because JavaScript has no s (dotall) regex flag.
+      note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      spans[i].innerHTML =
+        "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+        "' title='View footnote' class='footnote'>" + n + "</a>]";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+}
+
+}
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>冰火歌会</h1>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title"><br>玩家配置</div>
+<div class="content">
+<pre><tt>两名玩家分为冰火两队进行对抗。每名玩家会携带一名队长（NPC），击败对方队长则游戏获胜。</tt></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">行动顺序</div>
+<div class="content">
+<pre><tt>冰队玩家→火队队长→火队玩家→冰队队长</tt></pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_">初始分配</h2>
+<div class="sectionbody">
+<div class="paragraph"><br><p>系统从冰火歌会角色池中随机选出12名角色。两队玩家按照如下顺序选择角色共6名：<br/>
+冰队选择1名→火队选择2名→冰队选择2名→火队选择2名→冰队选择2名→火队选择2名→冰队选择1名<br/>
+然后双方玩家从已选择的6名角色中，挑选1名首发角色登场，并选择2名备战角色。<br/>
+<i>两队队长将由电脑操作</i>。</p></div>
+
+<div class="sidebarblock">
+<div class="content">
+<div class="title">冰火歌会可选角色列表：</div>
+<div class="paragraph"><p>*白神遥、步玎、红晓音、西魔幽、夏鹤仪、绫奈奈奈、东爱璃、*星汐、笙歌、*冰糖、*花園セレナ、绮良、次元酱、木糖纯、诗小雅、小希小桃、*小柔、兰音、艾露露、山椒阿露波、花满、雪狐、*夏川玥玥、穆小泠、早凉、露蒂丝、海桑、乙女おと、奈奈莉娅、卡缇娅β、高槻りつ、千草はな、古守ちゆ、折原露露、*黎歌、*泠鸢、小铃久绘、*尼奈</p></div>
+</div></div>
+
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">标星号角色的技能将与其他模式下不同，下见“冰火歌会模式特有角色”；<br/>你可以在config.lua内修改角色池。</td>
+</tr></table>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="__2">胜利条件</h2>
+<div class="sectionbody">
+<div class="paragraph"><br><p>对方队长离场。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="__3">离场奖惩</h2>
+<div class="sectionbody">
+<div class="paragraph"><br><p>玩家操控的当前角色离场后，玩家须选择一名备战角色出场，摸4张牌，然后<u>继续处理结算</u>。<br/></p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">若成功更换角色，则<u>不打断结算</u>。<br/>例如：<br/>1.一名角色于其出牌阶段内离场，更换角色后继续执行此出牌阶段。<br/>2.一名角色因对方造成的伤害而离场，更换角色后，此时可以触发时机为“受到伤害后”的技能。如小希小桃的〖联袂〗等。</td>
+</tr></table>
+</div>
+<div class="paragraph"><br><p>队长的回合结束时，若没有存活的队员，则其失去1点体力。<br/></p></div>
+</div>
+</div>
+
+<div class="sect1">
+<h2 id="__4">应援力机制</h2>
+<div class="sectionbody">
+<div class="paragraph"><br><p>应援力是冰火歌会的核心机制：</p></div>
+
+<div class="paragraph"><br><p>规则说明：</p></div>
+<div class="olist arabic"><ol class="arabic">
+<br><li>
+<p>
+每轮开始时，双方玩家各获得1应援力（第一轮仅冰队玩家获得），应援力已满的玩家改为摸一张牌。
+</p>
+</li>
+<li>
+<p>
+玩家对敌方玩家造成伤害后，获得1应援力，若为冰霜或火焰属性伤害则额外获得1应援力。
+</p>
+</li>
+<li>
+<p>
+玩家因当前角色离场而更换角色后，该角色继承上一位角色一半的应援力（向下取整）。
+</p>
+</li>
+<li>
+<p>
+回合开始时，玩家可以消耗2应援力选择一个随机技能获得（三选一），可以花费1应援力刷新，可以花费1应援力改为让队长获得技能。
+</p>
+</li>
+<li>
+<p>
+每名角色至多持有4个技能（包括该角色本身的技能，衍生技除外），技能数超过4个后，需由本队的玩家选择技能失去直到技能数为4。
+</p>
+</li>
+</ol></div>
+<br>
+
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">1.应援力上限为5。<br/>2.玩家的当前角色离场时，失去所有应援力和通过应援力获得的技能。（不影响队长获得的技能）</td>
+</tr></table>
+</div>
+
+</div>
+
+<div class="sect1">
+<h2 id="__5">接力规则</h2>
+<div class="sectionbody">
+<div class="paragraph"><br><p>出牌阶段限一次，玩家可以令当前角色离场，然后获得2应援力。</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">1.发动接力后，角色离场应援力继承一半的规则依然有效。在切换角色后将获得继承的应援力与额外的2应援力。<br/>2.玩家没有可出场的备选角色时也可以发动，此时除了自爆外没有附加效果。<br/>3.接力后玩家将继续执行出牌阶段，但并不能触发新角色的“离场时”类技能。（切换角色的时点在“角色离场时”之后）<br/>4.“出牌阶段限一次”不会因新角色的上场而刷新。一般情况下，同一个出牌阶段内只能接力一次。若点击接力又选择取消，则消耗本阶段的接力次数。</td>
+</tr></table>
+</div>
+</div>
+</div>
+
+</div>
+<hr />
+
+<div class="sect1">
+<h2 id="__5">冰火歌会模式特有内容</h2><br>
+
+	<!--
+	<div class="listingblock">
+	<div class="title">冰火歌会模式专用牌</div>
+	<div class="paragraph"><p>具体内容请通过“卡牌一览”查看</p></div>
+	<div class="content">
+	<tt>
+	<b>远交近攻</b> 单目标锦囊牌<br/>
+	卡牌说明：令一名其他角色摸两张牌，若其有存活CP则对其CP造成一点伤害，否则你摸一张牌。<br/>
+	牌堆分布：共2张 <font color='red'>♥</font>9,<font color='red'>♦</font>4
+	</tt>
+	</div></div>
+	-->
+
+	<br/>
+	<div class="title">冰火歌会模式特有角色</div>
+	<h3>白神遥</h3>
+	<div class="title">体力上限：3</div>
+	<div class="listingblock">
+		<div class="content"><tt>
+			<strong>抽卡</strong> 不变
+			<br/><br/>
+			<strong>慵懒</strong> 你需要使用【闪】响应【杀】时，你可以将一张点数大于此【杀】的手牌当【闪】使用，然后你失去1应援力。
+		</tt></div>
+	</div>
+	<h3>星汐</h3>
+	<div class="title">体力上限：4</div>
+	<div class="listingblock">
+		<div class="content"><tt>
+			<strong>七星</strong> 锁定技，你的起始手牌数＋7，分发起始手牌后，你须弃置七张手牌。<br/>弃牌阶段，你点数为7的牌不计入手牌数。
+			<br/><br/>
+			<strong>星耀</strong> 锁定技，你满应援力时，你使用的【杀】伤害基数＋1、抵消所需【闪】的张数＋1。
+		</tt></div>
+	</div>
+	<h3>小柔</h3>
+	<div class="title">体力上限：3</div>
+	<div class="listingblock">
+		<div class="content"><tt>
+			<strong>卸载</strong> 你可以将一张非基本牌当【过河拆桥】使用。
+			<br/><br/>
+			<strong>柔辉</strong> 结束阶段，你可以令至多X名角色各摸一张牌。（X为本回合进入弃牌堆的装备牌数）
+		</tt></div>
+	</div>
+	<h3>花園セレナ</h3>
+	<div class="title">体力上限：3</div>
+	<div class="listingblock">
+		<div class="content"><tt>
+			<strong>酣歌</strong> 弃牌阶段结束时，若你本阶段弃置了至少两张牌，你可以指定一名角色<font color='#A9A9A9'>发动此技能</font>，令其摸一张牌并回复1点体力。
+		</tt></div>
+	</div>
+	<!--
+	<h3>京华</h3>
+	<div class="title">体力上限：3</div>
+	<div class="listingblock">
+		<div class="content"><tt>
+			<strong>创世</strong> 你受到伤害后，你可以指定一名角色<font color='#A9A9A9'>发动此技能</font>，将伤害来源牌置于牌堆<font color='#9400D3'>顶/底</font>，令其从牌堆<font color='#9400D3'>底/顶</font>摸两张牌。
+		</tt></div>
+	</div>
+	-->
+	<h3>冰糖</h3>
+	<div class="title">体力上限：3</div>
+	<div class="listingblock">
+		<div class="content"><tt>
+			<strong>执儡</strong> 转换技，每回合限一次，<font color='#CB5063'>①准备阶段 ②结束阶段</font>，你可以使用一张牌。（无距离限制）
+			<br/><br/>
+			<strong>旧魇</strong> 你受到伤害后，你可以<font color='#A9A9A9'>发动此技能</font>，令伤害来源选择一项：1.你获得1应援力，破坏其一张牌 2.其受到2点伤害，你跳过下个出牌阶段。
+		</tt></div>
+	</div>
+	<h3>夏川玥玥</h3>
+	<div class="title">体力上限：4</div>
+	<div class="listingblock">
+		<div class="content"><tt>
+			<strong>散礼</strong> 每回合限一次，你获得手牌后，你可以分配任意张获得的牌。
+			<br/><br/>
+			<strong>酣饮</strong> 每轮限一次，你的手牌数≤1时，你可以视为使用一张【酒】。
+		</tt></div>
+	</div>
+	<h3>乙女おと</h3>
+	<div class="title">体力上限：4</div>
+	<div class="listingblock">
+		<div class="content"><tt>
+			<strong>龙韵</strong> 出牌阶段限一次，你可以弃置一张手牌、消耗1应援力<font color='#A9A9A9'>发动此技能</font>，摸X张牌，获得“激昂”直到下回合开始。（X为你的应援力，至多为3）
+			<br/><br/>
+			<i><strong>激昂</strong> 你指定/成为红色【杀】或【决斗】的目标后，你可以摸一张牌。</i>
+		</tt></div>
+	</div>
+	<h3>卡缇娅β</h3>
+	<div class="title">体力上限：4</div>
+	<div class="listingblock">
+		<div class="content"><tt>
+			<strong>冲鸭</strong> 你使用【杀】或【决斗】指定其他角色为唯一目标后，你可以<font color='#A9A9A9'>发动此技能</font>，获得其一张手牌。
+		</tt></div>
+	</div>
+	<h3>高槻りつ</h3>
+	<div class="title">体力上限：4</div>
+	<div class="listingblock">
+		<div class="content"><tt>
+			<strong>虚体</strong> 锁定技，你进行的判定结束时，你获得判定牌。<br/>结束阶段，你失去1点体力，进行一次判定，若结果为红色则回复1点体力。
+			<br/><br/>
+			<strong>极道</strong> 你回复体力后，你可以<font color='#A9A9A9'>发动此技能</font>，令手牌数最多的角色各交给你一张牌。
+		</tt></div>
+	</div>
+	<h3>千草はな</h3>
+	<div class="title">体力上限：4</div>
+	<div class="listingblock">
+		<div class="content"><tt>
+			<strong>花歌</strong> 你受到伤害后，你可以弃置一张牌<font color='#A9A9A9'>发动此技能</font>，观看牌堆顶的四张牌，获得其中任意张花色不同的牌，排列其余牌。
+			<br/><br/>
+			<strong>私易</strong> 出牌阶段限一次，你可以<font color='#A9A9A9'>发动此技能</font>，获得一名其他角色装备区的一张牌，交给其一张<font color='#9400D3'>装备牌</font>，其可以使用<font color='#9400D3'>此牌</font>。
+		</tt></div>
+	</div>
+	<h3>古守ちゆ</h3>
+	<div class="title">体力上限：4</div>
+	<div class="listingblock">
+		<div class="content"><tt>
+			<strong>宅寂</strong> 锁定技，准备阶段，若你判定区内没有牌，你失去1点体力，弃置一张牌，使用一张【夜之宅邸】。<br/>你使用【杀】对一名角色造成伤害后，若其手牌数＞体力值，你获得其一张牌，若之为红桃牌，你弃置之，回复1点体力。
+			<br/><br/>
+			<strong>肉林</strong> 锁定技，每当你指定女性角色为【杀】的目标后，或成为女性角色的【杀】的目标后，目标角色须连续使用两张【闪】抵消此【杀】。
+		</tt></div>
+	</div>
+	<h3>黎歌</h3>
+	<div class="title">体力上限：3</div>
+	<div class="listingblock">
+		<div class="content"><tt>
+			<strong>开幕雷击</strong> <font color='#CC6699'><b>登场技，</b></font>对其他角色各造成1点雷电伤害，然后结束当前回合角色的出牌阶段。
+			<br/><br/>
+			<strong>向我看齐</strong> 出牌阶段开始时，若你有手牌，你可以<font color='#A9A9A9'>发动此技能</font>，令其他角色各视为对你使用一张【火攻】，然后你获得1应援力。
+		</tt></div>
+	</div>
+	<h3>泠鸢</h3>
+	<div class="title">体力上限：3</div>
+	<div class="listingblock">
+		<div class="content"><tt>
+			<strong>绝情</strong> 锁定技，伤害结算开始前，你将要造成的伤害视为失去体力。
+			<br/><br/>
+			<strong>忘忧</strong> <font color='#CC6699'><b>登场技，</b></font>当前回合角色失去所有技能，然后其所在队伍的队员获得5应援力，溢出的部分改为摸等量张牌。
+		</tt></div>
+	</div>
+	<h3>尼奈</h3>
+	<div class="title">体力上限：4</div>
+	<div class="listingblock">
+		<div class="content"><tt>
+			<strong>白兰</strong> 锁定技，其他角色→你 距离＋1。
+			<br/><br/>
+			<strong>虫洞</strong> <font color='#CC6699'><b>登场技，</b></font>将所有其他角色的牌除外直到回合结束，然后当前回合角色获得“常蛀”。
+			<br/><br/>
+			<i><strong>常蛀</strong> <font color='#008B8B'><b>衍生技，</b></font>锁定技，准备阶段，随机除外你的一张牌直到回合结束。</i>
+		</tt></div>
+	</div>
+</div>
+</div>
+
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+2022/12/31
+</div>
+</div>
+</body>
+</html>

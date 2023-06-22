@@ -1,0 +1,747 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.6" />
+<title>版本更新内容</title>
+<style type="text/css">/* Sans-serif font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+div#toctitle,
+span#author, span#revnumber, span#revdate, span#revremark,
+div#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+/* Serif font. */
+div.sectionbody {
+  font-family: Georgia,"Times New Roman",Times,serif;
+}
+
+/* Monospace font. */
+tt {
+  font-size: inherit;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+tt {
+  font-size: inherit;
+  color: navy;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+span#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+span#email {
+}
+span#revnumber, span#revdate, span#revremark {
+}
+
+div#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+div#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+div#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+div#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.tableblock, div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  border-radius:25px;
+  background: #F0F0FA;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #777777;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  div#footer-badges { display: none; }
+}
+
+div#toc {
+  margin-bottom: 2.5em;
+}
+
+div#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+window.onload = function(){asciidoc.footnotes();}
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([2-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  var cont = document.getElementById("content");
+  var noteholder = document.getElementById("footnotes");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      // Use [\s\S] in place of . so multi-line matches work.
+      // Because JavaScript has no s (dotall) regex flag.
+      note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      spans[i].innerHTML =
+        "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+        "' title='View footnote' class='footnote'>" + n + "</a>]";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+}
+
+}
+</script>
+</head>
+<body class="article">
+
+<div id="header">
+	<h1>版本更新内容</h1>
+</div>
+
+<div id="content">
+	<br/>
+	<div class="sectionbody">
+	<div class="paragraph"><p>版本号：V0.3.2.3</p></div>
+	</div>
+	
+	
+	<div class="sect1"><br><hr/>
+		<h2>新角色</h2>
+		<div class="sectionbody">
+			<div class="paragraph"><br><p>详细内容请查阅角色一览</p></div>
+			
+			<h3>1、栗川楓</h3>
+			<div class="paragraph"><br><p>新势力月見喫茶的先行角色，在月见咖啡厅打工中的小斑鹿（或许有一点使魔属性？），梦想是成为偶像。某天突然获得了一位相同长相的人类少女“栗子”的记忆，正在不断寻找她。<br/><s>PS：虽然在加拿大狩猎是合法行为，但请不要猎鹿谢谢。</s></p></div>
+			<div class="title">体力上限：3</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>枫锦</strong> 每回合限一次，你可以将一张锦囊牌当【无懈可击】使用，若此牌为红色则你回复一点体力。
+					<br/><br/>
+					<strong>寻忆</strong> 你受到1点伤害后，你可以发动此技能，摸X+2张牌，保留任意张花色各不相同的手牌，弃置其余的手牌。（X为你已损失的体力值）
+				</tt></div>
+			</div>
+			
+			<h3>2、萌龙少主</h3>
+			<div class="paragraph"><br><p>这位是，唔……人设都未公开的迷之角色？<s>随着玩家的不断减少，Vup杀面临废游大危机！为了拯救游戏，Vup杀主程序决定亲自出道。</s><font color='red'>说好的不加班呢¿</font></p></div>
+			<div class="title">体力上限：4</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>虚像</strong> 锁定技，游戏开始时，你使用一张【透镜】并横置。你处于横置状态时，反转你的判定结果。 
+					<br/><br/>
+					<strong>遐制</strong> 结束阶段，你可以发动此技能，横置一名有手牌的角色，其须将一张手牌当【杀】使用。 
+				</tt></div>
+			</div>
+			
+			<h3>3、扇宝</h3>
+			<div class="paragraph"><br><p>翩跹歌舞的团扇偶像来到vup杀里为大家解暑了！寻求快乐而扇起不同的风，酷爽体验感让这个夏天趣味无穷。</p></div>
+			<div class="title">体力上限：3</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>翩翩</strong> 转换技，每回合限一次，①结束阶段 ②准备阶段，若你的手牌数小于体力上限，你可以发动此技能，摸一张牌。 
+					<br/><br/>
+					<strong>寄月</strong> 出牌阶段限一次，你可以将2~4张牌名相同的牌返回牌堆，根据张数执行对应效果：<br/>2张 从牌堆获得一张指定牌名的基本牌；<br/>3张 从牌堆获得一张指定牌名的锦囊牌；<br/>4张 翻面，对一名角色造成2点火焰伤害，然后废除其防具栏。 
+				</tt></div>
+			</div>
+			
+			<h3>4、杨</h3>
+			<div class="paragraph"><br><p>身为虚研社运营的社畜(？)，咸鱼突刺的力量不可小觑。不过要召唤她的全力，似乎需要集齐7颗虚研v宝珠？……</p></div>
+			<div class="title">体力上限：3</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>腌渍</strong> 锁定技，你对一名角色造成伤害时，若其区域内没有牌，此伤害+1。
+					<br/><br/>
+					<strong>筹措</strong> 出牌阶段限一次，你可以弃置X张手牌，令两名角色交换装备区内的牌。（X为这两名角色装备区内的牌数之差） 
+				</tt></div>
+			</div>
+			
+			<h3>5、芳乃推</h3>
+			<div class="paragraph"><br><p>《关于我被我姐姐强行性转，然后被迫变成魅魔，不得已出道了赚钱养家这件事》<s>万能的书名号</s></p></div>
+			<div class="title">体力上限：3</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>渴欲</strong> 锁定技，一名角色回复体力后 或 你的体力回复溢出后，你从牌堆将一张牌作为“欲”除外。你回复体力后，回复来源摸一张牌。 
+					<br/><br/>
+					<strong>冰心</strong> 锁定技，你造成的伤害视为冰霜伤害。结束阶段，若你本回合未造成过伤害，你获得所有“欲”。
+				</tt></div>
+			</div>
+			
+		</div>
+	</div>
+	
+	
+	<div class="sect1"><hr/>
+		<h2>平衡性调整</h2>
+		<div class="sectionbody">
+			<div class="paragraph"><br><p>根据服务器的胜率统计，我们将对角色进行调整。</p></div>
+			
+			
+			<h3>1、寒冰剑</h3>
+			<div class="paragraph"><br><p>为了适应新推出的冰霜伤害，我们对寒冰剑进行了修改。</p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>寒冰剑</strong> <font color='blue'>当你使用【杀】对目标角色造成伤害时，若该角色有牌，你可以防止此伤害，改为依次破坏其两张牌。</font>
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>寒冰剑</strong> <font color='red'>锁定技，你使用普通【杀】对目标角色造成的伤害视为冰霜伤害。</font>
+				</tt></div>
+			</div>
+			<div class="title">冰霜伤害</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					冰霜伤害能通过铁索连环传导。<br/>伤害来源在对受伤角色造成冰霜伤害时，可以依次破坏其两张牌，防止此伤害。<br/>防止冰霜伤害时，若之为传导伤害且受伤角色仍处于横置状态，则重置该角色。
+				</tt></div>
+			</div>
+			
+			<h3>2、北上花火</h3>
+			<div class="paragraph"><br><p>给自己上舰长看似收支为0，但实际上还是被叔叔分走了不少钱。<s>因此我们鼓励给自己刷礼物，这样起码能让直播间看起来更热闹。</s></p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>自荐</strong> 你因<font color='blue'>弃置</font>而失去牌后，你可以<font color='blue'>将这些牌交给一名其他角色</font>。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>自荐</strong> 你因<font color='red'>弃置或破坏</font>而失去牌后，你可以<font color='red'>令一名其他角色选择其中一张获得</font>。
+				</tt></div>
+			</div>
+			
+			
+			<h3>3、星汐</h3>
+			<div class="paragraph"><br><p>经过详细的调查，本世界观的材料学无法提供能有效阻挡陨石的防具。<s>挡不住就靠气势挡啊！！</s>（很遗憾Vup杀并不是超级系）</p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>星耀</strong> 你使用【杀】指定目标后，你可以发动此技能，进行一次判定，若结果为：<font color='red'>♥</font>，此【杀】对目标角色造成的伤害+1；<font color='red'>♦</font>♠♣，目标角色的<font color='blue'>非锁定技</font>失效直到回合结束。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>星耀</strong> 你使用【杀】指定目标后，你可以发动此技能，进行一次判定，若结果为：<font color='red'>♥</font>，此【杀】对目标角色造成的伤害+1；<font color='red'>♦</font>♠♣，目标角色的<font color='red'>防具和非锁定技</font>失效直到回合结束。
+				</tt></div>
+			</div>
+			
+			
+			<h3>4、亦枝YY</h3>
+			<div class="paragraph"><br><p>YY大仙，法力无边。奶皇靤不是开玩笑的。</p></div>
+			<div class="title">新增角色特性</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>毒奶</strong> 你将牌交给一名其他角色后，20%令其回复-1点体力值。每次触发后，此概率上升10%。
+				</tt></div>
+			</div>
+			
+			
+			<h3>5、星梦真雪</h3>
+			<div class="paragraph"><br><p>星梦真雪的尾巴转速非常快，由于角动量守恒，星梦玩家经常会晕。所以我们尝试增加旋尾的阻尼。</p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>狐尾扇</strong> 每回合限一次，你使用【杀】时，你可以发动此技能，摸一张牌并展示之，若之为基本牌，此【杀】不计入出牌阶段的使用次数。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>狐尾扇</strong> 每回合限一次，你使用【杀】时，你可以发动此技能，摸一张牌并展示之，若之为基本牌<font color='red'>则你可以弃置之，令</font>此【杀】不计入出牌阶段的使用次数。
+				</tt></div>
+			</div>
+			
+			
+			<h3>6、游崎牧也</h3>
+			<div class="paragraph"><br><p>您的好友“注定一抽”已上线。<s>4320警告</s></p></div>
+			<div class="title">调整前</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>升华</strong> 觉醒技，准备阶段若你的体力值为1，选择一项：1.回复1点体力，获得“祈愿聚集”；2.<font color='blue'>摸两张牌</font>，获得“命运创造”。
+				</tt></div>
+			</div>
+			<div class="title">调整后</div>
+			<div class="listingblock">
+				<div class="content"><tt>
+					<strong>升华</strong> 觉醒技，准备阶段若你的体力值为1，选择一项：1.回复1点体力，获得“祈愿聚集”；2.<font color='red'>从牌堆获得指定牌名的基本牌、锦囊牌各一张</font>，获得“命运创造”。
+				</tt></div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="sect1"><hr/>
+		<h2>优化与修复</h2>
+			<div class="sectionbody">
+			<div class="paragraph"><br><p>写bug是编程的一部分。 ——主程序</p></div>
+			
+			<div class="title">系统</div>
+			<div class="paragraph"><p>修复了聊天框不能使用中文输入法的问题，现在点击聊天框的最右边的按钮即可使用弹窗输入文字。</p></div>
+			<div class="paragraph"><p>因技能产生的聊天信息不会出现在聊天记录内了。</p></div>
+			<div class="paragraph"><p>“个人势”改为“独立势”（将包含独立运营，但不是纯个人运营的角色）</p></div>
+			<div class="paragraph"><p>牌局结束后，询问是否保存存档的时间固定为5秒。（为了防止个别跑路人）</p></div>
+			<div class="paragraph"><p>修复了体力值>体力上限时，“已损失体力值”被记为负数的错误。</p></div>
+			
+			<div class="title">双月ゆな りあ</div>
+			<div class="paragraph"><p>修复了AI双月在一次获取1张牌的情况下不使用月盈②的问题。</p></div>
+			
+			<div class="title">拉法</div>
+			<div class="paragraph"><p>修复了AI拉法在特定情况下会崩溃的问题。</p></div>
+			
+			<div class="title">冰糖</div>
+			<div class="paragraph"><p>“荐推”不再能获得主公技。</p></div>
+			
+			<div class="title">萌龙少主</div>
+			<div class="paragraph"><p>修复了AI能使用铁索连环指定萌龙少主两次的bug。<font color='red'><s>出道即bug，说好的不加班呢¿</s></font></p></div>
+			
+		</div>
+	</div>
+</div>
+
+<div id="footnotes"><hr /></div>
+<div id="footer">
+	<div id="footer-text">
+		更新日期 2021/7/9
+	</div>
+</div>
+
+</body>
+</html>

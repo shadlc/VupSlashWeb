@@ -1,0 +1,862 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.3" />
+<title>Vup杀特有游戏机制/用语说明</title>
+<style type="text/css">
+/* Sans-serif font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+div#toctitle,
+span#author, span#revnumber, span#revdate, span#revremark,
+div#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+/* Serif font. */
+div.sectionbody {
+  font-family: Georgia,"Times New Roman",Times,serif;
+}
+
+/* Monospace font. */
+tt {
+  font-size: inherit;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+tt {
+  font-size: inherit;
+  color: navy;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+span#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+span#email {
+}
+span#revnumber, span#revdate, span#revremark {
+}
+
+div#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+div#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+div#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+div#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.tableblock, div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #777777;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  div#footer-badges { display: none; }
+}
+
+div#toc {
+  margin-bottom: 2.5em;
+}
+
+div#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+window.onload = function(){asciidoc.footnotes();}
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([2-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  var cont = document.getElementById("content");
+  var noteholder = document.getElementById("footnotes");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      // Use [\s\S] in place of . so multi-line matches work.
+      // Because JavaScript has no s (dotall) regex flag.
+      note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      spans[i].innerHTML =
+        "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+        "' title='View footnote' class='footnote'>" + n + "</a>]";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+}
+
+}
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>Vup杀特有游戏机制/用语说明</h1>
+</div>
+
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><br><p>Vup杀基于三国杀游戏规则制作，这里对一些特有游戏机制/用语进行规则说明。</p></div>
+<div class="paragraph"><p>*部分机制的详细处理<a href="https://shimo.im/sheets/vVAXVzZNYGfxK9qm/MODOC/">请点击此处查看石墨文档</a>，或复制此链接于浏览器中打开：https://shimo.im/sheets/vVAXVzZNYGfxK9qm/MODOC/</p></div>
+<h2 id="_">特有卡牌说明</h2><br>
+<div class="title">卡牌配置</div>
+<div class="listingblock">
+<div class="content">
+<tt><b>Vup杀通用牌堆</b>：三国杀标准+军争+Ex+2张复刻卡+8张新卡，不含木牛流马，雌雄双股剑被雌雄双股剑MK2代替。<br/><b>特殊牌</b>：这些牌不会加入游戏，仅用于特定技能。（具体说明不在此处罗列，请通过“卡牌一览”查看）</tt>
+</div></div>
+
+<div class="listingblock">
+<div class="title">常驻新卡</div>
+<div class="paragraph"><p>具体内容请通过“卡牌一览”查看</p></div>
+<div class="content">
+<tt>
+<b>釜底抽薪</b> 单目标锦囊牌<br/>
+卡牌说明：令一名角色将装备区内的所有牌收回手牌。<br/>
+牌堆分布：共2张 <font color='red'>♥</font>5,<font color='red'>♦</font>5
+
+<br/><br/>
+
+<b>宇航兔</b> 宝物牌<br/>
+卡牌说明：抵挡一次致命伤害。<br/>
+牌堆分布：共1张 <font color='black'>♣</font>7
+
+<br/><br/>
+
+<b>两轮车</b> 宝物牌<br/>
+卡牌说明：出牌阶段，可以将此牌当使用过的上一张牌使用。<i>使用此牌的回合不能发动。</i><br/>
+牌堆分布：共1张 <font color='red'>♦</font>7
+
+<br/><br/>
+
+<b>雪年糕棍</b> 武器牌<br/>
+卡牌说明：攻击范围 2；使用【杀】对目标造成伤害时，掷两枚硬币，若均为正面则伤害+1。<br/>
+牌堆分布：共1张 <font color='black'>♣</font>5
+
+<br/><br/>
+
+<b>藏宝图</b> 宝物牌<br/>
+卡牌说明：装备此牌时，你从牌堆、弃牌堆将一张指定牌名的锦囊牌作为“宝藏”除外。准备阶段，你可以获得“宝藏”、破坏此牌。锁定技，此牌离开装备区时，将“宝藏”置入弃牌堆。<br/>
+牌堆分布：共1张 ♠A
+
+<br/><br/>
+
+<b>十字架</b> 宝物牌<br/>
+卡牌说明：锁定技，你的手牌上限＋1。<br/>锁定技，手牌区中的此牌不能被持有者使用；此牌因弃置或拼点而离开手牌区后，使用之。<br/>
+牌堆分布：共1张 <font color='red'>♥</font>J
+
+<br/><br/>
+
+<b>玄武甲</b> 防具牌<br/>
+卡牌说明：锁定技，你受到雷电属性以外的伤害时，掷2枚硬币，若结果均为正面，防止之。<br/>锁定技，若你掷硬币结果均为反面，你掷的下1枚硬币必定为正面。<br/>
+牌堆分布：共1张 ♣8
+
+<br/><br/>
+
+<b>猫玩偶</b> 宝物牌<br/>
+卡牌说明：你受到伤害后，若有<font color='#9400D3'>伤害来源牌</font>，清除记录，记录<font color='#9400D3'>此牌</font>的类别。<br/>锁定技，防止记录类别的牌对你造成的伤害。<br/>
+牌堆分布：共1张 <font color='red'>♥</font>9
+
+</tt>
+</div>
+<br/>
+<div class="title">复刻卡牌</div>
+<div class="paragraph"><p>具体内容请通过“卡牌一览”查看</p></div>
+<div class="content">
+<tt>
+<b>兵粮寸断</b> 延时锦囊牌<br/>
+复刻共1张 <font color='black'>♠</font>8
+
+<br/><br/>
+
+<b>银月枪</b> 武器牌<br/>
+复刻共1张 <font color='red'>♦</font>Q
+
+</tt>
+</div></div>
+
+</div>
+</div>
+
+<div class="sect1">
+<h2 id="_">用语调整</h2>
+<div class="sectionbody">
+<div class="paragraph"><br><p><s>出于某些原因</s> 以下三国杀用语将进行替换</p></div>
+<div class="listingblock">
+<div class="content">
+<tt>
+存活 -> 在场 | 死亡 -> 离场<br/>
+武将 -> 角色 | 击杀 -> 击败<br/>
+扣置于武将牌上/移出游戏 -> 除外<br/>
+濒危 -> 濒危
+</tt>
+</div></div>
+<div class="paragraph"><br><p>以下三国杀描述将进行<s>本地化处理</s></p></div>
+<div class="listingblock">
+<div class="content">
+<tt>
+<font color='orange'>修改前</font>：你计算与其他角色的距离-1<br/>
+<font color='blue'>修改后</font>：你→其他角色 距离-1<br/>
+<br/>
+<font color='orange'>修改前</font>：你计算与其他角色的距离-1，其他角色计算与你的距离-1<br/>
+<font color='blue'>修改后</font>：你↔其他角色 距离-1<br/>
+<br/>
+<font color='orange'>修改前</font>：摸牌阶段……本阶段你的额定摸牌数+1<br/>
+<font color='blue'>修改后</font>：摸牌阶段……本阶段你的摸牌数+1<br/>
+<br/>
+<font color='orange'>修改前</font>：（未提及摸牌阶段）你的额定摸牌数+1<br/>
+<font color='blue'>修改后</font>：（未提及摸牌阶段）你的通常摸牌数+1<br/>
+<br/>
+<font color='orange'>修改前</font>：额定目标数上限+1<br/>
+<font color='blue'>修改后</font>：可指定目标数+1<br/>
+</tt>
+</div></div>
+
+</div>
+</div>
+
+<div class="sect1">
+<h2 id="_">现有机制差异</h2>
+<div class="sectionbody">
+
+<div class="sect2"><br>
+<h3 id="__">指定目标事件</h3>
+<div class="paragraph"><br><p>在三国杀中，一名角色使用牌指定N个目标，将会产生N个“指定目标时”“指定目标后”时机。<br>在Vup杀中，一名角色使用牌指定N个目标，只会产生1个“指定目标时”“指定目标后”时机。<br><br>在三国杀中的“你使用牌指定一名角色为目标后”将会依次询问对每名目标是否发动技能。<br>在Vup杀中，类似技能通常会对所有目标同时生效，或询问玩家要对哪名目标发动技能。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">轮次</h3>
+<div class="paragraph"><br><p>Vup杀中“轮次开始时”为“首位行动的角色”的回合开始前。<br>若一号位角色于自己的回合内离场，则“首位行动的角色”会被顺延给二号位，因此会直接开启新的轮次。<br>Vup杀的轮次数可以被技能更改。增加轮次数不会触发“轮次开始时”时机，也不会影响持续一轮的延时效果的结算，仅仅只是增加了轮次计数。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">转化类技能与询问使用/打出的交互</h3>
+<div class="paragraph"><br><p>询问某角色使用/打出牌时，只有这两种情况允许该角色通过技能使用/打出转化的牌：①询问某角色使用【杀】；②询问某角色打出一张特定牌。<br/>注：①仅限于令某角色使用一张【杀】这种描述。其他描述则不允许转化，如“其可以使用一张基本牌”、“其依次使用牌堆顶四张牌中的【杀】”等。</p></div>
+<div class="title">举例</div>
+<div class="listingblock">
+	<div class="content"><tt>
+		<font color='orange'>可转化的例子</font>：
+		<br>〖作业〗……然后其须对其攻击范围内你选择的另一名角色使用一张【杀】……
+		<br>〖渴可〗……然后其可以对你使用一张【杀】……
+		<br>〖解忧〗……你可以打出一张【闪】……
+		<br>
+		<br><font color='blue'>不可转化的例子</font>：
+		<br>〖星移〗你于回合外获得手牌后，你可以使用其中一张或弃置之。
+		<br>〖月潮〗……获得场上的一张牌，然后你可以使用之。
+		<br>〖贯袭〗……你可以以其为唯一目标使用一张手牌……
+		<br>〖浮光〗……赢的角色须使用其拼点牌……
+		<br>〖秘恋〗……观看目标的手牌，<font color='#DC143C'><u><b>2级</b> 你可以使用其中一张</font>……
+	</tt></div>
+</div>
+</div>
+
+<div class="sect1">
+<h2 id="_">新机制</h2>
+<div class="sectionbody">
+
+<div class="sect2"><br>
+<h3 id="__">性别扩展</h3>
+<div class="paragraph"><br><p>Vup杀除男性、女性外，还有中性和无性角色。<br>“异性角色”指性别不同的角色。<br>无性角色不参与性别结算。因此无性角色不与任何角色构成同性/异性关系。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">伤害属性扩展</h3>
+<div class="paragraph"><br><p>Vup杀除雷电伤害、火焰伤害外，还有其他伤害属性。</p></div>
+<div class="title">冰霜伤害</div>
+<div class="listingblock">
+	<div class="content"><tt>
+		冰霜伤害能通过铁索连环传导。<br/>伤害来源在对受伤角色造成冰霜伤害时，可以依次破坏其两张牌，防止此伤害。<br/>防止冰霜伤害时，若之为传导伤害且受伤角色仍处于横置状态，则重置该角色。
+	</tt></div>
+</div>
+<div class="title">光芒伤害</div>
+<div class="listingblock">
+	<div class="content"><tt>
+		光芒伤害<font color='red'>不能</font>通过铁索连环传导。<br/>光芒伤害在伤害基数确定后，除非有特殊说明，否则此伤害不能被增加、减少或防止，相关的技能也不能触发。（如玖麻受到光芒伤害时，并不能发动“制冷”弃置两张牌）<br/>注：伤害的转移不算防止伤害，因此可以对光芒伤害生效。
+	</tt></div>
+</div>
+</div>
+
+<div class="sect2">
+<h3 id="__">变身技&衍生技</h3>
+<div class="paragraph"><br><p>“变身技”和“衍生技”是<strong>没有实质作用</strong>的技能标签，所以无视就好。<br>“变身技”仅代表第一次使用后角色名和角色图片会产生变化（并附加一些烧经费的特效）；<br>“衍生技”仅代表这个技能是由其他技能衍生而来。</p></div>
+<div class="paragraph"><p>这些标签唯一的作用就是限制技能不能被一些泛用的方式获取（如冰糖的“荐推”不能获得变身技、衍生技）。</p></div>
+</div>
+
+<div class="sect2"><br>
+<h3 id="__">征询技</h3>
+<div class="paragraph"><br><p>征询技通常是询问量很大的技能。征询技在技能按钮被按下的状态会正常询问，技能按钮弹起的状态则不会询问。同时征询技的思考时间也较短，与【无懈可击】相同，可以在服务器设置中设定。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">复活</h3>
+<div class="paragraph"><br><p>令一名已离场的角色重新回到游戏。<br>若没有特殊说明，复活的角色体力上限不变，体力值将被设置为满体力。<br>在暗身份模式中，由于该角色已经离场过，因此复活后其身份依旧公开。<br>与“复活”“离场后”相关的技能，不受角色离场失去技能的影响，一次适用后依旧正常生效。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">变化</h3>
+<div class="paragraph"><br><p>直接变成另一个角色，技能也会一起替换。<br>变化不会刷新角色状态，如2体力的雪狐桑因“巧绘”变化为6体力上限的雪咕咕时，雪咕咕的体力值为2/6。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">技能的指定目标与发动</h3>
+<div class="paragraph"><br><p>一些技能可以无效其他技能的发动，或者让自己不能成为技能的目标。有时也会对技能的发动次数进行计数。</p></div>
+<div class="paragraph"><p>为了明确这些机制的处理，在技能描述中我们会标明<strong>“发动此技能”</strong>或<strong>“指定……”</strong>。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">回复溢出&滋养</h3>
+<div class="paragraph"><br><p>Vup杀允许体力值>体力上限。</p></div>
+<div class="listingblock">
+	<div class="content"><tt>
+		体力值>0时：角色不会离场或进入濒危状态；<br/>
+		体力值≤0时：若体力上限>0则进入濒危状态；若体力上限≤0则直接离场。
+	</tt></div>
+</div>
+<div class="paragraph"><p>体力上限为回复体力值的上限，当回复量超过体力上限时，就会产生回复溢出。</p></div>
+<div class="paragraph"><p>“滋养”为体力回复的一种，但“滋养”可以无视体力上限进行体力回复。</p></div>
+<div class="paragraph"><p>失去体力上限时，超出上限部分的体力值不受影响。如9/5体力值的角色失去2点体力上限，其将变为7/3体力值。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">破坏&返回牌堆</h3>
+<div class="paragraph"><br><p><strong>破坏</strong> 一种将牌置入弃牌堆的方式，与“弃置”基本相同。破坏和弃置分别会触发不同的技能。</p></div>
+<div class="paragraph"><p><strong>返回牌堆</strong> 一种将牌置入牌堆的方式。返回牌堆的牌会被分别插入牌堆的随机位置。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">掷硬币</h3>
+<div class="paragraph"><br><p>掷若干枚硬币并产生正反面结果，根据结果执行后续效果。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">相邻</h3>
+<div class="paragraph"><br><p>一名角色的上家、下家与其相邻。（与距离无关，仅与座次有关）<br/>离场角色不被计算为“上家”或“下家”。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">明置</h3>
+<div class="paragraph"><br><p>将手牌持续公开给所有角色。已被明置的牌不能再次明置。<br>一名角色选择其他角色的手牌时（如过河拆桥），可以直接选择被明置的牌，或从未被明置的牌中随机选择一张。</p></div>
+<div class="paragraph"><p>玩家可以通过<u>鼠标右键菜单</u>，或 <u>工具→查看已知牌(Ctrl+O)</u>，来查看已知牌和明置牌。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">通常使用</h3>
+<div class="paragraph"><br><p>在技能或牌的效果中，使用牌/视为使用牌均不计入次数，而“通常使用”的牌计入次数。<br>若此牌本身使用次数不足则无法执行此牌的通常使用。</p></div>
+<div class="listingblock">
+	<div class="content"><tt>
+		举例：<br/>
+		<font color='green'>出牌阶段限一次，你可以与一名角色拼点，赢的角色视为对另一名角色<u>通常使用</u>一张【杀】。</font><br/><br/>
+		若你赢且你本阶段未使用【杀】，你视为对对方使用一张【杀】，并计入出牌阶段杀的使用次数。<br/>
+		若你赢但你本阶段使用过【杀】，你无法执行此项，除非你有诸葛连弩等增加次数或无视次数限制的手段。<br/>
+		若对方赢，对方视为对你使用一张【杀】。（因为杀在出牌阶段外并没有次数限制，而对方此时并不在出牌阶段内）
+	</tt></div>
+</div>
+</div>
+
+<div class="sect2">
+<h3 id="__">对方</h3>
+<div class="paragraph"><br><p>拼点流程中指与某角色拼点的另一名角色。<br>使用流程中指 使用者/目标角色 中的另一方。<br/>响应流程中指 来源牌的使用者/响应者 中的另一方。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">牌的标记</h3>
+<div class="paragraph"><br><p>在牌上附着标记，多数情况下，有标记的牌离开手牌区后，标记会自动清除，如“信”、“咕”、“蜜糕”等，但持有者的变更并不会导致标记清除。个别标记不受此规则影响，如“土豆雷”。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">技能等级</h3>
+<div class="paragraph"><br><p>类似于永久生效的转换技，升级后技能将执行不同的效果。<br/>可升级的技能开局默认为1级。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">锁定装备牌</h3>
+<div class="paragraph"><br><p>被锁定的装备牌不能以任何形式离开装备区。（装备自身效果除外）<br/>将其它装备牌置入此牌所在装备栏的效果改为将之置入弃牌堆。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">分配</h3>
+<div class="paragraph"><br><p>以任意顺序将被分配的牌交给其他角色（若这些牌不是你的牌，则可以交给自己），直到这些牌均被交出，每次交出的张数不限。<br/>分配行为完成前，新获得的满足条件的牌依然不可以分配。举例：在执行“分配你的所有手牌”过程中，你获得了新的手牌，你依然只能分配原有的手牌。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">与牌堆拼点</h3>
+<div class="paragraph"><br><p>牌堆用于拼点的牌为牌堆顶的牌。此拼点流程中“对方”指牌堆，但牌堆不能执行玩家执行的动作，如“弃置一张牌”等，如有此类情况将特殊说明。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">重铸</h3>
+<div class="paragraph"><br><p>这个概念与三国杀基本相同，但这里补充几点规则集未说明的部分：<br>1.重铸的摸牌者是被重铸牌的原持有者，与重铸者无关<br>2.（暂定）多张牌同时重铸也只摸一张牌。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">回溯</h3>
+<div class="paragraph"><br><p>将每名角色的全部状态还原至目标时间点。（包括角色牌状态、持有技能及技能状态、区域内的牌等待）<br/>上次记录时，有关技能无效、（限定技）次数用尽、未拥有的场合不能使用，成功记录后会显示就绪。<br/>时间倒回效果处理中其他技能均无效。<br/>不能复活已离场的角色或令复活的角色离场。<br/>不会改变当前角色的身份。<br/>不会改变轮次和当前回合。<br/>牌堆和弃牌堆不会还原。<br/>不移动位于处理区的延时锦囊牌。<br/>时间倒回后，所有角色的区域内的牌将会可见。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">场地牌</h3>
+<div class="paragraph"><br><p>场地牌属于延时锦囊牌。<br>场地牌使用时置入判定区，但场地牌并不会在判定阶段执行判定。<br>场地牌进入判定区前，会先将场上所有其他场地牌置入弃牌堆。因此常规情况下场上只会有一张场地牌。<br>场地牌的“场地效果”仅在场地牌位于场上时生效。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">登场技</h3>
+<div class="paragraph"><br><p>目前仅在冰火歌会模式生效。<br>玩家当前角色离场后切换的新角色将于登场时触发登场技。<br>首发角色不触发登场技。</p></div>
+</div>
+
+<div class="sect2">
+<h3 id="__">花色相对</h3>
+<div class="paragraph"><br><p>红桃与黑桃相对，方块与梅花相对。</p></div>
+</div>
+
+</div>
+</div>
+
+
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+更新时间 2023/1/8
+</div>
+</div>
+</body>
+</html>
