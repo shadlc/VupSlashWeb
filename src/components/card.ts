@@ -139,7 +139,7 @@ export function setParty(card: Card, parties: any) {
   parties.forEach((p: any) => {
     if (p.code == card.party) {
       card.importLogo(
-        "assets/img/logo/" + card.party + ".png",
+        "/web/assets/img/logo/" + card.party + ".png",
         card
       );
       card.themeColor = p.themeColor ?? card.themeColor;
@@ -152,7 +152,7 @@ export function setParty(card: Card, parties: any) {
 
 export function setShadow(card: Card) {
   card.importShadow(
-    "assets/img/shadow/" + card.shadowType + ".png"
+    "/web/assets/img/shadow/" + card.shadowType + ".png"
   );
 }
 
