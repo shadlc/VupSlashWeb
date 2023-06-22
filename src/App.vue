@@ -68,7 +68,7 @@ setTimeout(() => {
           <li class="nav-item">
             <a
               class="nav-link"
-              href="/scenarios/newgamerules.html"
+              href="https://api.vupslash.icu/scenarios/newgamerules.html"
               @click="hideFloatNav"
               >规则</a
             >

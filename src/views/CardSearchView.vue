@@ -504,7 +504,7 @@ function click(id: string) {
           </div>
           <div class="modal-footer border-0">
             <div class="mx-auto">
-              <a>{{ website + "/cards#" + characterInfo.code }}</a>
+               <!-- <a>{{ website + "/cards#" + characterInfo.code }}</a> -->
             </div>
           </div>
         </div>
